@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Data about Data</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s07-01-data-and-information.html"><img src="shared/images/batch-left.png"></a> <a href="s07-01-data-and-information.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s07-03-finding-data.html">Next Section</a> <a href="s07-03-finding-data.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch03_s02" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">3.2</span> Data about Data</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch03_s02_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch03_s02_l01">
+            <li>The objective of this section is to highlight the difference between primary and secondary data sources and to understand the importance of metadata and data standards.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p01">Consider the following comma-delimited file:</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p02">city, sun, temp, precip</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p03">Los Angeles, 300, 70, 10</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p04">London, 50, 55, 40</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p05">Singapore, 330, 80, 60</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p06">Looking at the contents of the file, we can see that it contains data about the cities of Los Angeles, London, and Singapore. As noted, each field or attribute is separated by a comma, and the file also contains a header row that tells us about the data contained in each column. Or does it? What does the column “sun” refer to? Is it the number of sunny days this year, last year, annually, or when? What about “temp”? Does this refer to the average daytime, evening, or annual temperature? For that matter, how is temperature measured? In Celsius? Fahrenheit? Kelvin? The column “precip” probably refers to precipitation, but again, what are the units or time frame for such measures and data? Finally, where did these data come from? Who collected them, when were they collected and for what purpose?</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p07">It is amazing to think that such a small text file can lead to so many questions. Now let’s extend the example to a file with one hundred records on ten variables, one thousand records on one hundred variables or better yet, ten thousand records on one thousand variables. Through this rather simple example, a number of general but central issues that are related to data emerge. Such issues range from the relatively mundane naming conventions that are used to identify individual records (i.e., rows) and distinguish one field (i.e., column) from another, to the issue of providing documentation about what data are included in a given file; when the data were collected; for what purpose are the data to be used; who collected them; and, of course, where did the data come from?</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p08">The previous simple text file illustrates how we cannot and should not take data and information for granted. It also highlights two important concepts with regard to the source of data and to the contents of data files. With regard to data sources, data can be put into one of two distinct categories. The first category is called <span class="margin_term"><a class="glossterm">primary data</a><span class="glossdef">Data that are collected firsthand.</span></span>. Primary data refer to data that are collected directly or on a firsthand basis. For example, if you wanted to examine the variability of local temperatures in the month of May, and you recorded the temperature at noon every day in May, you would be constructing a primary data set. Conversely, <span class="margin_term"><a class="glossterm">secondary data</a><span class="glossdef">Data that are collected by someone else or a different party.</span></span> refer to data collected by someone else or some other party. For instance, when we work with census or economic data collected and distributed by the government, we are using secondary data.</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p09">Several factors influence the decision behind the construction and use of primary data sets versus secondary data sets. Among the most important factors are the costs associated with data acquisition in terms of money, availability, and time. In fact, the data acquisition and integration phase of most geographic information system (GIS) projects is often the most time consuming. In other words, locating, obtaining, and putting together the data to be used for a GIS project, whether you collect the data yourself or use secondary data, may indeed take up most of your time. Of course, depending on the purpose, availability, and need, it may not be necessary to construct an entirely new data set (i.e., primary data set). In light of the vast amounts of data and information that are publicly available, for example, via the Internet, the cost and time savings of using secondary data often offset any benefits that are associated with primary data collection.</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p10">Now that we have a basic understanding of the difference between primary and secondary data, as well as the rationale behind each, how do we go about finding the data and information that we need? As noted earlier, there is an incredibly vast and growing amount of data and information available to us, and performing an online search for “deforestation data” will return hundreds—if not thousands—of results. To overcome this data and information overload we need to turn to…even more data. In particular, we are looking for a special kind of data called <span class="margin_term"><a class="glossterm">metadata</a><span class="glossdef">Data and information that describe data.</span></span>. Simply defined, metadata are data about data. At one level, a header row in a simple text file like those discussed in the previous section is analogous to metadata. The header row provides data (e.g., names and labels) about the subsequent rows of data.</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p11">Header rows themselves, however, may need additional explanation as previously illustrated. Furthermore, when working with or searching through several data sets, it can be quite tedious at best or impossible at worst to open each and every file in order to determine its contents and usability. Enter metadata. Today many files, and in particular secondary data sets, come with a metadata file. These metadata files contain items such as general descriptions about the contents of the file, definitions for the various terms used to identify records (rows) and fields (fields), the range of values for fields, the quality or reliability of the data and measurements, how the data were collected, when the data were collected, and who collected the data. Though not all data are accompanied by metadata, it is easy to see and understand why metadata are important and valuable when searching for secondary data, as well as when constructing primary data that may be shared in the future.</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p12">Just as simple files come in all shapes, sizes, and formats, so too do metadata. As the amount and availability of data and information increase each and every day, metadata play a critical role in making sense of it all. The class of metadata that we are most concerned with when working with a GIS is called <span class="margin_term"><a class="glossterm">geospatial metadata</a><span class="glossdef">A special class of metadata that contains information about the geographic qualities of a data set.</span></span>. As the name suggests, geospatial metadata are data about geographical and spatial data. According to the Federal Geographic Data Committee (FGDC) in the United States (see <a class="link" target="_blank" href="http://www.fgdc.gov">http://www.fgdc.gov</a>), “Geospatial metadata are used to document geographic digital resources such as GIS files, geospatial databases, and earth imagery. A geospatial metadata record includes core library catalog elements such as Title, Abstract, and Publication Data; geographic elements such as Geographic Extent and Projection Information; and database elements such as Attribute Label Definitions and Attribute Domain Values.” The definition of geospatial metadata is about improving transparency when it comes to data, as well as promoting standards. Take a few moments to explore and examine the contents of a geospatial metadata file that conforms to the FGDC <a class="link" target="_blank" href="http://sofia.usgs.gov/metadata/sflwww/sofia_website_04.html">here</a>.</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p13">Generally, standards refer to widely promoted, accepted, and followed rules and practices. Given the range and variability of data and data sources, identifying a common thread to locate and understand the contents of any given file can be a challenge. Just as the rules of grammar and mathematics provide the foundations for communication and numeric calculations, respectively, metadata provide similar frameworks for working with and sharing data and information from various sources.</p>
+    <p class="para editable block" id="campbell_1.0-ch03_s02_p14">The central point behind metadata is that it facilitates data and information sharing. Within the context of large organizations such as governments, data and information sharing can eliminate redundancies and increase efficiencies. Moreover, access to data and information promotes the integration of different data that can improve analyses, inform decisions, and shape policy. The role that metadata—and in particular geospatial metadata—play in the world of GISs is critical and offers enormous benefits in terms of cost and time savings. It is precisely the sharing, widespread distribution and integration of various geographic and nongeographic data and information, enabled by metadata, that drive some of the most interesting and compelling innovations in GISs and the broader geospatial information technology community. More important, widespread access, distribution, and sharing of geographic data and information have important social costs and benefits and yield better analyses and more informed decisions.</p>
+    <div class="key_takeaways editable block" id="campbell_1.0-ch03_s02_n02">
+        <h3 class="title">Key Takeaways</h3>
+        <ul class="itemizedlist" id="campbell_1.0-ch03_s02_l02">
+            <li>Primary data refer to data that are obtained via direct observation or measure, and secondary data refer to data collected by a different party.</li>
+            <li>Data acquisition is among the most time-consuming aspects of any GIS project.</li>
+            <li>Metadata are data about data and promote data exchange, dissemination, and integration.</li>
+        </ul>
+    </div>
+    <div class="exercises editable block" id="campbell_1.0-ch03_s02_n03">
+        <h3 class="title">Exercises</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch03_s02_l03">
+            <li>What are the costs and benefits of using primary data instead of secondary data?</li>
+            <li>Refer to the Federal Geographic Data Committee website (<a class="link" target="_blank" href="http://www.fgdc.gov">http://www.fgdc.gov</a>) and describe in detail what information should be included in a metadata file. Why are metadata and standards important?</li>
+        </ol>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s07-01-data-and-information.html"><img src="shared/images/batch-left.png"></a> <a href="s07-01-data-and-information.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s07-03-finding-data.html">Next Section</a> <a href="s07-03-finding-data.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

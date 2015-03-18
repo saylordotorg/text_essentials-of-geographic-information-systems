@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Geographic Concepts</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s05-01-spatial-thinking.html"><img src="shared/images/batch-left.png"></a> <a href="s05-01-spatial-thinking.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s05-03-geographic-information-systems.html">Next Section</a> <a href="s05-03-geographic-information-systems.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch01_s02" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">1.2</span> Geographic Concepts</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch01_s02_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch01_s02_l01">
+            <li>The objective of this section is to introduce and explain how the key concepts of location, direction, distance, space, and navigation are relevant to geography and geographic information systems (GISs).</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch01_s02_p01">Before we can learn “how to do” a geographic information system (GIS), it is first necessary to review and reconsider a few key geographic concepts that are often taken for granted. For instance, what is a location and how can it be defined? At what distance does a location become “nearby”? Or what do we mean when we say that someone has a “good sense of direction”? By answering these and related questions, we establish a framework that will help us to learn and to apply a GIS. This framework will also permit us to share and communicate geographic information with others, which can facilitate collaboration, problem solving, and decision making.</p>
+    <div class="section" id="campbell_1.0-ch01_s02_s01">
+        <h2 class="title editable block">Location</h2>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s01_p01">The one concept that distinguishes geography from other fields is location, which is central to a GIS. <span class="margin_term"><a class="glossterm">Location</a><span class="glossdef">Position on the surface of the earth.</span></span> is simply a position on the surface of the earth. What is more, nearly everything can be assigned a geographic location. Once we know the location of something, we can a put it on a map, for example, with a GIS.</p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s01_p02">Generally, we tend to define and describe locations in nominal or absolute terms. In the case of the former, locations are simply defined and described by name. For example, city names such as New York, Tokyo, or London refer to nominal locations. Toponymy, or the study of place names and their respective history and meanings, is concerned with such nominal locations (Monmonier 1996, 2006).<span class="footnote" id="campbell_1.0-fn01_004">Monmonier, M. 1996. <em class="emphasis">How to Lie with Maps</em>. Chicago: University of Chicago Press.</span><sup class="superscript">, </sup><span class="footnote" id="campbell_1.0-fn01_005">———. 2006. <em class="emphasis">From Squaw Tit to Whorehouse Meadow: How Maps Name, Claim, and Inflame</em>. Chicago: University of Chicago Press.</span> Though we tend to associate the notion of location with particular points on the surface of the earth, locations can also refer to geographic features (e.g., Rocky Mountains) or large areas (e.g., Siberia). The United States Board on Geographic Names (<a class="link" target="_blank" href="http://geonames.usgs.gov">http://geonames.usgs.gov</a>) maintains geographic naming standards and keeps track of such names through the Geographic Names Information Systems (GNIS; <a class="link" target="_blank" href="http://geonames.usgs.gov/pls/gnispublic">http://geonames.usgs.gov/pls/gnispublic</a>). The GNIS database also provides information about which state and county the feature is located as well as its geographic coordinates.</p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s01_p03">Contrasting nominal locations are absolute locations that use some type of reference system to define positions on the earth’s surface. For instance, defining a location on the surface of the earth using latitude and longitude is an example of absolute location. Postal codes and street addresses are other examples of absolute location that usually follow some form of local logic. Though there is no global standard when it comes to street addresses, we can determine the geographic coordinates (i.e., latitude and longitude) of particular street addresses, zip codes, place names, and other geographic data through a process called <span class="margin_term"><a class="glossterm">geocoding</a><span class="glossdef">Assigning latitude and longitude to phenonmena on the earth’s surface.</span></span>. There are several free online geocoders (e.g., <a class="link" target="_blank" href="http://worldkit.org/geocoder">http://worldkit.org/geocoder</a>) that return the latitude and longitude for various locations and addresses around the world.</p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s01_p04">With the advent of the <span class="margin_term"><a class="glossterm">global positioning system (GPS)</a><span class="glossdef">The network of satellites orbitting the earth, transmitting signals from which latitude and longitude can be obtained with GPS units.</span></span> (see also <a class="link" target="_blank" href="http://www.gps.gov">http://www.gps.gov</a>), determining the location of nearly any object on the surface of the earth is a relatively simple and straightforward exercise. GPS technology consists of a constellation of twenty-four satellites that are orbiting the earth and constantly transmitting time signals (see <a class="xref" href="#campbell_1.0-ch01_s02_s01_f01">Figure 1.4 "Constellation of Global Positioning System (GPS) Satellites"</a>). To determine a position, earth-based GPS units (e.g., handheld devices, car navigation systems, mobile phones) receive the signals from at least three of these satellites and use this information to triangulate a location. All GPS units use the geographic coordinate system (GCS) to report location. Originally developed by the United States Department of Defense for military purposes, there are now a wide range of commercial and scientific uses of a GPS.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch01_s02_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 1.4</span> Constellation of Global Positioning System (GPS) Satellites</p>
+            <img src="section_05/860b7f665b5a2d240bd4f2e55977a763.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s01_p05">Location can also be defined in relative terms. Relative location refers to defining and describing places in relation to other known locations. For instance, Cairo, Egypt, is north of Johannesburg, South Africa; New Zealand is southeast of Australia; and Kabul, Afghanistan, is northwest of Lahore, Pakistan. Unlike nominal or absolute locations that define single points, relative locations provide a bit more information and situate one place in relation to another.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch01_s02_s02">
+        <h2 class="title editable block">Direction</h2>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s02_p01">Like location, the concept of direction is central to geography and GISs. <span class="margin_term"><a class="glossterm">Direction</a><span class="glossdef">The position of a feature of phenonmenon on the surface of the earth relative to something else.</span></span> refers to the position of something relative to something else usually along a line. In order to determine direction, a reference point or benchmark from which direction will be measured needs to be established. One of the most common benchmarks used to determine direction is ourselves. Egocentric direction refers to when we use ourselves as a directional benchmark. Describing something as “to my left,” “behind me,” or “next to me” are examples of egocentric direction.</p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s02_p02">As the name suggests, landmark direction uses a known landmark or geographic feature as a benchmark to determine direction. Such landmarks may be a busy intersection of a city, a prominent point of interest like the Colosseum in Rome, or some other feature like a mountain range or river. The important thing to remember about landmark direction, especially when providing directions, is that the landmark should be relatively well-known.</p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s02_p03">In geography and GISs, there are three more standard benchmarks that are used to define the directions of true north, magnetic north, and grid north. True north is based on the point at which the axis of the earth’s rotation intersects the earth’s surface. In this respect the North and South Poles serve as the geographic benchmarks for determining direction. Magnetic north (and south) refers to the point on the surface of the earth where the earth’s magnetic fields converge. This is also the point to which magnetic compasses point. Note that magnetic north falls somewhere in northern Canada and is not geographically coincident with true north or the North Pole. Grid north simply refers to the northward direction that the grid lines of latitude and longitude on a map, called a graticule, point to.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch01_s02_s02_f01">
+            <p class="title"><span class="title-prefix">Figure 1.5</span> The Three Norths: True, Magnetic, and Grid</p>
+            <img src="section_05/918a97915f8dee01e2e91666157bb48c.jpg">
+            <div class="copyright">
+                <p class="para">Source: <a class="link" target="_blank" href="http://kenai.fws.gov/overview/notebook/2004/sept/3sep2004.htm">http://kenai.fws.gov/overview/notebook/2004/sept/3sep2004.htm</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="campbell_1.0-ch01_s02_s03">
+        <h2 class="title editable block">Distance</h2>
+        <p class="para block" id="campbell_1.0-ch01_s02_s03_p01">Complementing the concepts of location and direction is distance. <span class="margin_term"><a class="glossterm">Distance</a><span class="glossdef">The amount of separation between locations.</span></span> refers to the degree or amount of separation between locations and can be measured in nominal or absolute terms with various units. We can describe the distances between locations nominally as “large” or “small,” or we can describe two or more locations as “near” or “far apart.” Absolute distance is measured or calculated using a standard metric. The formula for the distance between two points on a planar (i.e., flat) surface is the following: <span class="informalequation"><math xmlns:xlink="http://www.w3.org/1999/xlink" display="inline" xml:id="campbell_mml_m1"><semantics><mrow><mi>D</mi><mo>=</mo><msqrt><mrow><msup><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mn>2</mn></msub><mo>−</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow></semantics></math></span></p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s03_p02">Calculating the distance between two locations on the surface of the earth, however, is a bit more involved because we are dealing with a three-dimensional object. Moving from the three-dimensional earth to two-dimensional maps on paper, computer screens, and mobile devices is not a trivial matter and is discussed in greater detail in <a class="xref" href="campbell_1.0-ch02#campbell_1.0-ch02">Chapter 2 "Map Anatomy"</a>.</p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s03_p03">We also use a variety of units to measure distance. For instance, the distance between London and Singapore can be measured in miles, kilometers, flight time on a jumbo jet, or days on a cargo ship. Whether or not such distances make London and Singapore “near” or “far” from each other is a matter of opinion, experience, and patience. Hence the use of absolute distance metrics, such as that derived from the distance formula, provide a standardized method to measure how far away or how near locations are from each other.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch01_s02_s04">
+        <h2 class="title editable block">Space</h2>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s04_p01">Where distance suggests a measurable quantity in terms of how far apart locations are situated, space is a more abstract concept that is more commonly described rather than measured. For example, space can be described as “empty,” “public,” or “private.”</p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s04_p02">Within the scope of a GIS, we are interested in space, and in particular, we are interested in what fills particular spaces and how and why things are distributed across space. In this sense, <span class="margin_term"><a class="glossterm">space</a><span class="glossdef">The conceptual expanse or void that is filled with geographic phenomena.</span></span> is a somewhat ambiguous and generic term that is used to denote the general geographic area of interest.</p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s04_p03">One kind of space that is of particular relevance to a GIS is topological space. Simply put, topological space is concerned with the nature of relationships and the connectivity of locations within a given space. What is important within topological space are (1) how locations are (or are not) related or connected to each other and (2) the rules that govern such geographic relationships.</p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s04_p04">Transportation maps such as those for subways provide some of the best illustrations of topological spaces (see <a class="xref" href="#campbell_1.0-ch01_s02_s04_f01">Figure 1.6 "Metro Map from London"</a> and <a class="xref" href="#campbell_1.0-ch01_s02_s04_f03">Figure 1.7 "Metro Map from Moscow"</a>). When using such maps, we are primarily concerned with how to get from one stop to another along a transportation network. Certain rules also govern how we can travel along the network (e.g., transferring lines is possible only at a few key stops; we can travel only one direction on a particular line). Such maps may be of little use when traveling around a city by car or foot, but they show the local transportation network and how locations are linked together in an effective and efficient manner.</p>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch01_s02_s04_f01">
+            <p class="title"><span class="title-prefix">Figure 1.6</span> Metro Map from London</p>
+            <img src="section_05/9da56a48db3e44e705bdfdb75811562b.jpg">
+        </div>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch01_s02_s04_f03">
+            <p class="title"><span class="title-prefix">Figure 1.7</span> Metro Map from Moscow</p>
+            <img src="section_05/8cd72c672c034b8d34078a1df63188f3.jpg">
+        </div>
+    </div>
+    <div class="section" id="campbell_1.0-ch01_s02_s05">
+        <h2 class="title editable block">Navigation</h2>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s05_p01">Transportation maps like those discussed previously illustrate how we move through the environments where we live, work, and play. This movement and, in particular, destination-oriented travel are generally referred to as <span class="margin_term"><a class="glossterm">navigation</a><span class="glossdef">The destination-oriented travel through space.</span></span>. How we navigate through space is a complex process that blends together our various motor skills; technology; mental maps; and awareness of locations, distances, directions, and the space where we live (Golledge and Stimson 1997).<span class="footnote" id="campbell_1.0-fn01_002">Golledge, R., and R. Stimson. 1997. <em class="emphasis">Spatial Behavior: A Geographic Perspective</em>. New York: Guilford.</span> What is more, our geographical knowledge and spatial awareness is continuously updated and changed as we move from one location to another.</p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s05_p02">The acquisition of geographic knowledge is a lifelong endeavor. Though several factors influence the nature of such knowledge, we tend to rely on the three following types of geographic knowledge when navigating through space:</p>
+        <ol class="orderedlist editable block" id="campbell_1.0-ch01_s02_s05_l01">
+            <li>Landmark knowledge refers to our ability to locate and identify unique points, patterns, or features (e.g., landmarks) in space.</li>
+            <li>Route knowledge permits us to connect and travel between landmarks by moving through space.</li>
+            <li>Survey knowledge enables us to understand where landmarks are in relation to each other and to take shortcuts.</li>
+        </ol>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s05_p03">Each type of geographic knowledge is acquired in stages, one after the other. For instance, when we find ourselves in a new or an unfamiliar location, we usually identify a few unique points of interest (e.g., hotel, building, fountain) to orient ourselves. We are in essence building up our landmark knowledge. Using and traveling between these landmarks develops our route knowledge and reinforces our landmark knowledge and our overall geographical awareness. Survey knowledge develops once we begin to understand how routes connect landmarks together and how various locations are situated in space. It is at this point, when we are somewhat comfortable with our survey knowledge, that we are able to take shortcuts from one location to another. Though there is no guarantee that a shortcut will be successful, if we get lost, we are at least expanding our local geographic knowledge.</p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s05_p04">Landmark, route, and survey knowledge are the cornerstones of having a sense of direction and frame our geographical learning and awareness. While some would argue that they are born with a good sense of direction, others admit to always getting lost. The popularity of personal navigation devices and online mapping services speaks to the overwhelming desire to know and to situate where we are in the world. Though developing and maintaining a keen sense of direction presumably matters less and less as such devices and services continue to develop and spread, it can also be argued that the more we know about where we are in the world, the more we will want to learn about it.</p>
+        <p class="para editable block" id="campbell_1.0-ch01_s02_s05_p05">This section covers concepts essential to geography, GISs, and many other fields of interest. Understanding how location, direction, and distance can be defined and described provides an important foundation for the successful use and implementation of a GIS. Thinking about space and how we navigate through it also serves to improve and own geographic knowledge and spatial awareness.</p>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch01_s02_s05_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch01_s02_s05_l02">
+                <li>Location refers to the position of an object on the surface of the earth and is commonly expressed in terms of latitude and longitude.</li>
+                <li>Direction is always determined relative to a benchmark.</li>
+                <li>Distance refers to the separation between locations.</li>
+                <li>Navigation is the destination-oriented movement through space.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch01_s02_s05_n02">
+            <h3 class="title">Exercises</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch01_s02_s05_l03">
+                <li>Find your hometown in the GNIS and see what other features share this name. Explore the toponymy of your hometown online.</li>
+                <li>How are GPSs and related navigation technology influencing how we learn about our local environments?</li>
+                <li>Does navigation technology improve or impede our sense of direction and learning about where we live?</li>
+                <li>Compare and contrast the driving directions between two locations provided by two different online mapping services (e.g., Google Maps vs. Yahoo! Maps). Is there a discrepancy? If so, what explanations can you think of for this difference? Is this the best way to travel between these locations?</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s05-01-spatial-thinking.html"><img src="shared/images/batch-left.png"></a> <a href="s05-01-spatial-thinking.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s05-03-geographic-information-systems.html">Next Section</a> <a href="s05-03-geographic-information-systems.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  <script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=MML_HTMLorMML"></script>
+  
+  
+</body>
+</html>

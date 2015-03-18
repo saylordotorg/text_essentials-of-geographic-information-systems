@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Map Abstraction</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s06-02-map-scale-coordinate-systems-a.html"><img src="shared/images/batch-left.png"></a> <a href="s06-02-map-scale-coordinate-systems-a.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s07-01-data-and-information.html">Next Section</a> <a href="s07-01-data-and-information.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch02_s03" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">2.3</span> Map Abstraction</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch02_s03_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch02_s03_l01">
+            <li>The objective of this section is to highlight the decision-making process behind maps and to underscore the need to be explicit and consistent when mapping and using geographic information systems (GISs).</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch02_s03_p01">As previously discussed, maps are a representation of the earth. Central to this representation is the reduction of the earth and its features of interest to a manageable size (i.e., map scale) and its transformation into a useful two-dimensional form (i.e., map projection). The choice of both map scale and, to a lesser extent, map projection will influence the content and shape of the map.</p>
+    <p class="para editable block" id="campbell_1.0-ch02_s03_p02">In addition to the seemingly objective decisions made behind the choices of map scale and map projection are those concerning what to include and what to omit from the map. The purpose of a map will certainly guide some of these decisions, but other choices may be based on factors such as space limitations, map complexity, and desired accuracy. Furthermore, decisions about how to classify, simplify, or exaggerate features and how to symbolize objects of interest simultaneously fall under the realms of art and science (Slocum et al. 2004).<span class="footnote" id="campbell_1.0-fn02_005">Slocum, T., R. McMaster, F. Kessler, and H. Hugh. 2008. <em class="emphasis">Thematic Cartography and Geovisualization</em>. Upper Saddle River, NJ: Prentice Hall.</span></p>
+    <p class="para editable block" id="campbell_1.0-ch02_s03_p03">The process of moving from the “real world” to the world of maps is referred to as <span class="margin_term"><a class="glossterm">map abstraction</a><span class="glossdef">The process by which real-world phenomena are transformed into features on a map.</span></span>. This process not only involves making choices about how to represent features but also, more important with regard to geographic information systems (GISs), requires us to be explicit, consistent, and precise in terms of defining and describing geographical features of interest. Failure to be explicit, consistent, and precise will return incorrect; inconsistent; and error-prone maps, analyses, and decisions based on such maps and GISs. This final section discusses map abstraction in terms of geographical features and their respective graphical representation.</p>
+    <div class="section" id="campbell_1.0-ch02_s03_s01">
+        <h2 class="title editable block">What Is a Forest?</h2>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s01_p01">One of the most pressing environmental issues facing the world is deforestation. Generally, deforestation refers to the reduction of forest area. This is an important issue because it has possible implications for climate change, global warming, biodiversity, and the water balance of the earth, among other things. In the last century, deforestation has increased at an alarming rate and is mostly attributed to human activity. Mapping forests regularly with a GIS is a logical way to monitor deforestation and has the potential to inform policies regarding forest conservation efforts. Easy enough, so let’s get started.</p>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s01_p02">So what <em class="emphasis">exactly</em> is a forest? How do we know where a forest begins and where it ends? How can naturally caused forest fires be differentiated from those started by humans? Can a forest exist in a swamp or wetland? For that matter, what is the difference between a swamp and wetland? Such questions are not trivial in the context of mapping and GISs. In fact, consistent and precise definitions of features like forests or swamps increase the reliability and efficiency of maps, mapping, and analysis with GISs.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s03_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 2.12</span> Deforestation in the Amazon: 2001</p>
+            <img src="section_06/61748a6fa28035cd1ba4762ad2d53208.jpg">
+        </div>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s03_s01_f02">
+            <p class="title"><span class="title-prefix">Figure 2.13</span> Deforestation in the Amazon: 2009</p>
+            <img src="section_06/dcdb2abd87b9a8ff967d5c17c22ae682.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s01_p03">Within the realm of maps, cartography, and GISs, the world is made up of various features or entities. Such entities include but are not restricted to fire hydrants, caves, roads, rivers, lakes, hills, valleys, oceans, and the occasional barn. Moreover, such features have a form, and more precisely, a geometric form. For instance, fire hydrants and geysers are considered point-like features; rivers and streams are linear features; and lakes, countries, and forests are areal features.</p>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s01_p04">Features can also be categorized as either discrete or continuous. <span class="margin_term"><a class="glossterm">Discrete features</a><span class="glossdef">Phenomena that when represented on a map have clearly defined boundaries.</span></span> are well defined and are easy to locate, measure, and count, and their edges or boundaries are readily defined. Examples of discrete features in a city include buildings, roads, traffic signals, and parks. <span class="margin_term"><a class="glossterm">Continuous features</a><span class="glossdef">Phenomena that lack clearly defined boundaries.</span></span>, on the other hand, are less well defined and exist across space. The most commonly cited examples of continuous features are temperature and elevation. Changes in both temperature and elevation tend to be gradual over relatively large areas.</p>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s01_p05">Geographical features also have several characteristics, traits, or attributes that may or may not be of interest. For instance, to continue the deforestation example, determining whether a forest is a rainforest or whether a forest is in a protected park may be important. More general attributes may include measurements such as tree density per acre, average canopy height in meters, or proportions like percent palm trees or invasive species per hectare in the forest.</p>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s01_p06">Notwithstanding the purpose of the map or GIS project at hand, it is critical that definitions of features are clear and remain consistent. Similarly, it is important that the attributes of features are also consistently defined, measured, and reported in order to generate accurate and effective maps in an efficient manner. Defining features and attributes of interest is often an iterative process of trial and error. Being able to associate a feature with a particular geometric form and to determine the feature type are central to map abstraction, facilitate mapping, and the application of GISs.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch02_s03_s02">
+        <h2 class="title editable block">Map Content and Generalization</h2>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s02_p01">The shape and content of maps vary according to purpose, need, and resources, among other factors. What is common to most maps, and in particular to those within a GIS, is that they are graphical representations of reality. Put another way, various graphical symbols are used to represent geographical features or entities. Annotation or text is also commonly used on maps and facilitates map interpretation. Learning about map content and map generalization is important because they serve as the building blocks for spatial data that are used within a GIS.</p>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s02_p02">Building upon the previous discussion about the geometric form of geographic features, maps typically rely on three geometric objects: the point, the line, and the polygon or area. A point is defined by <em class="emphasis">x</em> and <em class="emphasis">y</em> coordinates, a line is defined by two points, and a polygon is defined by a minimum of three points. The important thing to note is that the definition of a point is analogous to a location that is defined by longitude and latitude. Furthermore, since lines and polygons are made up of points, location information (i.e., <em class="emphasis">x</em> and <em class="emphasis">y</em>, or longitude and latitude, coordinates) is intrinsic to points, lines, and polygons.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s03_s02_f01">
+            <p class="title"><span class="title-prefix">Figure 2.14</span> Geographic Features as Points, Lines, and Polygons</p>
+            <img src="section_06/0f78a04d3a6510af27a4a5f7301d5e88.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s02_p03">Both simple and complex maps can be made using these three relatively simple geometric objects. Additionally, by changing the graphical characteristics of each object, an infinite number of mapping possibilities emerge. Such changes can be made to the respective size, shape, color, and patterns of points, lines, and polygons. For instance, different sized points can be used to reflect variations in population size, line color or line size (i.e., thickness) can be used to denote volume or the amount of interaction between locations, and different colors and shapes can be used to reflect different values of interest.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s03_s02_f02">
+            <p class="title"><span class="title-prefix">Figure 2.15</span> Variations in the Graphical Parameters of Points, Lines, and Polygons</p>
+            <img src="section_06/29749565676da05d382cb32b048ac289.jpg">
+        </div>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s03_s02_f04">
+            <p class="title"><span class="title-prefix">Figure 2.16</span> </p>
+            <img src="section_06/f745b9110960ba11559bfc21158837d0.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s02_p04">Complementing the graphical elements described previously is annotation or text. Annotation is used to identify particular geographic features, such as cities, states, bodies of water, or other points of interest. Like the graphical elements, text can be varied according to size, orientation, or color. There are also numerous text fonts and styles that are incorporated into maps. For example, bodies of water are often labeled in <em class="emphasis">italics</em>.</p>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s02_p05">Another map element that deserves to be mentioned and that combines both graphics and text is the map legend or map key. A <span class="margin_term"><a class="glossterm">map legend</a><span class="glossdef">A common component of a map that facilitiates interpretation and understanding.</span></span> provides users information about the how geographic information is represented graphically. Legends usually consist of a title that describes the map, as well as the various symbols, colors, and patterns that are used on the map. Such information is often vital to the proper interpretation of a map.</p>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s02_p06">As more features and graphical elements are put on a given map, the need to generalize such features arises. <span class="margin_term"><a class="glossterm">Map generalization</a><span class="glossdef">The process by which real-world features are simplified in order to be represented on a map.</span></span> refers to the process of resolving conflicts associated with too much detail, too many features, or too much information to map. In particular, generalization can take several forms (Buttenfield and McMaster 1991):<span class="footnote" id="campbell_1.0-fn02_001">Buttenfield, B., and R. McMaster. 1991. <em class="emphasis">Map Generalization</em>. Harlow, England: Longman.</span></p>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch02_s03_s02_l01">
+            <li>The simplification or <span class="margin_term"><a class="glossterm">symbolization</a><span class="glossdef">The use of various text, icons, and symbols to represent real-world features.</span></span> of features for emphasis</li>
+            <li>The masking or displacement of detail to increase clarity or legibility</li>
+            <li>The selection of detail for inclusion or omission from the map</li>
+            <li>The exaggeration of features for emphasis</li>
+        </ul>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s02_p07">Determining which aspects of generalization to use is largely a matter of personal preference, experience, map purpose, and trial and error. Though there are general guidelines about map generalization, there are no universal standards or requirements with regard to the generalization of maps and mapping. It is at this point that cartographic and artistic license, prejudices and biases, and creativity and design sense—or lack thereof—emerge to shape the map.</p>
+        <p class="para editable block" id="campbell_1.0-ch02_s03_s02_p08">Making a map and, more generally, the process of mapping involve a range of decisions and choices. From the selection of the appropriate map scale and map projection to deciding which features to map and to omit, mapping is a complex blend of art and science. In fact, many historical maps are indeed viewed like works of art, and rightly so. Learning about the scale, shape, and content of maps serves to increase our understanding of maps, as well as deepen our appreciation of maps and map making. Ultimately, this increased geographical awareness and appreciation of maps promotes the sound and effective use and application of a GIS.</p>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch02_s03_s02_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch02_s03_s02_l02">
+                <li>Map abstraction refers to the process of explicitly defining and representing real-world features on a map.</li>
+                <li>The three basic geometric forms of geographical features are the point, line, and polygon (or area).</li>
+                <li>Map generalization refers to resolving conflicts that arise on a map due to limited space, too many details, or too much information.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch02_s03_s02_n02">
+            <h3 class="title">Exercises</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch02_s03_s02_l03">
+                <li>Examine an online map of where you live. Which forms of map generalization were used to create the map? Which three elements of generalization would you change? Which three elements are the most effective?</li>
+                <li>If you were to start a GIS project on deforestation, what terms would need to be explicitly defined, and how would you define them?</li>
+            </ol>
+        </div>
+        <div class="callout block" id="campbell_1.0-ch02_s03_s02_n03">
+            <h3 class="title">Waypoint: More than Just Clouds and Weather</h3>
+            <p class="para" id="campbell_1.0-ch02_s03_s02_p09">Image maps, in large part derived from satellites, are ubiquitous. Such maps can be found on the news, the Internet, in your car, and on your mobile phone. What’s more is that such images are in living color and of very high resolution. Not long ago, such image maps from satellites were the sole domain of meteorologists, local weather forecasters, and various government agencies. Public access to such images was pretty much limited to the evening news.</p>
+            <p class="para" id="campbell_1.0-ch02_s03_s02_p10">Technological advances in imaging technology, in conjunction with the commercialization of space flight, opened the door for companies like GeoEye (<a class="link" target="_blank" href="http://www.geoeye.com">http://www.geoeye.com</a>) and DigitalGlobe (<a class="link" target="_blank" href="http://www.digitalglobe.com">http://www.digitalglobe.com</a>) to provide satellite imagery and maps to the masses at the turn of the twenty-first century. With online mapping services such as Google Earth providing free and user-friendly access to such images, a revolution in maps and mapping was born.</p>
+            <p class="para" id="campbell_1.0-ch02_s03_s02_p11">Image maps now provide geographic context for nightly news stories around the world, serve as a backdrop to local real estate searches and driving directions, and are also used for research purposes . The popularity and widespread use of such images speaks not only to recent technological advances and innovations but also, perhaps more important, to the geographer in us all.</p>
+            <div class="figure large medium-height" id="campbell_1.0-ch02_s03_s02_f08">
+                <p class="title"><span class="title-prefix">Figure 2.17</span> The Inauguration of Barack Obama from Space</p>
+                <img src="section_06/cc4363833342a2ab0928fd579cbd6daf.jpg">
+                <div class="copyright">
+                    <p class="para">GeoEye 2008.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s06-02-map-scale-coordinate-systems-a.html"><img src="shared/images/batch-left.png"></a> <a href="s06-02-map-scale-coordinate-systems-a.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s07-01-data-and-information.html">Next Section</a> <a href="s07-01-data-and-information.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

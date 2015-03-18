@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Satellite Imagery and Aerial Photography</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s08-02-vector-data-models.html"><img src="shared/images/batch-left.png"></a> <a href="s08-02-vector-data-models.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s09-01-geographic-data-acquisition.html">Next Section</a> <a href="s09-01-geographic-data-acquisition.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch04_s03" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">4.3</span> Satellite Imagery and Aerial Photography</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch04_s03_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch04_s03_l01">
+            <li>The objective of this section is to understand how satellite imagery and aerial photography are implemented in GIS applications.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch04_s03_p01">A wide variety of satellite imagery and aerial photography is available for use in geographic information systems (GISs). Although these products are basically raster graphics, they are substantively different in their usage within a GIS. Satellite imagery and aerial photography provide important contextual information for a GIS and are often used to conduct heads-up digitizing (<a class="xref" href="campbell_1.0-ch05#campbell_1.0-ch05">Chapter 5 "Geospatial Data Management"</a>, <a class="xref" href="campbell_1.0-ch05_s01#campbell_1.0-ch05_s01_s04">Section 5.1.4 "Secondary Data Capture"</a>) whereby features from the image are converted into vector datasets.</p>
+    <div class="section" id="campbell_1.0-ch04_s03_s01">
+        <h2 class="title editable block">Satellite Imagery</h2>
+        <p class="para editable block" id="campbell_1.0-ch04_s03_s01_p01">Remotely sensed satellite imagery is becoming increasingly common as satellites equipped with technologically advanced sensors are continually being sent into space by public agencies and private companies around the globe. Satellites are used for applications such as military and civilian earth observation, communication, navigation, weather, research, and more. Currently, more than 3,000 satellites have been sent to space, with over 2,500 of them originating from Russia and the United States. These satellites maintain different altitudes, inclinations, eccentricities, synchronies, and orbital centers, allowing them to image a wide variety of surface features and processes (<a class="xref" href="#campbell_1.0-ch04_s03_s01_f01">Figure 4.14 "Satellites Orbiting the Earth"</a>).</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch04_s03_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 4.14</span> Satellites Orbiting the Earth</p>
+            <img src="section_08/35c6cf67d10d13cb5e9b0eb2884a1393.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch04_s03_s01_p02">Satellites can be active or passive. <span class="margin_term"><a class="glossterm">Active satellites</a><span class="glossdef">Remote sensors that detect reflected responses from objects that are irradiated from artificially generated energy sources.</span></span> make use of remote sensors that detect reflected responses from objects that are irradiated from artificially generated energy sources. For example, active sensors such as radars emit radio waves, laser sensors emit light waves, and sonar sensors emit sound waves. In all cases, the sensor emits the signal and then calculates the time it takes for the returned signal to “bounce” back from some remote feature. Knowing the speed of the emitted signal, the time delay from the original emission to the return can be used to calculate the distance to the feature.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s03_s01_p03"><span class="margin_term"><a class="glossterm">Passive satellites</a><span class="glossdef">Remote sensors that detect the reflected or emitted electromagnetic radiation from natural sources.</span></span>, alternatively, make use of sensors that detect the reflected or emitted electromagnetic radiation from natural sources. This natural source is typically the energy from the sun, but other sources can be imaged as well, such as magnetism and geothermal activity. Using an example we’ve all experienced, taking a picture with a flash-enabled camera would be active remote sensing, while using a camera without a flash (i.e., relying on ambient light to illuminate the scene) would be passive remote sensing.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s03_s01_p04">The quality and quantity of satellite imagery is largely determined by their resolution. There are four types of resolution that characterize any particular remote sensor (Campbell 2002).<span class="footnote" id="campbell_1.0-fn04_002">Campbell, J. B. 2002. <em class="emphasis">Introduction to Remote Sensing</em>. New York: Guilford Press.</span> The <span class="margin_term"><a class="glossterm">spatial resolution</a><span class="glossdef">The smallest distance between two adjacent features that can be detected in an image.</span></span> of a satellite image, as described previously in the raster data model section (<a class="xref" href="campbell_1.0-ch04_s01#campbell_1.0-ch04_s01">Section 4.1 "Raster Data Models"</a>), is a direct representation of the ground coverage for each pixel shown in the image. If a satellite produces imagery with a 10 m resolution, the corresponding ground coverage for each of those pixels is 10 m by 10 m, or 100 square meters on the ground. Spatial resolution is determined by the sensors’ instantaneous field of view (IFOV). The IFOV is essentially the ground area through which the sensor is receiving the electromagnetic radiation signal and is determined by height and angle of the imaging platform.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s03_s01_p05"><span class="margin_term"><a class="glossterm">Spectral resolution</a><span class="glossdef">The ability of a sensor to resolve wavelength intervals, also called bands, within the electromagnetic spectrum.</span></span> denotes the ability of the sensor to resolve wavelength intervals, also called bands, within the electromagnetic spectrum. The spectral resolution is determined by the interval size of the wavelengths and the number of intervals being scanned. Multispectral and hyperspectral sensors are those sensors that can resolve a multitude of wavelengths intervals within the spectrum. For example, the IKONOS satellite resolves images for bands at the blue (445–516 nm), green (506–95 nm), red (632–98 nm), and near-infrared (757–853 nm) wavelength intervals on its 4-meter multispectral sensor.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s03_s01_p06"><span class="margin_term"><a class="glossterm">Temporal resolution</a><span class="glossdef">The amount of time between each image collection period determined by the repeat cycle of a satellite’s orbit.</span></span> is the amount of time between each image collection period and is determined by the repeat cycle of the satellite’s orbit. Temporal resolution can be thought of as true-nadir or off-nadir. Areas considered true-nadir are those located directly beneath the sensor while off-nadir areas are those that are imaged obliquely. In the case of the IKONOS satellite, the temporal resolution is 3 to 5 days for off-nadir imaging and 144 days for true-nadir imaging.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s03_s01_p07">The fourth and final type of resolution, <span class="margin_term"><a class="glossterm">radiometric resolution</a><span class="glossdef">The sensitivity of a remote sensor to variations in brightness.</span></span>, refers to the sensitivity of the sensor to variations in brightness and specifically denotes the number of grayscale levels that can be imaged by the sensor. Typically, the available radiometric values for a sensor are 8-bit (yielding values that range from 0–255 as 256 unique values or as 2<sup class="superscript">8</sup> values); 11-bit (0–2,047); 12-bit (0–4,095); or 16-bit (0–63,535) (see <a class="xref" href="campbell_1.0-ch05#campbell_1.0-ch05">Chapter 5 "Geospatial Data Management"</a>, <a class="xref" href="campbell_1.0-ch05_s01#campbell_1.0-ch05_s01_s01">Section 5.1.1 "Data Types"</a> for more on bits). Landsat-7, for example, maintains 8-bit resolution for its bands and can therefore record values for each pixel that range from 0 to 255.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s03_s01_p08">Because of the technical constraints associated with satellite remote sensing systems, there is a trade-off between these different types of resolution. Improving one type of resolution often necessitates a reduction in one of the other types of resolution. For example, an increase in spatial resolution is typically associated with a decrease in spectral resolution, and vice versa. Similarly, <span class="margin_term"><a class="glossterm">geostationary satellites</a><span class="glossdef">Satellites that circle the earth proximal to the equator once each day.</span></span> (those that circle the earth proximal to the equator once each day) yield high temporal resolution but low spatial resolution, while <span class="margin_term"><a class="glossterm">sun-synchronous satellites</a><span class="glossdef">Satellites that synchronize a near-polar orbit with the sun’s illumination.</span></span> (those that synchronize a near-polar orbit of the sensor with the sun’s illumination) yield low temporal resolution while providing high spatial resolution. Although technological advances can generally improve the various resolutions of an image, care must always be taken to ensure that the imagery you have chosen is adequate to the represent or model the geospatial features that are most important to your study.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch04_s03_s02">
+        <h2 class="title editable block">Aerial Photography</h2>
+        <p class="para editable block" id="campbell_1.0-ch04_s03_s02_p01">Aerial photography, like satellite imagery, represents a vast source of information for use in any GIS. Platforms for the hardware used to take aerial photographs include airplanes, helicopters, balloons, rockets, and so forth. While aerial photography connotes images taken of the visible spectrum, sensors to measure bands within the nonvisible spectrum (e.g., ultraviolet, infrared, near-infrared) can also be fixed to aerial sources. Similarly, aerial photography can be active or passive and can be taken from vertical or oblique angles. Care must be taken with aerial photographs as the sensors used to take the images are similar to cameras in their use of lenses. These lenses add a curvature to the images, which becomes more pronounced as one moves away from the center of the photo (<a class="xref" href="#campbell_1.0-ch04_s03_s02_f01">Figure 4.15 "Curvature Error Due to Lenticular Properties of Camera"</a>).</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch04_s03_s02_f01">
+            <p class="title"><span class="title-prefix">Figure 4.15</span> Curvature Error Due to Lenticular Properties of Camera</p>
+            <img src="section_08/a03026495ee4ddac1b132ce739c5121f.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch04_s03_s02_p02">Another source of potential error in an aerial photograph is relief displacement. This error arises from the three-dimensional aspect of terrain features and is seen as apparent leaning away of vertical objects from the center point of an aerial photograph. To imagine this type of error, consider that a smokestack would look like a doughnut if the viewing camera was directly above the feature. However, if this same smokestack was observed near the edge of the camera’s view, one could observe the sides of the smokestack. This error is frequently seen with trees and multistory buildings and worsens with increasingly taller features.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s03_s02_p03"><span class="margin_term"><a class="glossterm">Orthophotos</a><span class="glossdef">Vertical photographs that have been geometrically “corrected” to remove the curvature and terrain-induced error from images.</span></span> are vertical photographs that have been geometrically “corrected” to remove the curvature and terrain-induced error from images (<a class="xref" href="#campbell_1.0-ch04_s03_s02_f02">Figure 4.16 "Orthophoto"</a>). The most common orthophoto product is the digital ortho quarter quadrangle (DOQQ). DOQQs are available through the US Geological Survey (USGS), who began producing these images from their library of 1:40,000-scale National Aerial Photography Program photos. These images can be obtained in either grayscale or color with 1-meter spatial resolution and 8-bit radiometric resolution. As the name suggests, these images cover a quarter of a USGS 7.5 minute quadrangle, which equals an approximately 25 square mile area. Included with these photos is an additional 50 to 300-meter edge around the photo that allows users to mosaic many DOQQs into a single, continuous image. These DOQQs are ideal for use in a GIS as background display information, for data editing, and for heads-up digitizing.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch04_s03_s02_f02">
+            <p class="title"><span class="title-prefix">Figure 4.16</span> Orthophoto</p>
+            <img src="section_08/1a48b67a443a2e0f7d72c572d1b3f014.jpg">
+            <div class="copyright">
+                <p class="para">Source: Data available from U.S. Geological Survey, Earth Resources Observation and Science (EROS) Center, Sioux Falls, SD.</p>
+            </div>
+        </div>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch04_s03_s02_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch04_s03_s02_l01">
+                <li>Satellite imagery is a common tool for GIS mapping applications as this data becomes increasingly available due to ongoing technological advances.</li>
+                <li>Satellite imagery can be passive or active.</li>
+                <li>The four types of resolution associated with satellite imagery are spatial, spectral, temporal, and radiometric.</li>
+                <li>Vertical and oblique aerial photographs provide valuable baseline information for GIS applications.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch04_s03_s02_n02">
+            <h3 class="title">Exercise</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch04_s03_s02_l02">
+                <li>Go to the EarthExplorer website (<a class="link" target="_blank" href="http://edcsns17.cr.usgs.gov/EarthExplorer">http://edcsns17.cr.usgs.gov/EarthExplorer</a>) and download two satellite images of the area in which you reside. What are the different spatial, spectral, temporal, and radiometric resolutions for these two images? Do these satellites provide active or passive imagery (or both)? Are they geostationary or sun-synchronous?</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s08-02-vector-data-models.html"><img src="shared/images/batch-left.png"></a> <a href="s08-02-vector-data-models.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s09-01-geographic-data-acquisition.html">Next Section</a> <a href="s09-01-geographic-data-acquisition.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

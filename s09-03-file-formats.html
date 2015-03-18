@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>File Formats</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s09-02-geospatial-database-management.html"><img src="shared/images/batch-left.png"></a> <a href="s09-02-geospatial-database-management.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s09-04-data-quality.html">Next Section</a> <a href="s09-04-data-quality.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch05_s03" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">5.3</span> File Formats</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch05_s03_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch05_s03_l01">
+            <li>The objective of this section is to overview a sample of the most common types of vector, raster, and hybrid file formats.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch05_s03_p01">Geospatial data are stored in many different file formats. Each geographic information system (GIS) software package, and each version of these software packages, supports different formats. This is true for both vector and raster data. Although several of the more common file formats are summarized here, many other formats exist for use in various GIS programs.</p>
+    <div class="section" id="campbell_1.0-ch05_s03_s01">
+        <h2 class="title editable block">Vector File Formats</h2>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s01_p01">The most common vector file format is the <span class="margin_term"><a class="glossterm">shapefile</a><span class="glossdef">A simple, nontopological, vector file format developed by ESRI to store the geometric location and attribute information of geographic features.</span></span>. Shapefiles, developed by ESRI in the early 1990s for use with the dBASE III database management software package in ArcView 2, are simple, nontopological files developed to store the geometric location and attribute information of geographic features. Shapefiles are incapable of storing null values, as well as annotations or network features. Field names within the attribute table are limited to ten characters, and each shapefile can represent only point, line, or polygon feature sets. Supported data types are limited to floating point, integer, date, and text. Shapefiles are supported by almost all commercial and open-source GIS software.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s01_p02">Despite being called a “shapefile,” this format is actually a compilation of many different files. <a class="xref" href="#campbell_1.0-ch05_s03_s01_t01">Table 5.1 "Shapefile File Types"</a> lists and describes the different file formats associated with the shapefile. Among those listed, only the SHP, SHX, and DBF file formats are mandatory to create a functioning shapefile, while all others are conditionally required. As a general rule, the names for each file should conform to the MS-DOS 8.3 convention when using older versions of GIS software packages. According to this convention, the filename prefix can contain up to eight characters, and the filename suffix contains three characters. The more recent GIS software packages have relaxed this requirement and will accept longer filename prefixes.</p>
+        <div class="table block" id="campbell_1.0-ch05_s03_s01_t01" frame="all">
+            <p class="title"><span class="title-prefix">Table 5.1</span> Shapefile File Types</p>
+            <table cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>File Extension</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SHP*</td>
+                        <td>Feature geometry</td>
+                    </tr>
+                    <tr>
+                        <td>SHX*</td>
+                        <td>Index format for the feature geometry</td>
+                    </tr>
+                    <tr>
+                        <td>DBF*</td>
+                        <td>Feature attribute information in dBASE IV format</td>
+                    </tr>
+                    <tr>
+                        <td>PRJ</td>
+                        <td>Projection information</td>
+                    </tr>
+                    <tr>
+                        <td>SBN and SBX</td>
+                        <td>Spatial index of the features</td>
+                    </tr>
+                    <tr>
+                        <td>FBN and FBX</td>
+                        <td>Read-only spatial index of the features</td>
+                    </tr>
+                    <tr>
+                        <td>AIN and AIH</td>
+                        <td>Attribute information for active fields in the table</td>
+                    </tr>
+                    <tr>
+                        <td>IXS</td>
+                        <td>Geocoding index for read-write shapefiles</td>
+                    </tr>
+                    <tr>
+                        <td>MXS</td>
+                        <td>Geocoding index for read-write shapefiles with ODB format</td>
+                    </tr>
+                    <tr>
+                        <td>ATX</td>
+                        <td>Attribute index used in ArcGIS 8 and later</td>
+                    </tr>
+                    <tr>
+                        <td>SHP.XML</td>
+                        <td>Metadata in XML format</td>
+                    </tr>
+                    <tr>
+                        <td>CPG</td>
+                        <td>Code page specifications for identifying character encoding</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2">* Indicates mandatory files</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s01_p03">The earliest vector format file for use in GIS software packages, which is still in use today, is the ArcInfo <span class="margin_term"><a class="glossterm">coverage</a><span class="glossdef">A georelational file format developed by ESRI that supports multiple features types (e.g., points, lines, polygons, annotations) while also storing the topological information associated with those features.</span></span>. This georelational file format supports multiple features types (e.g., points, lines, polygons, annotations) while also storing the topological information associated with those features. Attribute data are stored as multiple files in a separate directory labeled “Info.” Due to its creation in an MS-DOS environment, these files maintain strict naming conventions. File names cannot be longer than thirteen characters, cannot contain spaces, cannot start with a number, and must be completely in lowercase. Coverages cannot be edited in ArcGIS 9.x or later versions of ESRI’s software package.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s01_p04">The US Census Bureau maintains a specific type of shapefile referred to as TIGER or <span class="margin_term"><a class="glossterm">TIGER/Line (Topologically Integrated Geographic Encoding and Referencing system)</a><span class="glossdef">A vector file format developed by the US Census Bureau including map features such as census tracts, roads, railroads, buildings, rivers, and other features that support and improve the bureau’s ability to collect census information.</span></span>. Although these open-source files do not contain actual census information, they map features such as census tracts, roads, railroads, buildings, rivers, and other features that support and improve the bureauand improve the Bureau’s ability to#8217;s ability to collect census information. TIGER/Line shapefiles, first released in 1990, are topologically explicit and are linked to the Census Bureau’s Master Address File (MAF), therefore enabling the geocoding of street addresses. These files are free to the public and can be freely downloaded from private vendors that support the format.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s01_p05">The <span class="margin_term"><a class="glossterm">AutoCAD DXF (Drawing Interchange Format or Drawing Exchange Format)</a><span class="glossdef">A vector file format developed by Autodesk to allow interchange between engineering-based CAD (computer-aided design) software and other mapping software packages.</span></span> is a proprietary vector file format developed by Autodesk to allow interchange between engineering-based CAD (computer-aided design) software and other mapping software packages. DXF files were originally released in 1982 with the purpose of providing an exact representation of AutoCAD’s native DWG format. Although the DXF is still commonly used, newer versions of AutoCAD have incorporated more complex data types (e.g., regions, dynamic blocks) that are not supported in the DXF format. Therefore, it may be presumed that the DXF format may become less popular in geospatial analysis over time.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s01_p06">Finally, the US Geological Survey (USGS) maintains an open-source vector file format that details physical and cultural features across the United States. These topologically explicit <span class="margin_term"><a class="glossterm">DLGs (Digital Line Graphics)</a><span class="glossdef">The vector file format developed by the USGS that maintains information on physical and cultural features across the United States.</span></span> come in large-, intermediate-, and small-scale depending on whether they are derived from 1:24,000-; 1:100,000-; or 1:2,000,000-scale USGS topographic quadrangle maps. The features available in the different DLG types depend on the scale of the DLG but generally include data such as administrative and political boundaries, hydrography, transportation systems, hypsography, and land cover.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s01_p07">Vector data files can also be structured to represent surface elevation information. A <span class="margin_term"><a class="glossterm">TIN (Triangulated Irregular Network)</a><span class="glossdef">A vector data structure that uses contiguous, nonoverlapping triangles to represent elevation.</span></span> is an open-source vector data structure that uses contiguous, nonoverlapping triangles to represent geographic surfaces (<a class="xref" href="#campbell_1.0-ch05_s03_s01_f01">Figure 5.10 "Triangulated Irregular Network (TIN)"</a>). Whereas the raster depiction of a surface represents elevation as an average value over the spatial extent of the individual pixel (see <a class="xref" href="#campbell_1.0-ch05_s03_s02">Section 5.3.2 "Raster File Formats"</a>), the TIN data structure models each vertex of the triangle as an exact elevation value at a specific point on the earth. The arcs between each vertex are an approximation of the elevation between two vertices. These arcs are then aggregated into triangles from which information on elevation, slope, aspect, and surface area can be derived across the entire extent of the model’s space. Note that term “irregular” in the name of the data model refers to the fact that the vertices are typically laid out in a scattered fashion.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch05_s03_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 5.10</span> Triangulated Irregular Network (TIN)</p>
+            <img src="section_09/b2a94a8bbbd3280daaba9db3eaf7f1f6.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s01_p08">The use of TINs confers certain advantages over raster-based elevation models (see <a class="xref" href="#campbell_1.0-ch05_s03_s02">Section 5.3.2 "Raster File Formats"</a>). First, linear topographic features are very accurately represented relative to their raster counterpart. Second, a comparatively small number of data points are needed to represent a surface, so file sizes are typically much smaller. This is particularly true as vertices can be clustered in areas where relief is complex and can be sparse in areas where relief is simple. Third, specific elevation data can be incorporated into the data model in a post hoc fashion via the placement of additional vertices if the original is deemed insufficient or inadequate. Finally, certain spatial statistics can be calculated that cannot be obtained when using a raster-based elevation model, such as flood plain delineation, storage capacity curves for reservoirs, and time-area curves for hydrographs.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch05_s03_s02">
+        <h2 class="title editable block">Raster File Formats</h2>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s02_p01">A multitude of raster file format types are available for use in GIS. The selection of raster formats has dramatically increased with the widespread availability of imagery from digital cameras, video recorders, satellites, and so forth. Raster imagery is typically 8-bit (256 colors) or 24-bit (16 million colors). Due to ongoing technological advancements, raster image file sizes have been getting larger and larger. To deal with this potential constraint, two types of file compression are commonly used: lossless and lossy. <span class="margin_term"><a class="glossterm">Lossless compression</a><span class="glossdef">A method to reduce the file size of an image without decreasing quality.</span></span> reduces file size without decreasing image quality. <span class="margin_term"><a class="glossterm">Lossy compression</a><span class="glossdef">A method to reduce the file size of an image by exploiting limitations of the human eye through removal of information from that cannot be sensed.</span></span> attempts to exploit limitations of the human eye by removing information from the image that cannot be sensed. As you may guess, lossy compression results in smaller file sizes than lossless compression.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s02_p02">Among the most common raster files used on the web are the JPEG, TIFF, and PNG formats, all of which are open source and can be used with most GIS software packages. The <span class="margin_term"><a class="glossterm">JPEG (Joint Photographic Experts Group)</a><span class="glossdef">Raster image format that stores 8-bit values for each of the red, blue, and green colors spaces.</span></span> and <span class="margin_term"><a class="glossterm">TIFF (Tagged Image File Format)</a><span class="glossdef">Raster image format that stores 16-bit values for each of the red, blue, and green colors spaces.</span></span> raster formats are most frequently used by digital cameras to store 8-bit values for each of the red, blue, and green colors spaces (and sometimes 16-bit colors, in the case of TIFF images). JPEGs support lossy compression, while TIFFs can be either lossy or lossless. Unlike JPEG, TIFF images can be saved in either RGB or CMYK color spaces. <span class="margin_term"><a class="glossterm">PNG (Portable Network Graphics)</a><span class="glossdef">Raster image format that stores 24-bit values for each of the red, blue, and green colors spaces.</span></span> files are 24-bit images that support either lossy or lossless compression. PNG files are designed for efficient viewing in web-based browsers such as Internet Explorer, Mozilla Firefox, Netscape, and Safari.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s02_p03">Native JPEG, TIFF, and PNG files do not have georeferenced information associated with them and therefore cannot be used in any geospatial mapping efforts. In order to employ these files in a GIS, a <span class="margin_term"><a class="glossterm">world file</a><span class="glossdef">A plaintext data file that specifies the locations and transformations of a feature dataset.</span></span> must first be created. A world file is a separate, plaintext data file that specifies the locations and transformations that allow the image to be projected into a standard coordinate system (e.g., Universal Transverse Mercator [UTM] or State Plane). The filename of the world file is based on the name of the raster file, while a <em class="emphasis">w</em> is typically added into to the file extension. The world file extension name for a JPEG is JPW; for a TIFF, it is TFW; and for a PNG, PGW.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s02_p04">An example of a raster file format with explicit georeferencing information is the proprietary <span class="margin_term"><a class="glossterm">MrSID (Multiresolution Seamless Image Database)</a><span class="glossdef">A raster format developed by LizardTech, Inc., for use with large aerial photographs or satellite images, whereby portions of a compressed image can be viewed quickly without having to decompress the entire file.</span></span> format. This lossless compression format was developed by LizardTech, Inc., for use with large aerial photographs or satellite images, whereby portions of a compressed image can be viewed quickly without having to decompress the entire file. The MrSID format is frequently used for visualizing orthophotos.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s02_p05">Like MrSID, the proprietary <span class="margin_term"><a class="glossterm">ECW (Enhanced Compression Wavelet)</a><span class="glossdef">A raster file format developed by Earth Resource Mapping that supports up to 255 layers of image information and includes georeferencing information within the file structure.</span></span> format also includes georeferencing information within the file structure. This lossy compression format was developed by Earth Resource Mapping and supports up to 255 layers of image information. Due to the potentially huge file sizes associated with an image that supports so many layers, ECW files represent an excellent option for performing rapid analysis on large images while using a relatively small amount of the computer’s RAM (Random Access Memory), thus accelerating computation speed.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s02_p06">Like the open-source, vector-based DLG, <span class="margin_term"><a class="glossterm">DRGs (Digital Raster Graphics)</a><span class="glossdef">Raster versions of USGS topographic maps that include all of the collar material from the originals.</span></span> are scanned versions of USGS topographic maps and include all of the collar material from the originals. The geospatial information found within the image’s neatline is georeferenced, specifically to the UTM coordinate system. These graphics are scanned at a minimum of 250 dpi (dots per inch) and therefore have a spatial resolution of approximately 2.4 meters. DRGs contain up to thirteen colors and therefore may look slightly different from the originals. In addition, they include all the collar material from the original print version, are georeferenced to the surface of the earth, fit the Universal Transverse Mercator (UTM) projection, and are most likely based on the NAD27 data points (NAD stands for North American Datum).</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s02_p07">Like the TIN vector format, some raster file formats are developed explicitly for modeling elevation. These include the USGS DEM, USGS SDTS, and DTED file formats. The <span class="margin_term"><a class="glossterm">USGS DEM (US Geological Survey Digital Elevation Model)</a><span class="glossdef">A raster file format developed by the USGS to represent elevation.</span></span> is a popular file format due to widespread availability, the simplicity of the model, and the extensive software support for the format. Each pixel value in these grid-based DEMs denotes spot elevations on the ground, usually in feet or meters. Care must be taken when using grid-based DEMs due to the enormous volume of data that accompanies these files as the spatial extent covered in the image begins to increase. DEMs are referred to as <span class="margin_term"><a class="glossterm">digital terrain models (DTMs)</a><span class="glossdef">USGS DEMs that represent a simple, bare-earth model of the globe.</span></span> when they represent a simple, bare-earth model and as <span class="margin_term"><a class="glossterm">digital surface models (DSMs)</a><span class="glossdef">USGS DEMs that include the heights of landscape features such as buildings and trees.</span></span> when they include the heights of landscape features such as buildings and trees (<a class="xref" href="#campbell_1.0-ch05_s03_s02_f01">Figure 5.11 "Digital Surface Model (left) and Digital Terrain Model (right)"</a>).</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch05_s03_s02_f01">
+            <p class="title"><span class="title-prefix">Figure 5.11</span> Digital Surface Model (left) and Digital Terrain Model (right)</p>
+            <img src="section_09/cb3d15cf149441b470f762c1c9f2c872.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s02_p08">USGS DEMs can be classified into one of four levels of quality (labeled 1 to 4) depending on its source data and resolution. This source data can be 1:24,000-; 1:63,360-; or 1:250,000-scale topographic quadrangles. The DEM format is a single file of ASCII text comprised of three data blocks; A, B, and C. The A block contains header information such as data origin, type, and measurement systems. The B block contains contiguous elevation data described as a six-character integer. The C block contains trailer information such as root-mean square (RMS) error of the scene. The USGS DEM format has recently been succeeded by the <span class="margin_term"><a class="glossterm">USGS SDTS (Spatial Data Transfer Standard) DEM</a><span class="glossdef">A distribution format for transferring USGS DEMs from one computer to another with zero data loss.</span></span> format. The SDTS format<span class="footnote" id="campbell_1.0-fn05_006">USGS. 2010. “What is SDTS?” USGS, <a class="link" target="_blank" href="http://mcmcweb.er.usgs.gov/sdts/whatsdts.html">http://mcmcweb.er.usgs.gov/sdts/whatsdts.html</a>.</span> was specifically developed as a distribution format for transferring data from one computer to another with zero data loss.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s02_p09">The <span class="margin_term"><a class="glossterm">DTED (Digital Terrain Elevation Data)</a><span class="glossdef">An elevation specific raster file format developed for military purposes such as line-of-sight analysis, 3-D visualization, and mission planning.</span></span> format is another elevation specific raster file format. It was developed in the 1970s for military purposes such as line of sight analysis, 3-D visualization, and mission planning. The DTED format maintains three levels of data over five different latitudinal zones. Level 0 data has a resolution of approximately 900 meters; Level 1 data has a resolution of approximately 90 meters; and Level 2 data has a resolution of approximately 30 meters.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch05_s03_s03">
+        <h2 class="title editable block">Hybrid File Formats</h2>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s03_p01">A <span class="margin_term"><a class="glossterm">geodatabase</a><span class="glossdef">A recently developed, proprietary ESRI file format that supports both vector and raster feature datasets (e.g., points, lines, polygons, annotation, JPEG, TIFF) within a single file.</span></span> is a recently developed, proprietary ESRI file format that supports both vector and raster feature datasets (e.g., points, lines, polygons, annotation, JPEG, TIFF) within a single file. This format maintains topological relationships and is stored as an MDB file. The geodatabase was developed to be a comprehensive model for representing and modeling geospatial information.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s03_p02">There are three different types of geodatabases. The <span class="margin_term"><a class="glossterm">personal geodatabase</a><span class="glossdef">A type of geodatabase developed for single-user editing, whereby two editors cannot work on the same geodatabase at a given time.</span></span> was developed for single-user editing, whereby two editors cannot work on the same geodatabase at a given time. The personal geodatabase employs the Microsoft Access DBMS file format and maintains a size limit of 2 gigabytes per file, although it has been noted that performance begins to degrade after file size approaches 250 megabytes. The personal geodatabase is currently being phased out by ESRI and is therefore not used for new data creation.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s03_p03">The <span class="margin_term"><a class="glossterm">file geodatabase</a><span class="glossdef">A type of geodatabase that allows only single-user editing for unique feature datasets within a geodatabase.</span></span> similarly allows only single-user editing, but this restriction applies only to unique feature datasets within a geodatabase. The file geodatabase incorporates new tools such as domains (rules applied to attributes), subtypes (groups of objects with a feature class or table), and split/merge policies (rules to control and define the output of split and merge operations). This format stores information as binary files with a size limit of 1 terabyte and has been noted to perform and scale much more efficiently than the personal geodatabase (approximately one-third of the feature geometry storage required by shapefiles and personal geodatabases). File databases are not tied to any specific relational database management system and can be employed on both Windows and UNIX platforms. Finally, file geodatabases can be compressed to read-only formats that further reduce file size without subsequently reducing performance.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s03_p04">The third hybrid ESRI format is the <span class="margin_term"><a class="glossterm">ArcSDE geodatabase</a><span class="glossdef">A type of geodatabase developed to allow multiple editors to simultaneously work on feature datasets within a single geodatabase.</span></span>, which allows multiple editors to simultaneously work on feature datasets within a single geodatabase (a.k.a. versioning). Like the file geodatabase, this format can be employed on both Windows and UNIX platforms. File size is limited to 4 gigabytes and its proprietary nature requires an ArcInfo or ArcEditor license for use. The ArcSDE geodatabase is implemented on the SQL Server Express software package, which is a free DBMS platform developed by Microsoft.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s03_p05">In addition to the geodatabase, Adobe Systems Incorporated’s <span class="margin_term"><a class="glossterm">geospatial PDF (Portable Document Format)</a><span class="glossdef">A nonproprietary file format developed by Adobe Systems, Inc., that allows for the representation of geometric entities such as points, lines, and polygons.</span></span> is an open-source format that allows for the representation of geometric entities such as points, lines, and polygons. Geospatial PDFs can be used to find and mark coordinate pairs, measure distances, reproject files, and georegister raster images. This format is particularly useful as the PDF is widely accepted to be the preferred standard for printable web documents. Although functionally similar, the geospatial PDF should not be confused with the GeoPDF format developed by TerraGo Technologies. Rather, the GeoPDF is a branded version of the geospatial PDF.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s03_s03_p06">Finally, Google Earth supports a new, open-source, hybrid file format referred to as a <span class="margin_term"><a class="glossterm">KML (Keyhole Markup Language)</a><span class="glossdef">An open-source hybrid file format developed for Google Earth.</span></span>. KML files associate points, lines, polygons, images, 3-D models, and so forth, with a longitude and latitude value, as well as other view information such as tilt, heading, altitude, and so forth. KMZ files are commonly encountered, and they are zipped versions KML files.</p>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch05_s03_s03_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch05_s03_s03_l01">
+                <li>Common vector file formats used in geospatial applications include shapefiles, coverages, TIGER/Lines, AutoCAD DXFs, and DLGs.</li>
+                <li>Common raster file formats used in geospatial applications include JPGs, TIFFs, PNGs, MrSIDs, ECWs, DRGs, USGS DEMs, and DTEDs.</li>
+                <li>Common hybrid file formats used in geospatial applications include geodatabases (personal, file, and ArcSDE) and geospatial PDFs.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch05_s03_s03_n02">
+            <h3 class="title">Exercises</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch05_s03_s03_l02">
+                <li>If you were a city planner tasked with creating a GIS database for mapping features throughout the city, would you prefer using a DLG or a DRG? What are the advantages and disadvantages of using either of these formats?</li>
+                <li>Search the web and create a list of URLs that contain working files for each of the raster and vector formats discussed in this section.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s09-02-geospatial-database-management.html"><img src="shared/images/batch-left.png"></a> <a href="s09-02-geospatial-database-management.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s09-04-data-quality.html">Next Section</a> <a href="s09-04-data-quality.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

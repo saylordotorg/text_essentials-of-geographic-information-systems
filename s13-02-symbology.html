@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Symbology</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s13-01-color.html"><img src="shared/images/batch-left.png"></a> <a href="s13-01-color.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s13-03-cartographic-design.html">Next Section</a> <a href="s13-03-cartographic-design.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch09_s02" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">9.2</span> Symbology</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch09_s02_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch09_s02_l01">
+            <li>The objective of this section is to understand how to best utilize point, line, and polygon symbols to assist in the interpretation of your map and its features.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch09_s02_p01">While color is an integral variable when choosing how to best represent spatial data, making informed decisions on the size, shape, and type of symbols is equally important. Although raster data are restricted to symbolizing features as a single cell or as cell groupings, vector data allows for a vast array of options to symbolize points, lines, and polygons in a map. Like color, cartographers must take care to use symbols judiciously in order to most effectively communicate the meaning and purpose of the map to the viewer.</p>
+    <div class="section" id="campbell_1.0-ch09_s02_s01">
+        <h2 class="title editable block">Basic Symbol Guidelines</h2>
+        <p class="para editable block" id="campbell_1.0-ch09_s02_s01_p01">Vector points, lines, and polygons can be symbolized in a myriad of ways. The guidelines laid out in this section will help you to make informed decisions on how best to represent the features in your map. The primary visual variables associated with symbolization include size, texture, pattern, and shape (<a class="xref" href="#campbell_1.0-ch09_s02_s01_f01">Figure 9.12 "Visual Variables"</a>). Changes to symbol size and texture are most effectively used in conjunction with ordinal, interval, and ratio data. Changes to symbol pattern and shape are preferred in conjunction with nominal data.</p>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch09_s02_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 9.12</span> Visual Variables</p>
+            <img src="section_13/fc1293cfd7fdd47096fd48ca757211f2.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch09_s02_s01_p02">Variations in the size of symbols are powerful indicators of feature importance. Intuitively, larger symbols are assumed to be more important than smaller symbols. Although symbol size is most commonly associated with point features, linear symbols can effectively be altered in size by adjusting line width. Polygon features can also benefit from resizing. Despite the fact that the area of the polygon can’t be changed, a point representing the <span class="margin_term"><a class="glossterm">centroid</a><span class="glossdef">A point at the geometric center of a polygon. This can be used to represent a polygon as a point.</span></span> of the polygon can be included in the map. These polygon centroids can be resized and symbolized as desired, just like any other point feature. Varying symbol size is moderately effective when applied to ordinal or numerical data but is ineffective with nominal data.</p>
+        <p class="para editable block" id="campbell_1.0-ch09_s02_s01_p03">Symbol <span class="margin_term"><a class="glossterm">texture</a><span class="glossdef">The compactness of the marks that make up the symbol, also referred to as spacing.</span></span>, also referred to as spacing, refers to the compactness of the marks that make up the symbol. Points, lines, and polygons can be filled with horizontal hash marks, for instance. The closer these hash marks are spaced within the feature symbol, the more hierarchically important the feature will appear. Varying symbol texture is most effective when applied to ordinal or numerical data but is ineffective with nominal data.</p>
+        <p class="para editable block" id="campbell_1.0-ch09_s02_s01_p04">Much like texture, symbols can be filled with different patterns. These patterns are typically some artistic abstraction that may or may not attempt to visualize real-world phenomena. For example, a land-use map may change the observed fill patterns of various land types to try to depict the dominant plants associated with each vegetation community. Changes to symbol patterns are most often associated with polygon features, although there is some limited utility in changing the fill patterns of points and lines. Varying symbol size is moderately effective when applied to ordinal or numerical data and is ineffective when applied to nominal data.</p>
+        <p class="para editable block" id="campbell_1.0-ch09_s02_s01_p05">Altering symbol shape can have dramatic effects on the appearance of map features. Point symbols are most commonly symbolized with circles. Circles tend to be the default point symbol due to their unchanging orientation, compact shape, and viewer preference. Other geometric shapes can also constitute effective symbols due to their visual stability and conservation of map space. Unless specific conditions allow, volumetric symbols (spheres, cubes, etc.) should be used sparingly as they rarely contribute more than simple, two-dimensional symbols. In addition to geometric symbols, <span class="margin_term"><a class="glossterm">pictograms</a><span class="glossdef">A picture that represents a word or an idea by illustration.</span></span> are useful representations of point features and can help to add artistic flair to a map. Pictograms should clearly denote features of interest and should not require interpretation by the viewer (<a class="xref" href="#campbell_1.0-ch09_s02_s01_f02">Figure 9.13 "Pictograms"</a>). Locales that frequently employ pictograms include picnic areas, camping sites, road signs, bathrooms, airports, and so forth. Varying symbol shape is most effective when applied to nominal data and is moderately effective with ordinal and nominal data.</p>
+        <p class="para editable block" id="campbell_1.0-ch09_s02_s01_p06">Finally, applying variations in lightness/darkness will affect the hierarchical value of a symbol. The darker the symbol, the more it stands out among lighter features. Variations in the lightness/darkness of a symbol are most effective when applied to ordinal data, are moderately effective when applied to numerical data, and are ineffective when applied to nominal data.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch09_s02_s01_f02">
+            <p class="title"><span class="title-prefix">Figure 9.13</span> Pictograms</p>
+            <img src="section_13/b2618fcbbc66006c2f649dafaa088348.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch09_s02_s01_p07">Keep in mind that there are many other visual variables that can be employed in a map, depending on the cartographic software used. Regardless of the chosen symbology, it is important to maintain a logical relationship between the symbol and the data. Also, visual contrast between different mapped variables must be preserved. Indeed, the efficacy of your map will be greatly diminished if you do not ensure that its symbols are readily identifiable and look markedly different from each other.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch09_s02_s02">
+        <h2 class="title editable block">Proportional Symbolization</h2>
+        <p class="para editable block" id="campbell_1.0-ch09_s02_s02_p01">In addition to the uniform symbols presented in the previous section, symbols for a single, quantitative variable can be sized proportionally to match the data values. These <span class="margin_term"><a class="glossterm">proportional symbols</a><span class="glossdef">Symbols whose size are directly related to the value of the data point being symbolized.</span></span> are useful for presenting a fairly exact understanding of the differences in magnitude within a dataset. As the numeric values for each class increases, so too does the size of the symbol representing that class. This allows the symbol size of features to be directly related to the attribute values they represent whereby small points denote small data values and large points denote large data values.</p>
+        <p class="para editable block" id="campbell_1.0-ch09_s02_s02_p02">Similar to proportional symbols, <span class="margin_term"><a class="glossterm">range graded</a><span class="glossdef">Grouping raw data into classes with each class represented by a differently sized symbol.</span></span> symbols group raw data into classes with each class represented by a differently sized symbol. Both proportional and range graded symbols are most frequently used with point data, but lines and polygons can benefit from proportional symbolization as well. In the case of linear datasets, line width is most frequently used as the proportional visual variable. Polygon datasets typically summarize a quantitative variable within each polygon, place a centroid within that polygon, and proportion that centroid point symbol. Range grading should not be used if the data range for a given variable is small. In these cases, range grading will suggest larger differences in the data values than is merited.</p>
+        <p class="para editable block" id="campbell_1.0-ch09_s02_s02_p03">The advantage of proportional symbolization is the ease with which the viewer can discriminate symbol size and thus understand variations in the data values over a given map extent. On the other hand, viewers may misjudge the magnitude of the proportional symbols if they do not pay close attention to the legend. In addition, the human eye does not see and interpret symbol size in absolute terms. When proportional circles are used in maps, it is typical that the viewer will underestimate the larger circles relative to the smaller circles. To address this potential pitfall, graduated symbols can be based on either mathematical or perceptual scaling. Mathematical scaling directly relates symbol size with the data value for that locale. If one value is twice as large as another, it will be represented with a symbol twice as large as the other. Perceptual scaling overcomes the underestimation of large symbols by making these symbols much larger than their actual value would indicate (<a class="xref" href="#campbell_1.0-ch09_s02_s02_f02">Figure 9.14 "Mathematical versus Perceptual Scaling"</a>).</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch09_s02_s02_f02">
+            <p class="title"><span class="title-prefix">Figure 9.14</span> Mathematical versus Perceptual Scaling</p>
+            <img src="section_13/44f101b856e9bf8b714286b27adad9be.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch09_s02_s02_p04">A disadvantage of proportional symbolization is that the symbol size can appear variable depending on the surrounding symbols. This is best shown via the Ebbinghaus illusion (also known as Titchener circles). As you can see in <a class="xref" href="#campbell_1.0-ch09_s02_s02_f03">Figure 9.15 "Ebbinghaus Illusion"</a>, the central circles are both the same size but appear different due to the visual influence of the surrounding circles. If you are creating a graphic with many different symbols, this illusion can wreak havoc on the interpretability of your map.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch09_s02_s02_f03">
+            <p class="title"><span class="title-prefix">Figure 9.15</span> Ebbinghaus Illusion</p>
+            <img src="section_13/e8f1a7ab54756798c9c1a28d85be68a7.jpg">
+        </div>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch09_s02_s02_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch09_s02_s02_l01">
+                <li>Vector points, lines, and polygons can be symbolized in a variety of ways. Symbol variables include size, texture, pattern, and shape.</li>
+                <li>Proportional symbols, which can be mathematically or perceptually scaled, are useful for representing quantitative differences within a dataset.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch09_s02_s02_n02">
+            <h3 class="title">Exercises</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch09_s02_s02_l02">
+                <li>Locate a map or maps that utilize differences in symbol size, texture, pattern, and shape to convey meaning.</li>
+                <li>List ten map features that are commonly depicted with a pictogram.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s13-01-color.html"><img src="shared/images/batch-left.png"></a> <a href="s13-01-color.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s13-03-cartographic-design.html">Next Section</a> <a href="s13-03-cartographic-design.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

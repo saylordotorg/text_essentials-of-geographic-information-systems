@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Vector Data Models</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s08-01-raster-data-models.html"><img src="shared/images/batch-left.png"></a> <a href="s08-01-raster-data-models.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s08-03-satellite-imagery-and-aerial-p.html">Next Section</a> <a href="s08-03-satellite-imagery-and-aerial-p.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch04_s02" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">4.2</span> Vector Data Models</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch04_s02_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch04_s02_l01">
+            <li>The objective of this section is to understand how vector data models are implemented in GIS applications.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch04_s02_p01">In contrast to the raster data model is the vector data model. In this model, space is not quantized into discrete grid cells like the raster model. Vector data models use points and their associated X, Y coordinate pairs to represent the vertices of spatial features, much as if they were being drawn on a map by hand (Aronoff 1989).<span class="footnote" id="campbell_1.0-fn04_001">Aronoff, S. 1989. <em class="emphasis">Geographic Information Systems: A Management Perspective</em>. Ottawa, Canada: WDL Publications.</span> The data attributes of these features are then stored in a separate database management system. The spatial information and the attribute information for these models are linked via a simple identification number that is given to each feature in a map.</p>
+    <p class="para editable block" id="campbell_1.0-ch04_s02_p02">Three fundamental vector types exist in geographic information systems (GISs): points, lines, and polygons (<a class="xref" href="#campbell_1.0-ch04_s02_f01">Figure 4.8 "Points, Lines, and Polygons"</a>). <span class="margin_term"><a class="glossterm">Points</a><span class="glossdef">A zero-dimensional object containing a single coordinate pair. In a GIS, points have only the property of location.</span></span> are zero-dimensional objects that contain only a single coordinate pair. Points are typically used to model singular, discrete features such as buildings, wells, power poles, sample locations, and so forth. Points have only the property of location. Other types of point features include the <span class="margin_term"><a class="glossterm">node</a><span class="glossdef">The intersection points where two or more arcs meet.</span></span> and the <span class="margin_term"><a class="glossterm">vertex</a><span class="glossdef">A corner or a point where lines meet.</span></span>. Specifically, a point is a stand-alone feature, while a node is a topological junction representing a common X, Y coordinate pair between intersecting lines and/or polygons. Vertices are defined as each bend along a line or polygon feature that is not the intersection of lines or polygons.</p>
+    <div class="figure large medium-height editable block" id="campbell_1.0-ch04_s02_f01">
+        <p class="title"><span class="title-prefix">Figure 4.8</span> Points, Lines, and Polygons</p>
+        <img src="section_08/5e0adb92da29fb258470bfeb5265cc55.jpg">
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch04_s02_p03">Points can be spatially linked to form more complex features. <span class="margin_term"><a class="glossterm">Lines</a><span class="glossdef">A one-dimensional object composed of multiple, explicitly connected points. Lines have the property of length. Also called an “arc.”</span></span> are one-dimensional features composed of multiple, explicitly connected points. Lines are used to represent linear features such as roads, streams, faults, boundaries, and so forth. Lines have the property of length. Lines that directly connect two nodes are sometimes referred to as chains, edges, segments, or <span class="margin_term"><a class="glossterm">arcs</a><span class="glossdef">A one-dimensional object composed of multiple, explicitly connected points. Lines have the property of length. Also called a “line.”</span></span>.</p>
+    <p class="para editable block" id="campbell_1.0-ch04_s02_p04"><span class="margin_term"><a class="glossterm">Polygons</a><span class="glossdef">A two-dimensional feature created from multiple lines that loop back to create a “closed” feature. Polygons have the properties of area and perimeter. Also called “areas.”</span></span> are two-dimensional features created by multiple lines that loop back to create a “closed” feature. In the case of polygons, the first coordinate pair (point) on the first line segment is the same as the last coordinate pair on the last line segment. Polygons are used to represent features such as city boundaries, geologic formations, lakes, soil associations, vegetation communities, and so forth. Polygons have the properties of area and perimeter. Polygons are also called <span class="margin_term"><a class="glossterm">areas</a><span class="glossdef">A two-dimensional feature created from multiple lines that loop back to create a “closed” feature. Areas have the properties of area and perimeter. Also called “polygons.”</span></span>.</p>
+    <div class="section" id="campbell_1.0-ch04_s02_s01">
+        <h2 class="title editable block">Vector Data Models Structures</h2>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s01_p01">Vector data models can be structured many different ways. We will examine two of the more common data structures here. The simplest vector data structure is called the <span class="margin_term"><a class="glossterm">spaghetti data model</a><span class="glossdef">A data model in which each point, line, and/or polygon feature is represented as a string of X, Y coordinate pairs with no inherent structure.</span></span> (Dangermond 1982).<span class="footnote" id="campbell_1.0-fn04_003">Dangermond, J. 1982. “A Classification of Software Components Commonly Used in Geographic Information Systems.” In <em class="emphasis">Proceedings of the U.S.-Australia Workshop on the Design and Implementation of Computer-Based Geographic Information Systems</em>, 70–91. Honolulu, HI.</span> In the spaghetti model, each point, line, and/or polygon feature is represented as a string of X, Y coordinate pairs (or as a single X, Y coordinate pair in the case of a vector image with a single point) with no inherent structure (<a class="xref" href="#campbell_1.0-ch04_s02_s01_f01">Figure 4.9 "Spaghetti Data Model"</a>). One could envision each line in this model to be a single strand of spaghetti that is formed into complex shapes by the addition of more and more strands of spaghetti. It is notable that in this model, any polygons that lie adjacent to each other must be made up of their own lines, or stands of spaghetti. In other words, each polygon must be uniquely defined by its own set of X, Y coordinate pairs, even if the adjacent polygons share the exact same boundary information. This creates some redundancies within the data model and therefore reduces efficiency.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch04_s02_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 4.9</span> Spaghetti Data Model</p>
+            <img src="section_08/fd51ce72c52575f2f4ce5d8b281c79ad.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s01_p02">Despite the location designations associated with each line, or strand of spaghetti, spatial relationships are not explicitly encoded within the spaghetti model; rather, they are implied by their location. This results in a lack of topological information, which is problematic if the user attempts to make measurements or analysis. The computational requirements, therefore, are very steep if any advanced analytical techniques are employed on vector files structured thusly. Nevertheless, the simple structure of the spaghetti data model allows for efficient reproduction of maps and graphics as this topological information is unnecessary for plotting and printing.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s01_p03">In contrast to the spaghetti data model, the <span class="margin_term"><a class="glossterm">topological data model</a><span class="glossdef">A data model characterized by the inclusion of topology.</span></span> is characterized by the inclusion of topological information within the dataset, as the name implies. <span class="margin_term"><a class="glossterm">Topology</a><span class="glossdef">A set of rules that models the relationship between neighboring points, lines, and polygons and determines how they share geometry. Topology is also concerned with preserving spatial properties when the forms are bent, stretched, or placed under similar geometric transformation.</span></span> is a set of rules that model the relationships between neighboring points, lines, and polygons and determines how they share geometry. For example, consider two adjacent polygons. In the spaghetti model, the shared boundary of two neighboring polygons is defined as two separate, identical lines. The inclusion of topology into the data model allows for a single line to represent this shared boundary with an explicit reference to denote which side of the line belongs with which polygon. Topology is also concerned with preserving spatial properties when the forms are bent, stretched, or placed under similar geometric transformations, which allows for more efficient projection and reprojection of map files.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s01_p04">Three basic topological precepts that are necessary to understand the topological data model are outlined here. First, <span class="margin_term"><a class="glossterm">connectivity</a><span class="glossdef">The topological property of lines sharing a common node.</span></span> describes the arc-node topology for the feature dataset. As discussed previously, nodes are more than simple points. In the topological data model, nodes are the intersection points where two or more arcs meet. In the case of arc-node topology, arcs have both a from-node (i.e., starting node) indicating where the arc begins and a to-node (i.e., ending node) indicating where the arc ends (<a class="xref" href="#campbell_1.0-ch04_s02_s01_f02">Figure 4.10 "Arc-Node Topology"</a>). In addition, between each node pair is a line segment, sometimes called a link, which has its own identification number and references both its from-node and to-node. In <a class="xref" href="#campbell_1.0-ch04_s02_s01_f02">Figure 4.10 "Arc-Node Topology"</a>, arcs 1, 2, and 3 all intersect because they share node 11. Therefore, the computer can determine that it is possible to move along arc 1 and turn onto arc 3, while it is not possible to move from arc 1 to arc 5, as they do not share a common node.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch04_s02_s01_f02">
+            <p class="title"><span class="title-prefix">Figure 4.10</span> Arc-Node Topology</p>
+            <img src="section_08/27c9bf496eaa44e9ad78ae34bb6b2d37.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s01_p05">The second basic topological precept is <span class="margin_term"><a class="glossterm">area definition</a><span class="glossdef">The topological property stating that line segments connect to surround an area and define a polygon.</span></span>. Area definition states that an arc that connects to surround an area defines a polygon, also called polygon-arc topology. In the case of polygon-arc topology, arcs are used to construct polygons, and each arc is stored only once (<a class="xref" href="#campbell_1.0-ch04_s02_s01_f03">Figure 4.11 "Polygon-Arc Topology"</a>). This results in a reduction in the amount of data stored and ensures that adjacent polygon boundaries do not overlap. In the <a class="xref" href="#campbell_1.0-ch04_s02_s01_f03">Figure 4.11 "Polygon-Arc Topology"</a>, the polygon-arc topology makes it clear that polygon F is made up of arcs 8, 9, and 10.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch04_s02_s01_f03">
+            <p class="title"><span class="title-prefix">Figure 4.11</span> Polygon-Arc Topology</p>
+            <img src="section_08/b50c0b3b34b539df30b11820df0b8ec7.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s01_p06"><span class="margin_term"><a class="glossterm">Contiguity</a><span class="glossdef">The topological property of identifying adjacent polygons by recording the left and right side of each line segment.</span></span>, the third topological precept, is based on the concept that polygons that share a boundary are deemed adjacent. Specifically, polygon topology requires that all arcs in a polygon have a direction (a from-node and a to-node), which allows adjacency information to be determined (<a class="xref" href="#campbell_1.0-ch04_s02_s01_f04">Figure 4.12 "Polygon Topology"</a>). Polygons that share an arc are deemed adjacent, or contiguous, and therefore the “left” and “right” side of each arc can be defined. This left and right polygon information is stored explicitly within the attribute information of the topological data model. The “universe polygon” is an essential component of polygon topology that represents the external area located outside of the study area. <a class="xref" href="#campbell_1.0-ch04_s02_s01_f04">Figure 4.12 "Polygon Topology"</a> shows that arc 6 is bound on the left by polygon B and to the right by polygon C. Polygon A, the universe polygon, is to the left of arcs 1, 2, and 3.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch04_s02_s01_f04">
+            <p class="title"><span class="title-prefix">Figure 4.12</span> Polygon Topology</p>
+            <img src="section_08/de65d1872768b0767f0f81f5c1606292.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s01_p07">Topology allows the computer to rapidly determine and analyze the spatial relationships of all its included features. In addition, topological information is important because it allows for efficient error detection within a vector dataset. In the case of polygon features, open or unclosed polygons, which occur when an arc does not completely loop back upon itself, and unlabeled polygons, which occur when an area does not contain any attribute information, violate polygon-arc topology rules. Another topological error found with polygon features is the <span class="margin_term"><a class="glossterm">sliver</a><span class="glossdef">A narrow gap formed when the shared boundary of two polygons do not meet exactly.</span></span>. Slivers occur when the shared boundary of two polygons do not meet exactly (<a class="xref" href="#campbell_1.0-ch04_s02_s01_f05">Figure 4.13 "Common Topological Errors"</a>).</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s01_p08">In the case of line features, topological errors occur when two lines do not meet perfectly at a node. This error is called an “undershoot” when the lines do not extend far enough to meet each other and an “overshoot” when the line extends beyond the feature it should connect to (<a class="xref" href="#campbell_1.0-ch04_s02_s01_f05">Figure 4.13 "Common Topological Errors"</a>). The result of overshoots and undershoots is a “dangling node” at the end of the line. Dangling nodes aren’t always an error, however, as they occur in the case of dead-end streets on a road map.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch04_s02_s01_f05">
+            <p class="title"><span class="title-prefix">Figure 4.13</span> Common Topological Errors</p>
+            <img src="section_08/3ba85e9e19d4d0bd2507b634cc52de46.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s01_p09">Many types of spatial analysis require the degree of organization offered by topologically explicit data models. In particular, network analysis (e.g., finding the best route from one location to another) and measurement (e.g., finding the length of a river segment) relies heavily on the concept of to- and from-nodes and uses this information, along with attribute information, to calculate distances, shortest routes, quickest routes, and so forth. Topology also allows for sophisticated neighborhood analysis such as determining adjacency, clustering, nearest neighbors, and so forth.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s01_p10">Now that the basics of the concepts of topology have been outlined, we can begin to better understand the topological data model. In this model, the node acts as more than just a simple point along a line or polygon. The node represents the point of intersection for two or more arcs. Arcs may or may not be looped into polygons. Regardless, all nodes, arcs, and polygons are individually numbered. This numbering allows for quick and easy reference within the data model.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch04_s02_s02">
+        <h2 class="title editable block">Advantages/Disadvantages of the Vector Model</h2>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s02_p01">In comparison with the raster data model, vector data models tend to be better representations of reality due to the accuracy and precision of points, lines, and polygons over the regularly spaced grid cells of the raster model. This results in vector data tending to be more aesthetically pleasing than raster data.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s02_p02">Vector data also provides an increased ability to alter the scale of observation and analysis. As each coordinate pair associated with a point, line, and polygon represents an infinitesimally exact location (albeit limited by the number of significant digits and/or data acquisition methodologies), zooming deep into a vector image does not change the view of a vector graphic in the way that it does a raster graphic (see <a class="xref" href="campbell_1.0-ch04_s01#campbell_1.0-ch04_s01_f01">Figure 4.1 "Digital Picture with Zoomed Inset Showing Pixilation of Raster Image"</a>).</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s02_p03">Vector data tend to be more compact in data structure, so file sizes are typically much smaller than their raster counterparts. Although the ability of modern computers has minimized the importance of maintaining small file sizes, vector data often require a fraction the computer storage space when compared to raster data.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s02_p04">The final advantage of vector data is that topology is inherent in the vector model. This topological information results in simplified spatial analysis (e.g., error detection, network analysis, proximity analysis, and spatial transformation) when using a vector model.</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s02_p05">Alternatively, there are two primary disadvantages of the vector data model. First, the data structure tends to be much more complex than the simple raster data model. As the location of each vertex must be stored explicitly in the model, there are no shortcuts for storing data like there are for raster models (e.g., the run-length and quad-tree encoding methodologies).</p>
+        <p class="para editable block" id="campbell_1.0-ch04_s02_s02_p06">Second, the implementation of spatial analysis can also be relatively complicated due to minor differences in accuracy and precision between the input datasets. Similarly, the algorithms for manipulating and analyzing vector data are complex and can lead to intensive processing requirements, particularly when dealing with large datasets.</p>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch04_s02_s02_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch04_s02_s02_l01">
+                <li>Vector data utilizes points, lines, and polygons to represent the spatial features in a map.</li>
+                <li>Topology is an informative geospatial property that describes the connectivity, area definition, and contiguity of interrelated points, lines, and polygon.</li>
+                <li>Vector data may or may not be topologically explicit, depending on the file’s data structure.</li>
+                <li>Care should be taken to determine whether the raster or vector data model is best suited for your data and/or analytical needs.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch04_s02_s02_n02">
+            <h3 class="title">Exercises</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch04_s02_s02_l02">
+                <li>What vector type (point, line, or polygon) best represents the following features: state boundaries, telephone poles, buildings, cities, stream networks, mountain peaks, soil types, flight tracks? Which of these features can be represented by multiple vector types? What conditions might lead you choose one vector type over another?</li>
+                <li>Draw a point, line, and polygon feature on a simple Cartesian coordinate system. From this drawing, create a spaghetti data model that approximates the shapes shown therein.</li>
+                <li>Draw three adjacent polygons on a simple Cartesian coordinate system. From this drawing, create a topological data model that incorporates arc-node, polygon-arc, and polygon topology.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s08-01-raster-data-models.html"><img src="shared/images/batch-left.png"></a> <a href="s08-01-raster-data-models.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s08-03-satellite-imagery-and-aerial-p.html">Next Section</a> <a href="s08-03-satellite-imagery-and-aerial-p.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

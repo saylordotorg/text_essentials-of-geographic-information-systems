@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Single Layer Analysis</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s10-03-data-classification.html"><img src="shared/images/batch-left.png"></a> <a href="s10-03-data-classification.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s11-02-multiple-layer-analysis.html">Next Section</a> <a href="s11-02-multiple-layer-analysis.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch07_s01" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">7.1</span> Single Layer Analysis</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch07_s01_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch07_s01_l01">
+            <li>The objective of this section is to become familiar with concepts and terms related to the variety of single overlay analysis techniques available to analyze and manipulate the spatial attributes of a vector feature dataset.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch07_s01_p01">As the name suggests, single layer analyses are those that are undertaken on an individual feature dataset. <span class="margin_term"><a class="glossterm">Buffering</a><span class="glossdef">Placing a region of specified width around a point, line, or polygon.</span></span> is the process of creating an output polygon layer containing a zone (or zones) of a specified width around an input point, line, or polygon feature. Buffers are particularly suited for determining the area of influence around features of interest. <span class="margin_term"><a class="glossterm">Geoprocessing</a><span class="glossdef">Any operation used to manipulate spatial data.</span></span> is a suite of tools provided by many geographic information system (GIS) software packages that allow the user to automate many of the mundane tasks associated with manipulating GIS data. Geoprocessing usually involves the input of one or more feature datasets, followed by a spatially explicit analysis, and resulting in an output feature dataset.</p>
+    <div class="section" id="campbell_1.0-ch07_s01_s01">
+        <h2 class="title editable block">Buffering</h2>
+        <p class="para editable block" id="campbell_1.0-ch07_s01_s01_p01">Buffers are common vector analysis tools used to address questions of proximity in a GIS and can be used on points, lines, or polygons (<a class="xref" href="#campbell_1.0-ch07_s01_s01_f01">Figure 7.1 "Buffers around Red Point, Line, and Polygon Features"</a>). For instance, suppose that a natural resource manager wants to ensure that no areas are disturbed within 1,000 feet of breeding habitat for the federally endangered Delhi Sands flower-loving fly (<em class="emphasis">Rhaphiomidas terminatus abdominalis</em>). This species is found only in the few remaining Delhi Sands soil formations of the western United States. To accomplish this task, a 1,000-foot protection zone (buffer) could be created around all the observed point locations of the species. Alternatively, the manager may decide that there is not enough point-specific location information related to this rare species and decide to protect all Delhi Sands soil formations. In this case, he or she could create a 1,000-foot buffer around all polygons labeled as “Delhi Sands” on a soil formations dataset. In either case, the use of buffers provides a quick-and-easy tool for determining which areas are to be maintained as preserved habitat for the endangered fly.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch07_s01_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 7.1</span> Buffers around Red Point, Line, and Polygon Features</p>
+            <img src="section_11/5c7eb6fc4bcbfc5117d778f0aabfded6.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch07_s01_s01_p02">Several buffering options are available to refine the output. For example, the buffer tool will typically buffer only selected features. If no features are selected, all features will be buffered. Two primary types of buffers are available to the GIS users: constant width and variable width. <span class="margin_term"><a class="glossterm">Constant width buffers</a><span class="glossdef">Regions of constant width around points, lines, or polygons.</span></span> require users to input a value by which features are buffered (<a class="xref" href="#campbell_1.0-ch07_s01_s01_f01">Figure 7.1 "Buffers around Red Point, Line, and Polygon Features"</a>), such as is seen in the examples in the preceding paragraph. <span class="margin_term"><a class="glossterm">Variable width buffers</a><span class="glossdef">Regions of variable width around points, lines, or polygons.</span></span>, on the other hand, call on a premade buffer field within the attribute table to determine the buffer width for each specific feature in the dataset (<a class="xref" href="#campbell_1.0-ch07_s01_s01_f02">Figure 7.2 "Additional Buffer Options around Red Features: (a) Variable Width Buffers, (b) Multiple Ring Buffers, (c) Doughnut Buffer, (d) Setback Buffer, (e) Nondissolved Buffer, (f) Dissolved Buffer"</a>).</p>
+        <p class="para editable block" id="campbell_1.0-ch07_s01_s01_p03">In addition, users can choose to dissolve or not dissolve the boundaries between overlapping, coincident buffer areas. <span class="margin_term"><a class="glossterm">Multiple ring buffers</a><span class="glossdef">Mulitple concentric regions of a specified width around points, lines, or polygons.</span></span> can be made such that a series of concentric buffer zones (much like an archery target) are created around the originating feature at user-specified distances (<a class="xref" href="#campbell_1.0-ch07_s01_s01_f02">Figure 7.2 "Additional Buffer Options around Red Features: (a) Variable Width Buffers, (b) Multiple Ring Buffers, (c) Doughnut Buffer, (d) Setback Buffer, (e) Nondissolved Buffer, (f) Dissolved Buffer"</a>). In the case of polygon layers, buffers can be created that include the originating polygon feature as part of the buffer or they be created as a <span class="margin_term"><a class="glossterm">doughnut buffer</a><span class="glossdef">A buffer around a polygon feature that does not include the area inside the buffered polygon.</span></span> that excludes the input polygon area. <span class="margin_term"><a class="glossterm">Setback buffers</a><span class="glossdef">A buffer around a polygon feature that only extends inside of the polygon boundary.</span></span> are similar to doughnut buffers; however, they only buffer the area inside of the polygon boundary. Linear features can be buffered on both sides of the line, only on the left, or only on the right. Linear features can also be buffered so that the end points of the line are rounded (ending in a half-circle) or flat (ending in a rectangle).</p>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch07_s01_s01_f02">
+            <p class="title"><span class="title-prefix">Figure 7.2</span> Additional Buffer Options around Red Features: (a) Variable Width Buffers, (b) Multiple Ring Buffers, (c) Doughnut Buffer, (d) Setback Buffer, (e) Nondissolved Buffer, (f) Dissolved Buffer</p>
+            <img src="section_11/a8bd893771b4d7034dfa8bd8b171aff4.jpg">
+        </div>
+    </div>
+    <div class="section" id="campbell_1.0-ch07_s01_s02">
+        <h2 class="title editable block">Geoprocessing Operations</h2>
+        <p class="para editable block" id="campbell_1.0-ch07_s01_s02_p01">“Geoprocessing” is a loaded term in the field of GIS. The term can (and should) be widely applied to any attempt to manipulate GIS data. However, the term came into common usage due to its application to a somewhat arbitrary suite of single layer and multiple layer analytical techniques in the Geoprocessing Wizard of ESRI’s ArcView software package in the mid-1990s. Regardless, the suite of geoprocessing tools available in a GIS greatly expand and simplify many of the management and manipulation processes associated with vector feature datasets. The primary use of these tools is to automate the repetitive preprocessing needs of typical spatial analyses and to assemble exact graphical representations for subsequent analysis and/or inclusion in presentations and final mapping products. The union, intersect, symmetrical difference, and identity overlay methods discussed in <a class="xref" href="campbell_1.0-ch07_s02#campbell_1.0-ch07_s02_s02">Section 7.2.2 "Other Multilayer Geoprocessing Options"</a> are often used in conjunction with these geoprocessing tools. The following represents the most common geoprocessing tools.</p>
+        <p class="para editable block" id="campbell_1.0-ch07_s01_s02_p02">The <span class="margin_term"><a class="glossterm">dissolve</a><span class="glossdef">A geoprocessing technique that removes the boundary between adjacent polygons with identical values.</span></span> operation combines adjacent polygon features in a single feature dataset based on a single predetermined attribute. For example, part (a) of <a class="xref" href="#campbell_1.0-ch07_s01_s02_f01">Figure 7.3 "Single Layer Geoprocessing Functions"</a> shows the boundaries of seven different parcels of land, owned by four different families (labeled 1 through 4). The dissolve tool automatically combines all adjacent features with the same attribute values. The result is an output layer with the same extent as the original but without all of the unnecessary, intervening line segments. The dissolved output layer is much easier to visually interpret when the map is classified according to the dissolved field.</p>
+        <p class="para editable block" id="campbell_1.0-ch07_s01_s02_p03">The <span class="margin_term"><a class="glossterm">append</a><span class="glossdef">A geoprocessing technique that combines adjacent polygon datasets into a single dataset.</span></span> operation creates an output polygon layer by combining the spatial extent of two or more layers (part (d) of <a class="xref" href="#campbell_1.0-ch07_s01_s02_f01">Figure 7.3 "Single Layer Geoprocessing Functions"</a>). For use with point, line, and polygon datasets, the output layer will be the same feature type as the input layers (which must each be the same feature type as well). Unlike the dissolve tool, append does not remove the boundary lines between appended layers (in the case of lines and polygons). Therefore, it is often useful to perform a dissolve after the use of the append tool to remove these potentially unnecessary dividing lines. Append is frequently used to mosaic data layers, such as digital US Geological Survey (USGS) 7.5-minute topographic maps, to create a single map for analysis and/or display.</p>
+        <p class="para editable block" id="campbell_1.0-ch07_s01_s02_p04">The <span class="margin_term"><a class="glossterm">select</a><span class="glossdef">To define a subset of the larger set of data points or locales.</span></span> operation creates an output layer based on a user-defined query that selects particular features from the input layer (part (f) of <a class="xref" href="#campbell_1.0-ch07_s01_s02_f01">Figure 7.3 "Single Layer Geoprocessing Functions"</a>). The output layer contains only those features that are selected during the query. For example, a city planner may choose to perform a select on all areas that are zoned “residential” so he or she can quickly assess which areas in town are suitable for a proposed housing development.</p>
+        <p class="para editable block" id="campbell_1.0-ch07_s01_s02_p05">Finally, the <span class="margin_term"><a class="glossterm">merge</a><span class="glossdef">To combine adjacent or overlapping spatial features into a single feature.</span></span> operation combines features within a point, line, or polygon layer into a single feature with identical attribute information. Often, the original features will have different values for a given attribute. In this case, the first attribute encountered is carried over into the attribute table, and the remaining attributes are lost. This operation is particularly useful when polygons are found to be unintentionally overlapping. Merge will conveniently combine these features into a single entity.</p>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch07_s01_s02_f01">
+            <p class="title"><span class="title-prefix">Figure 7.3</span> Single Layer Geoprocessing Functions</p>
+            <img src="section_11/8a76c2bc3a77bf08103a204b1fdeab45.jpg">
+        </div>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch07_s01_s02_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch07_s01_s02_l01">
+                <li>Buffers are frequently used to create zones of a specified width around points, lines, and polygons.</li>
+                <li>Vector buffering options include constant or variable widths, multiple rings, doughnuts, setbacks, and dissolve.</li>
+                <li>Common single layer geoprocessing operations on vector layers include dissolve, merge, append, and select.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch07_s01_s02_n02">
+            <h3 class="title">Exercises</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch07_s01_s02_l02">
+                <li>List and describe the various buffering options available in a GIS.</li>
+                <li>Why might you use the various geoprocessing operations to answer spatial questions related to your particular field of study?</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s10-03-data-classification.html"><img src="shared/images/batch-left.png"></a> <a href="s10-03-data-classification.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s11-02-multiple-layer-analysis.html">Next Section</a> <a href="s11-02-multiple-layer-analysis.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

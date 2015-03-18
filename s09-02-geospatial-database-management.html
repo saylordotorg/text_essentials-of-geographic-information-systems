@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Geospatial Database Management</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s09-01-geographic-data-acquisition.html"><img src="shared/images/batch-left.png"></a> <a href="s09-01-geographic-data-acquisition.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s09-03-file-formats.html">Next Section</a> <a href="s09-03-file-formats.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch05_s02" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">5.2</span> Geospatial Database Management</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch05_s02_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch05_s02_l01">
+            <li>The objective of this section is to understand the basic properties of a relational database management system.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch05_s02_p01">A <span class="margin_term"><a class="glossterm">database</a><span class="glossdef">A structured collection of data files.</span></span> is a structured collection of data files. A <span class="margin_term"><a class="glossterm">database management system (DBMS)</a><span class="glossdef">A software package that allows for the creation, storage, maintenance, manipulation, and retrieval of large datasets distributed over one or more files.</span></span> is a software package that allows for the creation, storage, maintenance, manipulation, and retrieval of large datasets that are distributed over one or more files. A DBMS and its associated functions are usually accessed through commercial software packages such as Microsoft Access, Oracle, FileMaker Pro, or Avanquest MyDataBase. Database management normally refers to the management of tabular data in row and column format and is frequently used for personal, business, government, and scientific endeavors. Geospatial database management systems, alternatively, include the functionality of a DBMS but also contain specific geographic information about each data point such as identity, location, shape, and orientation. Integrating this geographic information with the tabular attribute data of a classical DBMS provide users with powerful tools to visualize and answer the spatially explicit questions that arise in an increasingly technological society.</p>
+    <p class="para editable block" id="campbell_1.0-ch05_s02_p02">Several types of database models exist, such as the flat, hierarchical, network, and relational models (Worboys 1995; Jackson 1999).<span class="footnote" id="campbell_1.0-fn05_007">Worboys, M. F. 1995. <em class="emphasis">GIS: A Computing Perspective</em>. London: Taylor &amp; Francis.</span><sup class="superscript">, </sup><span class="footnote" id="campbell_1.0-fn05_003">Jackson, M. 1999. “Thirty Years (and More) of Databases.” <em class="emphasis">Information and Software Technology</em> 41: 969–78.</span> A <span class="margin_term"><a class="glossterm">flat database</a><span class="glossdef">A database model whereby all data are stored in a single table.</span></span> is essentially a spreadsheet whereby all data are stored in a single, large table (<a class="xref" href="#campbell_1.0-ch05_s02_f01">Figure 5.4 "Flat Database"</a>). A <span class="margin_term"><a class="glossterm">hierarchical database</a><span class="glossdef">A simple database model that organizes data into a “one-to-many” association across levels.</span></span> is also a fairly simple model that organizes data into a “one-to-many” association across levels (<a class="xref" href="#campbell_1.0-ch05_s02_f02">Figure 5.5 "Hierarchical Database"</a>). Common examples of this model include phylogenetic trees for classification of plants and animals and familial genealogical trees showing parent-child relationships. <span class="margin_term"><a class="glossterm">Network databases</a><span class="glossdef">A simple database model that organizes data into a “one-to-many” or “many-to-many” association across levels.</span></span> are similar to hierarchical databases, however, because they also support “many-to-many” relationships (<a class="xref" href="#campbell_1.0-ch05_s02_f03">Figure 5.6 "Network Database"</a>). This expanded capability allows greater search flexibility within the dataset and reduces potential redundancy of information. Alternatively, both the hierarchical and network models can become incredibly complex depending on the size of the databases and the number of interactions between the data points. Modern geographic information system (GIS) software typically employs a fourth model referred to as a <span class="margin_term"><a class="glossterm">relational database</a><span class="glossdef">A database model that relates information across multiple tables according to primary and foreign keys.</span></span> (Codd 1970).<span class="footnote" id="campbell_1.0-fn05_001">Codd, E. 1970. “A Relational Model of Data for Large Shared Data Banks.” <em class="emphasis">Communications of the Association for Computing Machinery</em> 13 (6): 377–87.</span></p>
+    <div class="figure large medium-height editable block" id="campbell_1.0-ch05_s02_f01">
+        <p class="title"><span class="title-prefix">Figure 5.4</span> Flat Database</p>
+        <img src="section_09/55c0b673c52549a35738a84e53455af6.jpg">
+    </div>
+    <div class="figure large medium-height editable block" id="campbell_1.0-ch05_s02_f02">
+        <p class="title"><span class="title-prefix">Figure 5.5</span> Hierarchical Database</p>
+        <img src="section_09/1f4d498ae71d7a64aea2000c02e4e35e.jpg">
+    </div>
+    <div class="figure large medium-height editable block" id="campbell_1.0-ch05_s02_f03">
+        <p class="title"><span class="title-prefix">Figure 5.6</span> Network Database</p>
+        <img src="section_09/0e0922d77005444e9fafb582969b22db.jpg">
+    </div>
+    <div class="section" id="campbell_1.0-ch05_s02_s01">
+        <h2 class="title editable block">Relational Database Management Systems</h2>
+        <p class="para editable block" id="campbell_1.0-ch05_s02_s01_p01">A <span class="margin_term"><a class="glossterm">relational database management system (RDBMS)</a><span class="glossdef">A software package that records information in such a way that data can be accessed without reorganization of the tables.</span></span> is a collection of tables that are connected in such a way that that data can be accessed without reorganization of the tables. The tables are created such that each column represents a particular attribute (e.g., soil type, PIN number, last name, acreage) and each row contains a unique instance of data for that columnar attribute (e.g., Delhi Sands Soils, 5555, Smith, 412.3 acres)</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s02_s01_p02">In the relational model, each table (not surprisingly called a <em class="emphasis">relation</em>) is linked to each other table via predetermined keys (Date 1995).<span class="footnote" id="campbell_1.0-fn05_002">Date, C. 1995. <em class="emphasis">An Introduction to Database Systems</em>. Reading, MA: Addison-Wesley.</span> The <span class="margin_term"><a class="glossterm">primary key</a><span class="glossdef">The attribute whose value uniquely identifies a particular record in an attribute table.</span></span> represents the attribute (column) whose value uniquely identifies a particular record (row) in the relation (table). The primary key may not contain missing values as multiple missing values would represent nonunique entities that violate the basic rule of the primary key. The primary key corresponds to an identical attribute in a secondary table (and possibly third, fourth, fifth, etc.) called a <span class="margin_term"><a class="glossterm">foreign key</a><span class="glossdef">The attribute that corresponds to a primary key in an associated table.</span></span>. This results in all the information in the first table being directly related to the information in the second table via the primary and foreign keys, hence the term “relational” DBMS. With these links in place, tables within the database can be kept very simple, resulting in minimal computation time and file complexity. This process can be repeated over many tables as long as each contains a foreign key that corresponds to another table’s primary key.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s02_s01_p03">The relational model has two primary advantages over the other database models described earlier. First, each table can now be separately prepared, maintained, and edited. This is particularly useful when one considers the potentially huge size of many of today’s modern databases. Second, the tables may be maintained separately until the need for a particular query or analysis calls for the tables to be related. This creates a large degree of efficiency for processing of information within a given database.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s02_s01_p04">It may become apparent to the reader that there is great potential for redundancy in this model as each table must contain an attribute that corresponds to an attribute in every other related table. Therefore, redundancy must actively be monitored and managed in a RDBMS. To accomplish this, a set of rules called normal forms have been developed (Codd 1970).<span class="footnote" id="campbell_1.0-fn05_008">Codd, E. 1970. “A Relational Model of Data for Large Shared Data Banks.” <em class="emphasis">Communications of the Association for Computing Machinery</em> 13 (6): 377–87.</span> There are three basic normal forms. The <span class="margin_term"><a class="glossterm">first normal form</a><span class="glossdef">The first stage in the normalization of a relational database in which repeating groups and attributes are eliminated by placing them into a separate tables connected via primary keys and foreign keys.</span></span> (<a class="xref" href="#campbell_1.0-ch05_s02_s01_f01">Figure 5.7 "First Normal Form Violation (above) and Fix (below)"</a>) refers to five conditions that must be met (Date 1995).<span class="footnote" id="campbell_1.0-fn05_009">Date, C. 1995. <em class="emphasis">An Introduction to Database Systems</em>. Reading, MA: Addison-Wesley.</span> They are as follows:</p>
+        <ol class="orderedlist editable block" id="campbell_1.0-ch05_s02_s01_l01">
+            <li>There is no sequence to the ordering of the rows.</li>
+            <li>There is no sequence to the ordering of the columns.</li>
+            <li>Each row is unique.</li>
+            <li>Every cell contains one and only one value.</li>
+            <li>All values in a column pertain to the same subject.</li>
+        </ol>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch05_s02_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 5.7</span> First Normal Form Violation (above) and Fix (below)</p>
+            <img src="section_09/f0d4e4e87647df1ae1fd9aa2f014dd37.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch05_s02_s01_p05">The <span class="margin_term"><a class="glossterm">second normal form</a><span class="glossdef">The second stage in the normalization of a relational database in which all nonkey attributes are made dependent on the primary key.</span></span> states that any column that is not a primary key must be dependent on the primary key. This reduces redundancy by eliminating the potential for multiple primary keys throughout multiple tables. This step often involves the creation of new tables to maintain normalization.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch05_s02_s01_f02">
+            <p class="title"><span class="title-prefix">Figure 5.8</span> Second Normal Form Violation (above) and Fix (below)</p>
+            <img src="section_09/87e5eaa1edb6b5bb67449ada92d257eb.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch05_s02_s01_p06">The <span class="margin_term"><a class="glossterm">third normal form</a><span class="glossdef">The third stage in the normalization of a relational database in which all nonprimary keys are made mutually exclusive.</span></span> states that all nonprimary keys must depend on the primary key, while the primary key remains independent of all nonprimary keys. This form was wittily summed up by Kent (1983)<span class="footnote" id="campbell_1.0-fn05_004">Kent, W. 1983. “A Simple Guide to Five Formal Forms in Relational Database Theory.” <em class="emphasis">Communications of the Association for Computing and Machinery</em>. 26 (2): 120–25.</span> who quipped that all nonprimary keys “must provide a fact about the key, the whole key, and nothing but the key.” Echoing this quote is the rejoinder: “so help me Codd” (personal communication with Foresman 1989).</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch05_s02_s01_f03">
+            <p class="title"><span class="title-prefix">Figure 5.9</span> Third Normal Form Violation (above) and Fix (below)</p>
+            <img src="section_09/9e2d343faf95760d529919d21df85d1e.jpg">
+        </div>
+    </div>
+    <div class="section" id="campbell_1.0-ch05_s02_s02">
+        <h2 class="title editable block">Joins and Relates</h2>
+        <p class="para editable block" id="campbell_1.0-ch05_s02_s02_p01">An additional advantage of an RDBMS is that it allows attribute data in separate tables to be linked in a post hoc fashion. The two operations commonly used to accomplish this are the join and relate. The <span class="margin_term"><a class="glossterm">join</a><span class="glossdef">An operation that appends the information of one table into a second table through the use of an attribute or field that is common to both tables.</span></span> operation appends the fields of one table into a second table through the use of an attribute or field that is common to both tables. This is commonly utilized to combine attribute information from one or more nonspatial data tables (i.e., information taken from reports or documents) with a spatially explicit GIS feature layer. A second type of join combines feature information based on spatial location and association rather than on common attributes. In ArcGIS, three types of spatial joins are available. Users may (1) match each feature to the closest feature, (2) match each feature to the feature that it is part of, or (3) match each feature to the feature that it intersects.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s02_s02_p02">Alternatively, the <span class="margin_term"><a class="glossterm">relate</a><span class="glossdef">An operation that temporarily associates two attribute tables through the use of an attribute or field that is common to both tables while keeping the tables physically separate.</span></span> operation temporarily associates two map layers or tables while keeping them physically separate. Relates are bidirectional, so data can be accessed from the one of the tables by selecting records in the other table. The relate operation also allows for the association of three or more tables, if necessary.</p>
+        <p class="para editable block" id="campbell_1.0-ch05_s02_s02_p03">Sometimes it can be unclear as to which operation one should use. As a general rule, joins are most suitable for instances involving one-to-one or many-to-one relationships. Joins are also advantageous due to the fact that the data from the two tables are readily observable in the single output table. The use of relates, on the other hand, are suitable for all table relationships (one-to-one, one-to-many, many-to-one, and many-to-many); however, they can slow down computer access time if the tables are particularly large or spread out over remote locations.</p>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch05_s02_s02_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch05_s02_s02_l01">
+                <li>Database management systems can be flat, hierarchical, network, or relational.</li>
+                <li>Relational database management systems (RDBMS) utilize primary keys and foreign keys to link data tables.</li>
+                <li>The RDBMS model reduces data redundancy by employing three basic “normal forms.”</li>
+            </ul>
+        </div>
+        <div class="exercises block" id="campbell_1.0-ch05_s02_s02_n02">
+            <h3 class="title">Exercise</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch05_s02_s02_l02">
+                <li>Identify the three violations of normal forms in the following table.</li>
+            </ol>
+            <div class="informaltable" frame="all">
+                <table cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Instructor</th>
+                            <th>Class</th>
+                            <th>Class Number</th>
+                            <th>Enrollment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lennon</td>
+                            <td>Advanced Calculus</td>
+                            <td>10073</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>McCartney</td>
+                            <td>Introductory Physical Education</td>
+                            <td>10045</td>
+                            <td>23</td>
+                        </tr>
+                        <tr>
+                            <td>Harrison</td>
+                            <td>Auto Repair and Feminism</td>
+                            <td>10045</td>
+                            <td>54</td>
+                        </tr>
+                        <tr>
+                            <td>Starr, Best</td>
+                            <td>Quantum Physics</td>
+                            <td>10023</td>
+                            <td>39</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s09-01-geographic-data-acquisition.html"><img src="shared/images/batch-left.png"></a> <a href="s09-01-geographic-data-acquisition.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s09-03-file-formats.html">Next Section</a> <a href="s09-03-file-formats.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

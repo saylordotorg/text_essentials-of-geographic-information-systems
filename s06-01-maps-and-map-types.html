@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Maps and Map Types</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s05-03-geographic-information-systems.html"><img src="shared/images/batch-left.png"></a> <a href="s05-03-geographic-information-systems.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s06-02-map-scale-coordinate-systems-a.html">Next Section</a> <a href="s06-02-map-scale-coordinate-systems-a.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch02_s01" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">2.1</span> Maps and Map Types</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch02_s01_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch02_s01_l01">
+            <li>The objective of this section is to define what a map is and to describe reference, thematic, and dynamic maps.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch02_s01_p01">Maps are among the most compelling forms of information for several reasons. Maps are artistic. Maps are scientific. Maps preserve history. Maps clarify. Maps reveal the invisible. Maps inform the future. Regardless of the reason, maps capture the imagination of people around the world. As one of the most trusted forms of information, map makers and geographic information system (GIS) practitioners hold a considerable amount of power and influence (Wood 1992; Monmonier 1996).<span class="footnote" id="campbell_1.0-fn02_006">Wood, D. 1992. <em class="emphasis">The Power of Maps</em>. New York: Guilford.</span><sup class="superscript">, </sup><span class="footnote" id="campbell_1.0-fn02_002">Monmonier, M. 1996. <em class="emphasis">How to Lie with Maps</em>. Chicago: University of Chicago Press.</span> Therefore, understanding and appreciating maps and how maps convey information are important aspects of GISs. The appreciation of maps begins with exploring various map types.</p>
+    <p class="para editable block" id="campbell_1.0-ch02_s01_p02">So what exactly is a map? Like GISs, there are probably just as many definitions of maps as there are people who use and make them (see Muehrcke and Muehrcke 1998).<span class="footnote" id="campbell_1.0-fn02_004">Muehrcke, P., and J. Muehrcke. 1998. <em class="emphasis">Map Use</em>. Madison, WI: JP Publications.</span> For starters, we can define a map simply as a representation of the world. Such maps can be stored in our brain (i.e., mental maps), they can be printed on paper, or they can appear online. Notwithstanding the actual medium of the map (e.g., our fleeting thoughts, paper, or digital display), maps represent and describe various aspects of the world. For purposes of clarity, the three types of maps are the reference map, the thematic map, and the dynamic map.</p>
+    <div class="section" id="campbell_1.0-ch02_s01_s01">
+        <h2 class="title editable block">Reference Maps</h2>
+        <p class="para editable block" id="campbell_1.0-ch02_s01_s01_p01">The primary purpose of a <span class="margin_term"><a class="glossterm">reference map</a><span class="glossdef">The family of maps that are used to locate features on the surface of the earth.</span></span> is to deliver location information to the map user. Geographic features and map elements on a reference map tend to be treated and represented equally. In other words, no single aspect of a reference map takes precedent over any other aspect. Moreover, reference maps generally represent geographic reality accurately. Examples of some common types of reference maps include topographic maps such as those created by the United States Geological Survey (USGS; see <a class="link" target="_blank" href="http://topomaps.usgs.gov">http://topomaps.usgs.gov</a>) and image maps obtained from satellites or aircraft that are available through online mapping services.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s01_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 2.1</span> USGS Topographic Map of Boulder, CO</p>
+            <img src="section_06/988b53e0d072738904822cdf337ddfba.jpg">
+        </div>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s01_s01_f02">
+            <p class="title"><span class="title-prefix">Figure 2.2</span> Image Map of Palm Island, Dubai, from NASA</p>
+            <img src="section_06/0f2fdaabd316f863a6b75e6954cbf69d.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch02_s01_s01_p02">The accuracy of a given reference map is indeed critical to many users. For instance, local governments need accurate reference maps for land use, zoning, and tax purposes. National governments need accurate reference maps for political, infrastructure, and military purposes. People who depend on navigation devices like global positioning system (GPS) units also need accurate and up-to-date reference maps in order to arrive at their desired destinations.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch02_s01_s02">
+        <h2 class="title editable block">Thematic Maps</h2>
+        <p class="para editable block" id="campbell_1.0-ch02_s01_s02_p01">Contrasting the reference map are thematic maps. As the name suggests, <span class="margin_term"><a class="glossterm">thematic maps</a><span class="glossdef">The family of maps that are about a particular topic or theme.</span></span> are concerned with a particular theme or topic of interest. While reference maps emphasize the location of geographic features, thematic maps are more concerned with how things are distributed across space. Such things are often abstract concepts such as life expectancy around the world, per capita gross domestic product (GDP) in Europe, or literacy rates across India. One of the strengths of mapping, and in particular of thematic mapping, is that it can make such abstract and invisible concepts visible and comparable on a map.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s01_s02_f01">
+            <p class="title"><span class="title-prefix">Figure 2.3</span> World Life Expectancies</p>
+            <img src="section_06/d196d1268e5699aeda1e86debbea0d2c.jpg">
+        </div>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s01_s02_f02">
+            <p class="title"><span class="title-prefix">Figure 2.4</span> European GDP</p>
+            <img src="section_06/6a5d66cd6a436c584dd0091a79aa0e56.jpg">
+        </div>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s01_s02_f03">
+            <p class="title"><span class="title-prefix">Figure 2.5</span> Indian Literacy Rates</p>
+            <img src="section_06/5396c5daaf1c7ba257fea14a6042e318.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch02_s01_s02_p02">It is important to note that reference and thematic maps are not mutually exclusive. In other words, thematic maps often contain and combine geographical reference information, and conversely, reference maps may contain thematic information. What is more, when used in conjunction, thematic and reference maps often complement each other.</p>
+        <p class="para editable block" id="campbell_1.0-ch02_s01_s02_p03">For example, public health officials in a city may be interested in providing equal access to emergency rooms to the city’s residents. Insights into this and related questions can be obtained through visual comparisons of a reference map that shows the locations of emergency rooms across the city to thematic maps of various segments of the population (e.g., households below poverty, percent elderly, underrepresented groups).</p>
+        <p class="para editable block" id="campbell_1.0-ch02_s01_s02_p04">Within the context of a GIS, we can <span class="margin_term"><a class="glossterm">overlay</a><span class="glossdef">The process of integrating two or more map layers on the same map.</span></span> the reference map of emergency rooms directly on top of the population maps to see whether or not access is uniform across neighborhood types. Clearly, there are other factors to consider when looking at emergency room access (e.g., access to transport), but through such map overlays, underserved neighborhoods can be identified.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s01_s02_f04">
+            <p class="title"><span class="title-prefix">Figure 2.6</span> Map Overlay Process</p>
+            <img src="section_06/8fefe25edddf4ae6440978e0b2b6c051.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch02_s01_s02_p05">When presented in hardcopy format, both reference and thematic maps are static or fixed representations of reality. Such permanence on the page suggests that geography and the things that we map are also in many ways fixed or constant. This is far from reality. The integration of GISs with other forms of information technology like the Internet and mobile telecommunications is rapidly changing this view of maps and mapping, as well as geography at large.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch02_s01_s03">
+        <h2 class="title editable block">Dynamic Maps</h2>
+        <p class="para editable block" id="campbell_1.0-ch02_s01_s03_p01">The diffusion of GISs and the popularity of online mapping tools and applications speak to this shift in thinking about maps and map use. In this regard, it is worthwhile to discuss the diffusion of dynamic maps. <span class="margin_term"><a class="glossterm">Dynamic maps</a><span class="glossdef">Interactive and changeable representations of the earth and its resident phenomena.</span></span> are simply changeable or interactive representations of the earth. Dynamic mapping refers more to how maps are used and delivered to the map user today (e.g., online, via mobile phone) than to the content of the map itself. Both reference and thematic maps can be dynamic in nature, and such maps are an integral component to any GIS. The key point about dynamic maps is that more and more people, not just GIS professionals, have access to such maps.</p>
+        <p class="para editable block" id="campbell_1.0-ch02_s01_s03_p02">Unlike a hardcopy map that has features and elements users cannot modify or change, dynamic maps encourage and sometimes require user interaction. Such interaction can include changing the scale or visible area by zooming in or zooming out, selecting which features or layers to include or to remove from a map (e.g., roads, imagery), or even starting and stopping a map animation.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s01_s03_f01">
+            <p class="title"><span class="title-prefix">Figure 2.7</span> Google Maps on an iPhone</p>
+            <img src="section_06/c60ee7705fe9641570b19d070dab1291.jpg">
+        </div>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch02_s01_s03_f02">
+            <p class="title"><span class="title-prefix">Figure 2.8</span> Polar Ice Cap</p>
+            <img src="section_06/b043772fd68926df2ec85d91b31447c6.jpg">
+            <p class="para">To see the animation, go to <a class="link" target="_blank" href="http://svs.gsfc.nasa.gov/goto?3464">http://svs.gsfc.nasa.gov/goto?3464</a>.</p>
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch02_s01_s03_p03">Just as dynamic maps will continue to evolve and require more user interaction in the future, map users will demand more interactive map features and controls. As this democratization of maps and mapping continues, the geographic awareness and map appreciation of map users will also increase. Therefore, it is of critical importance to understand the nature, form, and content of maps to support the changing needs, demands, and expectations of map users in the future.</p>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch02_s01_s03_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch02_s01_s03_l01">
+                <li>The main purpose of a reference map is to show the location of geographical objects of interest.</li>
+                <li>Thematic maps are concerned with showing how one or more geographical aspects are distributed across space.</li>
+                <li>Dynamic maps refer to maps that are changeable and often require user interaction.</li>
+                <li>The democratization of maps and mapping is increasing access, use, and appreciation for all types of maps, as well as driving map innovations.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch02_s01_s03_n02">
+            <h3 class="title">Exercises</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch02_s01_s03_l02">
+                <li>Go to the website of the USGS, read about the history and use of USGS maps, and download the topographic map that corresponds to your place of residence.</li>
+                <li>What features make a map “dynamic” or “interactive”? Are dynamic maps more informative than static maps? Why or why not?</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s05-03-geographic-information-systems.html"><img src="shared/images/batch-left.png"></a> <a href="s05-03-geographic-information-systems.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s06-02-map-scale-coordinate-systems-a.html">Next Section</a> <a href="s06-02-map-scale-coordinate-systems-a.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

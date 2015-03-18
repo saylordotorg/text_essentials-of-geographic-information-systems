@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Descriptions and Summaries</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s09-04-data-quality.html"><img src="shared/images/batch-left.png"></a> <a href="s09-04-data-quality.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s10-02-searches-and-queries.html">Next Section</a> <a href="s10-02-searches-and-queries.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch06_s01" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">6.1</span> Descriptions and Summaries</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch06_s01_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch06_s01_l01">
+            <li>The objective of this section is to review the most frequently used measures of distribution, central tendency, and dispersion.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch06_s01_p01">No discussion of geospatial analysis would be complete without a brief overview of basic statistical concepts. The basic statistics outlined here represent a starting point for any attempt to describe, summarize, and analyze geospatial datasets. An example of a common geospatial statistical endeavor is the analysis of point data obtained by a series of rainfall gauges patterned throughout a particular region. Given these rain gauges, one could determine the typical amount and variability of rainfall at each station, as well as typical rainfall throughout the region as a whole. In addition, you could interpolate the amount of rainfall that falls between each station or the location where the most (or least) rainfall occurs. Furthermore, you could predict the expected amount of rainfall into the future at each station, between each station, or within the region as a whole.</p>
+    <p class="para editable block" id="campbell_1.0-ch06_s01_p02">The increase of computational power over the past few decades has given rise to vast datasets that cannot be summarized easily. <span class="margin_term"><a class="glossterm">Descriptive statistics</a><span class="glossdef">Presenting data in the form of tables and charts or summarizing data through the use of simple mathematical equations.</span></span> provide simple numeric descriptions of these large datasets. Descriptive statistics tend to be univariate analyses, meaning they examine one variable at a time. There are three families of descriptive statistics that we will discuss here: measures of distribution, measures of central tendency, and measures of dispersion. However, before we delve too deeply into various statistical techniques, we must first define a few terms.</p>
+    <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s01_l02">
+        <li>
+<em class="emphasis">Variable</em>: a symbol used to represent any given value or set of values</li>
+        <li>
+<em class="emphasis">Value</em>: an individual observation of a variable (in a geographic information system [GIS] this is also called a record)</li>
+        <li>
+<em class="emphasis">Population</em>: the universe of all possible values for a variable</li>
+        <li>
+<em class="emphasis">Sample</em>: a subset of the population</li>
+        <li>
+<em class="emphasis">n</em>: the number of observations for a variable</li>
+        <li>
+<em class="emphasis">Array</em>: a sequence of observed measures (in a GIS this is also called a field and is represented in an attribute table as a column)</li>
+        <li>
+<em class="emphasis">Sorted Array</em>: an ordered, quantitative array</li>
+    </ul>
+    <div class="section" id="campbell_1.0-ch06_s01_s01">
+        <h2 class="title editable block">Measures of Distribution</h2>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s01_p01">The <span class="margin_term"><a class="glossterm">measure of distribution</a><span class="glossdef">A statistic that uses a set of numbers and their frequency of occurrence collected from measurements taken over a statistical population.</span></span> of a variable is merely a summary of the frequency of values over the range of the dataset (hence, this is often called a frequency distribution). Typically, the values for the given variable will be grouped into a predetermined series of classes (also called intervals, bins, or categories), and the number of data values that fall into each class will be summarized. A graph showing the number of data values within each class range is called a <span class="margin_term"><a class="glossterm">histogram</a><span class="glossdef">A bar graph that represents the frequency of values of a quantity by vertical rectangles of varying heights and widths.</span></span>. For example, the percentage grades received by a class on an exam may result in the following array (<em class="emphasis">n</em> = 30):</p>
+        <span class="informalequation block"><span class="mathphrase">Array of Exam Scores: {87, 76, 89, 90, 64, 67, 59, 79, 88, 74, 72, 99, 81, 77, 75, 86, 94, 66, 75, 74, 83, 100, 92, 75, 73, 70, 60, 80, 85, 57}</span></span>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s01_p02">When placing this array into a frequency distribution, the following general guidelines should be observed. First, between five and fifteen different classes should be employed, although the exact number of classes depends on the number of observations. Second, each observation goes into one and only one class. Third, when possible, use classes that cover an equal range of values (Freund and Perles 2006).<span class="footnote" id="campbell_1.0-fn06_001">Freund, J., and B. Perles. 2006. <em class="emphasis">Modern Elementary Statistics</em>. Englewood Cliffs, NJ: Prentice Hall.</span> With these guidelines in mind, the exam score array shown earlier can be visualized with the following histogram (<a class="xref" href="#campbell_1.0-ch06_s01_s01_f01">Figure 6.1 "Histogram Showing the Frequency Distribution of Exam Scores"</a>).</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch06_s01_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 6.1</span> Histogram Showing the Frequency Distribution of Exam Scores</p>
+            <img src="section_10/c8856aafcf4a16552327a45c740c14dd.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s01_p03">As you can see from the histogram, certain descriptive observations can be readily made. Most students received a C on the exam (70–79). Two students failed the exam (50–59). Five students received an A (90–99). Note that this histogram does violate the third basic rule that each class cover an equal range because an F grade ranges from 0–59, whereas the other grades have ranges of equal size. Regardless, in this case we are most concerned with describing the distribution of grades received during the exam. Therefore, it makes perfect sense to create class ranges that best suit our individual needs.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch06_s01_s02">
+        <h2 class="title editable block">Measures of Central Tendency</h2>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s02_p01">We can further explore the exam score array by applying <span class="margin_term"><a class="glossterm">measures of central tendency</a><span class="glossdef">A statistic that measures the “middle” of a dataset.</span></span>. There are three primary measures of central tendency: the mean, mode, and median. The <span class="margin_term"><a class="glossterm">mean</a><span class="glossdef">The mathematical average of a set of numbers.</span></span>, more commonly referred to as the average, is the most often used measure of central tendency. To calculate the mean, simply add all the values in the array and divide that sum by the number of observations. To return to the exam score example from earlier, the sum of that array is 2,340, and there are 30 observations (<em class="emphasis">n</em> = 30). So, the mean is 2,340 / 30 = 78.</p>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s02_p02">The <span class="margin_term"><a class="glossterm">mode</a><span class="glossdef">An average found by determining the most frequent value in a group of values.</span></span> is the measure of central tendency that represents the most frequently occurring value in the array. In the case of the exam scores, the mode of the array is 75 as this was received by the most number of students (three, in total). Finally, the <span class="margin_term"><a class="glossterm">median</a><span class="glossdef">The value lying at the midpoint of a frequency distribution of observed values.</span></span> is the observation that, when the array is ordered from lowest to highest, falls exactly in the center of the sorted array. More specifically, the median is the value in the middle of the sorted array when there are an odd number of observations. Alternatively, when there is an even number of observations, the median is calculated by finding the mean of the two central values. If the array of exam scores were reordered into a sorted array, the scores would be listed thusly:</p>
+        <span class="informalequation block"><span class="mathphrase">Sorted Array of Exam Scores: {57, 59, 60, 64, 66, 67, 70, 72, 73, 74, 74, 75, 75, 75, 76, 77, 79, 80, 81, 83, 85, 86, 87, 88, 89, 90, 92, 93, 94, 99}</span></span>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s02_p03">Since <em class="emphasis">n</em> = 30 in this example, there are an even number of observations. Therefore, the mean of the two central values (15<sup class="superscript">th</sup> = 76 and 16<sup class="superscript">th</sup> = 77) is used to calculate the median as described earlier, resulting in (76 + 77) / 2 = 76.5. Taken together, the mean, mode, and median represent the most basic ways to examine trends in a dataset.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch06_s01_s03">
+        <h2 class="title editable block">Measures of Dispersion</h2>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s03_p01">The third type of descriptive statistics is <span class="margin_term"><a class="glossterm">measures of dispersion</a><span class="glossdef">The variability, or spread, in a variable or probability distribution.</span></span> (also referred to as measures of variability). These measures describe the spread of data around the mean. The simplest measure of dispersion is the <span class="margin_term"><a class="glossterm">range</a><span class="glossdef">The difference between the highest and lowest values in a dataset.</span></span>. The range equals the largest value minus in the dataset the smallest. In our case, the range is 99 − 57 = 42.</p>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s03_p02">The <span class="margin_term"><a class="glossterm">interquartile range</a><span class="glossdef">The difference between the first quartile (25th percentile) and the third quartile (75th percentile) of a set of ordered data.</span></span> represents a slightly more sophisticated measure of dispersion. This method divides the data into quartiles. To accomplish this, the median is used to divide the sorted array into two halves. These halves are again divided into halves by their own median. The first quartile (Q1) is the median of the lower half of the sorted array and is also referred to as the lower quartile. Q2 represents the median. Q3 is the median of the upper half of the sorted array and is referred to as the upper quartile. The difference between the upper and lower quartile is the interquartile range. In the exam score example, Q1 = 72.25 and Q3 = 86.75. Therefore, the interquartile range for this dataset is 86.75 − 72.25 = 14.50.</p>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s03_p03">A third measure of dispersion is the <span class="margin_term"><a class="glossterm">variance</a><span class="glossdef">A measure of the difference between a set of data points and their mean values.</span></span> (<em class="emphasis">s</em><sup class="superscript">2</sup>). To calculate the variance, subtract the raw value of each exam score from the mean of the exam scores. As you may guess, some of the differences will be positive, and some will be negative, resulting in the sum of differences equaling zero. As we are more interested in the magnitude of differences (or deviations) from the mean, one method to overcome this “zeroing” property is to square each deviation, thus removing the negative values from the output (<a class="xref" href="#campbell_1.0-ch06_s01_s03_f01">Figure 6.2</a>). This results in the following:</p>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch06_s01_s03_f01">
+            <p class="title"><span class="title-prefix">Figure 6.2</span> </p>
+            <img src="section_10/fb08dee61b34f3a6760c953160ef281e.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s03_p04">We then divide the sum of squares by either <em class="emphasis">n</em> − 1 (in the case of working with a sample) or <em class="emphasis">n</em> (in the case of working with a population). As the exam scores given here represent the entire population of the class, we will employ <a class="xref" href="#campbell_1.0-ch06_s01_s03_f02">Figure 6.3 "Variance"</a>, which results in a variance of <em class="emphasis">s</em><sup class="superscript">2</sup> = 116.4. If we wanted to use these exam scores to extrapolate information about the larger student body, we would be working with a sample of the population. In that case, we would divide the sum of squares by <em class="emphasis">n</em> − 1.</p>
+        <div class="figure large small-height editable block" id="campbell_1.0-ch06_s01_s03_f02">
+            <p class="title"><span class="title-prefix">Figure 6.3</span> Variance</p>
+            <img src="section_10/521fc07f833f62fed5f4759cf8fd7c25.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s03_p05"><span class="margin_term"><a class="glossterm">Standard deviation</a><span class="glossdef">A measure of the dispersion of a set of data from its mean.</span></span>, the final measure of dispersion discussed here, is the most commonly used measure of dispersion. To compensate for the squaring of each difference from the mean performed during the variance calculation, standard deviation takes the square root of the variance. As determined from <a class="xref" href="#campbell_1.0-ch06_s01_s03_f03">Figure 6.4 "Standard Deviation"</a>, our exam score example results in a standard deviation of <em class="emphasis">s</em> = SQRT(116.4) = 10.8.</p>
+        <div class="figure large small-height editable block" id="campbell_1.0-ch06_s01_s03_f03">
+            <p class="title"><span class="title-prefix">Figure 6.4</span> Standard Deviation</p>
+            <img src="section_10/ccf7e9b60c4bf86233664c238c3483ef.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s03_p06">Calculating the standard deviation allows us to make some notable inferences about the dispersion of our dataset. A small standard deviation suggests the values in the dataset are clustered around the mean, while a large standard deviation suggests the values are scattered widely around the mean. Additional inferences may be made about the standard deviation if the dataset conforms to a normal distribution. A normal distribution implies that the data, when placed into a frequency distribution (histogram), looks symmetrical or “bell-shaped.” When not “normal,” the frequency distribution of dataset is said to be positively or negatively “skewed” (<a class="xref" href="#campbell_1.0-ch06_s01_s03_f04">Figure 6.5 "Histograms of Normally Curved, Positively Skewed, and Negatively Skewed Datasets"</a>). Skewed data are those that maintain values that are not symmetrical around the mean. Regardless, normally distributed data maintains the property of having approximately 68 percent of the data values fall within ± 1 standard deviation of the mean, and 95 percent of the data value fall within ± 2 standard deviations of the mean. In our example, the mean is 78, and the standard deviation is 10.8. It can therefore be stated that 68 percent of the scores fall between 67.2 and 88.8 (i.e., 78 ± 10.8), while 95 percent of the scores fall between 56.4 and 99.6 (i.e., 78 ± [10.8 * 2]). For datasets that do not conform to the normal curve, it can be assumed that 75 percent of the data values fall within ± 2 standard deviations of the mean.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch06_s01_s03_f04">
+            <p class="title"><span class="title-prefix">Figure 6.5</span> Histograms of Normally Curved, Positively Skewed, and Negatively Skewed Datasets</p>
+            <img src="section_10/e8b3fa38d26678631d8c8c2c7822011b.jpg">
+        </div>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch06_s01_s03_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch06_s01_s03_l01">
+                <li>The measure of distribution for a given variable is a summary of the frequency of values over the range of the dataset and is commonly shown using a histogram.</li>
+                <li>Measures of central tendency attempt to provide insights into “typical” value for a dataset.</li>
+                <li>Measures of dispersion (or variability) describe the spread of data around the mean or median.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch06_s01_s03_n02">
+            <h3 class="title">Exercises</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch06_s01_s03_l02">
+                <li>Create a table containing at least thirty data values.</li>
+                <li>For the table you created, calculate the mean, mode, median, range, interquartile range, variance, and standard deviation.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s09-04-data-quality.html"><img src="shared/images/batch-left.png"></a> <a href="s09-04-data-quality.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s10-02-searches-and-queries.html">Next Section</a> <a href="s10-02-searches-and-queries.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Scale of Analysis</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s12-01-basic-geoprocessing-with-raste.html"><img src="shared/images/batch-left.png"></a> <a href="s12-01-basic-geoprocessing-with-raste.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s12-03-surface-analysis-spatial-inter.html">Next Section</a> <a href="s12-03-surface-analysis-spatial-inter.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch08_s02" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">8.2</span> Scale of Analysis</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch08_s02_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch08_s02_l01">
+            <li>The objective of this section is to understand how local, neighborhood, zonal, and global analyses can be applied to raster datasets.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch08_s02_p01">Raster analyses can be undertaken on four different scales of operation: local, neighborhood, zonal, and global. Each of these presents unique options to the GIS analyst and are presented here in this section.</p>
+    <div class="section" id="campbell_1.0-ch08_s02_s01">
+        <h2 class="title editable block">Local Operations</h2>
+        <p class="para editable block" id="campbell_1.0-ch08_s02_s01_p01"><span class="margin_term"><a class="glossterm">Local operations</a><span class="glossdef">Operations performed on a single, target cell.</span></span> can be performed on single or multiple rasters. When used on a single raster, a local operation usually takes the form of applying some mathematical transformation to each individual cell in the grid. For example, a researcher may obtain a digital elevation model (DEM) with each cell value representing elevation in feet. If it is preferred to represent those elevations in meters, a simple, arithmetic transformation (original elevation in feet * 0.3048 = new elevation in meters) of each cell value can be performed locally to accomplish this task.</p>
+        <p class="para editable block" id="campbell_1.0-ch08_s02_s01_p02">When applied to multiple rasters, it becomes possible to perform such analyses as changes over time. Given two rasters containing information on groundwater depth on a parcel of land at Year 2000 and Year 2010, it is simple to subtract these values and place the difference in an output raster that will note the change in groundwater between those two times (<a class="xref" href="#campbell_1.0-ch08_s02_s01_f01">Figure 8.5 "Local Operation on a Raster Dataset"</a>). These local analyses can become somewhat more complicated however, as the number of input rasters increase. For example, the Universal Soil Loss Equation (USLE) applies a local mathematical formula to several overlying rasters including rainfall intensity, erodibility of the soil, slope, cultivation type, and vegetation type to determine the average soil loss (in tons) in a grid cell.</p>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch08_s02_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 8.5</span> Local Operation on a Raster Dataset</p>
+            <img src="section_12/5c8eb19a2a34fdbc58167eb4a3085eb5.jpg">
+        </div>
+    </div>
+    <div class="section" id="campbell_1.0-ch08_s02_s02">
+        <h2 class="title editable block">Neighborhood Operations</h2>
+        <p class="para editable block" id="campbell_1.0-ch08_s02_s02_p01">Tobler’s first law of geography states that “everything is related to everything else, but near things are more related than distant things.” <span class="margin_term"><a class="glossterm">Neighborhood operations</a><span class="glossdef">Operations performed on a central, target cell and surrounding cells.</span></span> represent a group of frequently used spatial analysis techniques that rely heavily on this concept. Neighborhood functions examine the relationship of an object with similar surrounding objects. They can be performed on point, line, or polygon vector datasets as well as on raster datasets. In the case of vector datasets, neighborhood analysis is most frequently used to perform basic searches. For example, given a point dataset containing the location of convenience stores, a GIS could be employed to determine the number of stores within 5 miles of a linear feature (i.e., Interstate 10 in California).</p>
+        <p class="para editable block" id="campbell_1.0-ch08_s02_s02_p02">Neighborhood analyses are often more sophisticated when used with raster datasets. Raster analyses employ moving windows, also called filters or kernels, to calculate new cell values for every location throughout the raster layer’s extent. These moving windows can take many different forms depending on the type of output desired and the phenomena being examined. For example, a rectangular, 3-by-3 moving window is commonly used to calculate the mean, standard deviation, sum, minimum, maximum, or range of values immediately surrounding a given “target” cell (<a class="xref" href="#campbell_1.0-ch08_s02_s02_f01">Figure 8.6 "Common Neighborhood Types around Target Cell “x”: (a) 3 by 3, (b) Circle, (c) Annulus, (d) Wedge"</a>). The <span class="margin_term"><a class="glossterm">target cell</a><span class="glossdef">Cell found in the center of the 3-by-3 moving window.</span></span> is that cell found in the center of the 3-by-3 moving window. The moving window passes over every cell in the raster. As it passes each central target cell, the nine values in the 3-by-3 window are used to calculate a new value for that target cell. This new value is placed in the identical location in the output raster. If one wanted to examine a larger sphere of influence around the target cells, the moving window could be expanded to 5 by 5, 7 by 7, and so forth. Additionally, the moving window need not be a simple rectangle. Other shapes used to calculate neighborhood statistics include the annulus, wedge, and circle (<a class="xref" href="#campbell_1.0-ch08_s02_s02_f01">Figure 8.6 "Common Neighborhood Types around Target Cell “x”: (a) 3 by 3, (b) Circle, (c) Annulus, (d) Wedge"</a>).</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch08_s02_s02_f01">
+            <p class="title"><span class="title-prefix">Figure 8.6</span> Common Neighborhood Types around Target Cell “x”: (a) 3 by 3, (b) Circle, (c) Annulus, (d) Wedge</p>
+            <img src="section_12/a2ecd0ed753a32f3e5b2f3c5482edc65.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch08_s02_s02_p03">Neighborhood operations are commonly used for data simplification on raster datasets. An analysis that averages neighborhood values would result in a smoothed output raster with dampened highs and lows as the influence of the outlying data values are reduced by the averaging process. Alternatively, neighborhood analyses can be used to exaggerate differences in a dataset. Edge enhancement is a type of neighborhood analysis that examines the range of values in the moving window. A large range value would indicate that an edge occurs within the extent of the window, while a small range indicates the lack of an edge.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch08_s02_s03">
+        <h2 class="title editable block">Zonal Operations</h2>
+        <p class="para editable block" id="campbell_1.0-ch08_s02_s03_p01">A zonal operation is employed on groups of cells of similar value or like features, not surprisingly called zones (e.g., land parcels, political/municipal units, waterbodies, soil/vegetation types). These zones could be conceptualized as raster versions of polygons. Zonal rasters are often created by reclassifying an input raster into just a few categories (see <a class="xref" href="#campbell_1.0-ch08_s02_s02">Section 8.2.2 "Neighborhood Operations"</a>). Zonal operations may be applied to a single raster or two overlaying rasters. Given a single input raster, zonal operations measure the geometry of each zone in the raster, such as area, perimeter, thickness, and centroid. Given two rasters in a zonal operation, one input raster and one zonal raster, a zonal operation produces an output raster, which summarizes the cell values in the input raster for each zone in the zonal raster (<a class="xref" href="#campbell_1.0-ch08_s02_s03_f01">Figure 8.7 "Zonal Operation on a Raster Dataset"</a>).</p>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch08_s02_s03_f01">
+            <p class="title"><span class="title-prefix">Figure 8.7</span> Zonal Operation on a Raster Dataset</p>
+            <img src="section_12/6770c44b59bc1b4b7875605be3ac21b0.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch08_s02_s03_p02">Zonal operations and analyses are valuable in fields of study such as landscape ecology where the geometry and spatial arrangement of habitat patches can significantly affect the type and number of species that can reside in them. Similarly, zonal analyses can effectively quantify the narrow habitat corridors that are important for regional movement of flightless, migratory animal species moving through otherwise densely urbanized areas.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch08_s02_s04">
+        <h2 class="title editable block">Global Operations</h2>
+        <p class="para editable block" id="campbell_1.0-ch08_s02_s04_p01"><span class="margin_term"><a class="glossterm">Global operations</a><span class="glossdef">Operations performed over the entire extent of a dataset.</span></span> are similar to zonal operations whereby the entire raster dataset’s extent represents a single zone. Typical global operations include determining basic statistical values for the raster as a whole. For example, the minimum, maximum, average, range, and so forth can be quickly calculated over the entire extent of the input raster and subsequently be output to a raster in which every cell contains that calculated value (<a class="xref" href="#campbell_1.0-ch08_s02_s04_f01">Figure 8.8 "Global Operation on a Raster Dataset"</a>).</p>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch08_s02_s04_f01">
+            <p class="title"><span class="title-prefix">Figure 8.8</span> Global Operation on a Raster Dataset</p>
+            <img src="section_12/447c218b38b82720781a8a1461dc881b.jpg">
+        </div>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch08_s02_s04_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch08_s02_s04_l01">
+                <li>Local raster operations examine only a single target cell during analysis.</li>
+                <li>Neighborhood raster operations examine the relationship of a target cell proximal surrounding cells.</li>
+                <li>Zonal raster operations examine groups of cells that occur within a uniform feature type.</li>
+                <li>Global raster operations examine the entire areal extent of the dataset.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch08_s02_s04_n02">
+            <h3 class="title">Exercise</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch08_s02_s04_l02">
+                <li>What are the four neighborhood shapes described in this chapter? Although not discussed here, can you think of specific situations for which each of these shapes could be used?</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s12-01-basic-geoprocessing-with-raste.html"><img src="shared/images/batch-left.png"></a> <a href="s12-01-basic-geoprocessing-with-raste.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s12-03-surface-analysis-spatial-inter.html">Next Section</a> <a href="s12-03-surface-analysis-spatial-inter.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

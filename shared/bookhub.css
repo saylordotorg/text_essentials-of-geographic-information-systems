@@ -1,0 +1,587 @@
+body {
+  font-family: 'Calibri2', Calibri, Arial, 'Trebuchet MS', sans-serif;
+}
+
+a[href], a:visited {
+  color: #000;
+  text-decoration: underline;
+}
+a:hover {
+  text-decoration: none;
+}
+a img {
+  border: 0;
+}
+
+#edition {
+  margin-top: -1.5em;
+  margin-bottom: 1em;
+}
+
+#section-container {
+  padding: 10px 25px 10px 45px;
+}
+
+#preface {
+  max-width: 960px;
+  margin: 10px auto;
+  border: 2px solid #0d9b49;
+  padding: 10px;
+  border-radius: 10px;
+}
+#preface p {
+  margin-top: 0;
+}
+#preface-details {
+  margin-left: 2em;
+}
+#preface-block-introduction {
+  text-align: center;
+  font-size: 130%;
+  font-weight: bold;
+}
+#preface-block-container {
+  text-align: center;
+}
+.preface-block {
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  width: 49%;
+  min-width: 210px;
+  margin: auto;
+}
+.preface-block-contents {
+  padding: 5px;
+}
+.preface-block-contents .block-title {
+  font-size: 130%;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+}
+.preface-block-contents .block-logo {
+  margin: 10px 0;
+}
+.preface-block-contents .block-logo img {
+  width: 200px;
+  height: 50px;
+}
+.preface-block-contents .block-description {
+  font-size: 90%;
+  max-width: 320px;
+  margin: auto;
+}
+
+.navbar {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 5px 0;
+  background: #fff;
+}
+#navbar-top {
+  -moz-box-shadow:    0px 5px 3px -3px #888;
+  -webkit-box-shadow: 0px 5px 3px -3px #888;
+  box-shadow:         0px 5px 3px -3px #888;
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)";
+  zoom: 1;
+}
+#navbar-bottom {
+  -moz-box-shadow:    0px -5px 3px -3px #888;
+  -webkit-box-shadow: 0px -5px 3px -3px #888;
+  box-shadow:         0px -5px 3px -3px #888;
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)";
+  zoom: 1;
+}
+.navbar img {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+.navbar-part {
+  width: 32%;
+  display: inline-block;
+}
+.navbar-part.middle {
+  text-align: center;
+}
+.navbar-part.right {
+  text-align: right;
+}
+
+#toc-header {
+  margin-bottom: 0 !important;
+}
+#toc-top-ul {
+  margin-top: 0 !important;
+}
+#toc-top-ul h3 {
+  margin: 0;
+}
+
+.replaced-iframe-container {
+  text-align: center;
+}
+
+.glossdef-tooltip {
+  background: #def;
+  border: 1px solid #000;
+  border-radius: 3px;
+  font-family: Georgia, serif;
+  font-size: 0.89em;
+  line-height: 1.3em;
+  padding: 5px 7px;
+  max-width: 300px;
+  -moz-box-shadow:    3px 3px 3px #888;
+  -webkit-box-shadow: 3px 3px 3px #888;
+  box-shadow:         3px 3px 3px #888;
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)";
+  zoom: 1;
+}
+
+#book-content {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 40em;
+  margin: auto;
+  /* Generic font for the book information */
+  /* Size ~> 25pt */
+  /* Size ~> 21pt */
+  /* General list stlying */
+  /* Footer Stuffs */
+  /* .keyterm { */
+  /*   background-color: #e8f3f7; */
+  /*   > .title { */
+  /*     background-color: #d7eaf1; */
+  /*   } */
+  /*   dl { */
+  /*     padding-right: 30px; */
+  /*     line-height: 1.5em; */
+  /*     dt { */
+  /*       font-size: 0.89em; */
+  /*       display: inline; */
+  /*       &:after { */
+  /*         content: ":"; */
+  /*       } */
+  /*     } */
+  /*     dd { */
+  /*       font-size: 0.89em; */
+  /*       display: inline; */
+  /*       &:after { */
+  /*         content: "\A";  /\* line-feed *\/ */
+  /*         white-space: pre-wrap; */
+  /*       } */
+  /*     } */
+  /*   }  */
+  /* } */
+  /* Figures */
+  /* Formatting videos */
+  /* footnote */ }
+  #book-content .block-container {
+    position: relative; }
+  #book-content .link {
+    word-wrap: break-word; }
+  #book-content a.delete {
+    top: 6px;
+    right: -18px;
+    position: absolute; }
+  #book-content dl {
+    padding: 0px  0px 0px 30px;
+    margin-bottom: 10px; }
+    #book-content dl dt {
+      list-style-type: disc;
+      display: list-item;
+      font-weight: bold;
+      margin: 14px 0px 0px 0px; }
+  #book-content .apa_show {
+    padding-left: 30px;
+    text-indent: -30px; }
+  #book-content .revision-added-marker,
+  #book-content .revision-changed-marker {
+    height: 100%;
+    position: absolute;
+    left: -25px; }
+    #book-content .revision-added-marker div,
+    #book-content .revision-changed-marker div {
+      background-color: #ccc;
+      width: 4px;
+      height: 45%; }
+    #book-content .revision-added-marker img,
+    #book-content .revision-changed-marker img {
+      background-color: white;
+      margin-left: -5px;
+      margin-bottom: -2px; }
+  #book-content h1, #book-content h2, #book-content h3, #book-content h4, #book-content h5, #book-content h6, #book-content p, #book-content ul, #book-content ol {
+    font-size: 100%; }
+  #book-content h3, #book-content h4, #book-content h5, #book-content h6, #book-content p, #book-content ol, #book-content ul {
+    color: #333; }
+  #book-content h1 {
+    font-size: 1.69em;
+    margin-bottom: 20px;
+    color: #08629A; }
+    #book-content h1 .title-prefix {
+      color: #000; }
+  #book-content h2 {
+    line-height: 1.83em;
+    margin-bottom: 24px;
+    color: #333;
+    font-size: 1.5em; }
+  #book-content h3 {
+    font-size: 1.3em; }
+  #book-content p, #book-content ul, #book-content ol {
+    font-family: Georgia, serif;
+    font-size: 0.89em;
+    line-height: 1.83em;
+    padding-top: 6px;
+    padding-bottom: 6px; }
+    #book-content p p, #book-content p ul, #book-content p ol, #book-content ul p, #book-content ul ul, #book-content ul ol, #book-content ol p, #book-content ol ul, #book-content ol ol {
+      margin: 0;
+      font-size: 1em;
+      /*line-height: 1em;*/ }
+  #book-content ol .informalfigure.small, #book-content ol .informalfigure.medium, #book-content ol .figure.small, #book-content ol .figure.medium, #book-content ul .informalfigure.small, #book-content ul .informalfigure.medium, #book-content ul .figure.small, #book-content ul .figure.medium {
+    float: none; }
+  #book-content .catalog-button p {
+    font-size: 1em; }
+  #book-content .catalog-button p, #book-content .catalog-button h1, #book-content .catalog-button h2, #book-content .catalog-button h3, #book-content .catalog-button h4, #book-content .catalog-button h5 {
+    margin: 0;
+    font-family: 'Calibri2', Calibri, sans-serif;
+    color: #fff !important; }
+  #book-content ul, #book-content ol {
+    padding-left: 25px; }
+  #book-content table {
+    font-size: 0.9em;
+    border-collapse: collapse; }
+    #book-content table thead th {
+      padding: 5px;
+      border: 1px solid #000;
+      color: #f48800;
+      font-weight: bold; }
+    #book-content table tfoot th {
+      padding: 5px;
+      border: 1px solid #000;
+      font-weight: bold; }
+    #book-content table td {
+      border-top: 0;
+      border-style: solid;
+      border-width: 1px;
+      padding: 5px; }
+  #book-content .table {
+    margin-top: 20px;
+    margin-bottom: 20px; }
+  #book-content .informaltable {
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 13px;
+    margin-bottom: 13px; }
+  #book-content .informalequation {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px; }
+  #book-content .chapter > .title, #book-content .chapter > .block-container .title, #book-content .article > .title, #book-content .article > .block-container .title, #book-content .preface > .title, #book-content .preface > .block-container .title {
+    /*margin-top: 2px;*/
+    text-align: center; }
+    #book-content .chapter > .title .title-prefix, #book-content .chapter > .block-container .title .title-prefix, #book-content .article > .title .title-prefix, #book-content .article > .block-container .title .title-prefix, #book-content .preface > .title .title-prefix, #book-content .preface > .block-container .title .title-prefix {
+      display: block;
+      padding-bottom: 5px;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #ddd; }
+  #book-content .preface h2, #book-content .article h2 {
+    text-align: center;
+    font-size: 1.4em;
+    margin: 0; }
+  #book-content .section .section h2.title {
+    font-size: 1.2em;
+    margin: 0; }
+  #book-content .section .section .section h2.title {
+    font-size: 1.05em; }
+  #book-content .glossterm {
+    color: #111;
+    font-weight: bold;
+    border-bottom: 1px dashed #999; }
+    #book-content .glossterm:hover {
+      text-decoration: none; }
+  #book-content .glossdef {
+    display: none; }
+  #book-content #hrfn {
+    clear: both; }
+  #book-content .learning_objectives, #book-content .key_takeaways, #book-content .exercises, #book-content .exercises-math, #book-content .qandaset, #book-content .callout {
+    /* Figures Sizes and Placement */ }
+    #book-content .learning_objectives .figure, #book-content .learning_objectives .informalfigure, #book-content .key_takeaways .figure, #book-content .key_takeaways .informalfigure, #book-content .exercises .figure, #book-content .exercises .informalfigure, #book-content .exercises-math .figure, #book-content .exercises-math .informalfigure, #book-content .qandaset .figure, #book-content .qandaset .informalfigure, #book-content .callout .figure, #book-content .callout .informalfigure {
+      border: 0px; }
+      #book-content .learning_objectives .figure.large img, #book-content .learning_objectives .figure.full img, #book-content .learning_objectives .figure.fullpage img, #book-content .learning_objectives .informalfigure.large img, #book-content .learning_objectives .informalfigure.full img, #book-content .learning_objectives .informalfigure.fullpage img, #book-content .key_takeaways .figure.large img, #book-content .key_takeaways .figure.full img, #book-content .key_takeaways .figure.fullpage img, #book-content .key_takeaways .informalfigure.large img, #book-content .key_takeaways .informalfigure.full img, #book-content .key_takeaways .informalfigure.fullpage img, #book-content .exercises .figure.large img, #book-content .exercises .figure.full img, #book-content .exercises .figure.fullpage img, #book-content .exercises .informalfigure.large img, #book-content .exercises .informalfigure.full img, #book-content .exercises .informalfigure.fullpage img, #book-content .exercises-math .figure.large img, #book-content .exercises-math .figure.full img, #book-content .exercises-math .figure.fullpage img, #book-content .exercises-math .informalfigure.large img, #book-content .exercises-math .informalfigure.full img, #book-content .exercises-math .informalfigure.fullpage img, #book-content .qandaset .figure.large img, #book-content .qandaset .figure.full img, #book-content .qandaset .figure.fullpage img, #book-content .qandaset .informalfigure.large img, #book-content .qandaset .informalfigure.full img, #book-content .qandaset .informalfigure.fullpage img, #book-content .callout .figure.large img, #book-content .callout .figure.full img, #book-content .callout .figure.fullpage img, #book-content .callout .informalfigure.large img, #book-content .callout .informalfigure.full img, #book-content .callout .informalfigure.fullpage img {
+        max-width: 400px;
+        max-height: 400px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto; }
+      #book-content .learning_objectives .figure.small, #book-content .learning_objectives .figure.medium, #book-content .learning_objectives .informalfigure.small, #book-content .learning_objectives .informalfigure.medium, #book-content .key_takeaways .figure.small, #book-content .key_takeaways .figure.medium, #book-content .key_takeaways .informalfigure.small, #book-content .key_takeaways .informalfigure.medium, #book-content .exercises .figure.small, #book-content .exercises .figure.medium, #book-content .exercises .informalfigure.small, #book-content .exercises .informalfigure.medium, #book-content .exercises-math .figure.small, #book-content .exercises-math .figure.medium, #book-content .exercises-math .informalfigure.small, #book-content .exercises-math .informalfigure.medium, #book-content .qandaset .figure.small, #book-content .qandaset .figure.medium, #book-content .qandaset .informalfigure.small, #book-content .qandaset .informalfigure.medium, #book-content .callout .figure.small, #book-content .callout .figure.medium, #book-content .callout .informalfigure.small, #book-content .callout .informalfigure.medium {
+        float: none; }
+      #book-content .learning_objectives .figure p, #book-content .learning_objectives .informalfigure p, #book-content .key_takeaways .figure p, #book-content .key_takeaways .informalfigure p, #book-content .exercises .figure p, #book-content .exercises .informalfigure p, #book-content .exercises-math .figure p, #book-content .exercises-math .informalfigure p, #book-content .qandaset .figure p, #book-content .qandaset .informalfigure p, #book-content .callout .figure p, #book-content .callout .informalfigure p {
+        font-style: italic;
+        font-size: 0.8em; }
+      #book-content .learning_objectives .figure .title, #book-content .learning_objectives .informalfigure .title, #book-content .key_takeaways .figure .title, #book-content .key_takeaways .informalfigure .title, #book-content .exercises .figure .title, #book-content .exercises .informalfigure .title, #book-content .exercises-math .figure .title, #book-content .exercises-math .informalfigure .title, #book-content .qandaset .figure .title, #book-content .qandaset .informalfigure .title, #book-content .callout .figure .title, #book-content .callout .informalfigure .title {
+        background-color: inherit;
+        /* avoid blue background */
+        text-transform: inherit;
+        text-align: left;
+        letter-spacing: 0;
+        margin-bottom: 0px;
+        padding: 0px; }
+        #book-content .learning_objectives .figure .title .title-prefix, #book-content .learning_objectives .informalfigure .title .title-prefix, #book-content .key_takeaways .figure .title .title-prefix, #book-content .key_takeaways .informalfigure .title .title-prefix, #book-content .exercises .figure .title .title-prefix, #book-content .exercises .informalfigure .title .title-prefix, #book-content .exercises-math .figure .title .title-prefix, #book-content .exercises-math .informalfigure .title .title-prefix, #book-content .qandaset .figure .title .title-prefix, #book-content .qandaset .informalfigure .title .title-prefix, #book-content .callout .figure .title .title-prefix, #book-content .callout .informalfigure .title .title-prefix {
+          display: block; }
+  #book-content .learning_objectives, #book-content .key_takeaways, #book-content .exercises, #book-content .qandaset, #book-content .callout {
+    margin-top: 14px;
+    margin-bottom: 14px;
+    clear: both; }
+  #book-content .keyterm {
+    background-color: #d7eaf1;
+    padding-bottom: 0px !important; }
+  #book-content .keyterm dl {
+    background-color: #e8f3f7;
+    margin-top: -8px;
+    padding: 10px 0px 20px 30px;
+    font-size: 0.9em; }
+    #book-content .keyterm dl dt {
+      list-style-type: none !important;
+      clear: left;
+      float: left;
+      font-weight: bold;
+      display: inline !important;
+      text-transform: capitalize;
+      margin: 0px;
+      padding: 10px 0px 0px 4px; }
+      #book-content .keyterm dl dt:after {
+        content: ':'; }
+    #book-content .keyterm dl dd {
+      margin: 0px;
+      padding: 10px 20px 0px 4px; }
+      #book-content .keyterm dl dd:before {
+        content: '\a0 '; }
+  #book-content .learning_objectives, #book-content .key_takeaways, #book-content .exercises, #book-content .exercises-math, #book-content .qandaset, #book-content .keyterm {
+    padding-bottom: 20px; }
+    #book-content .learning_objectives .title, #book-content .key_takeaways .title, #book-content .exercises .title, #book-content .exercises-math .title, #book-content .qandaset .title, #book-content .keyterm .title {
+      font-size: 1.1em;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 0.125em;
+      padding: 10px 0px 7px 0px;
+      margin-bottom: 10px; }
+    #book-content .learning_objectives ol, #book-content .learning_objectives ul, #book-content .learning_objectives p, #book-content .key_takeaways ol, #book-content .key_takeaways ul, #book-content .key_takeaways p, #book-content .exercises ol, #book-content .exercises ul, #book-content .exercises p, #book-content .exercises-math ol, #book-content .exercises-math ul, #book-content .exercises-math p, #book-content .qandaset ol, #book-content .qandaset ul, #book-content .qandaset p, #book-content .keyterm ol, #book-content .keyterm ul, #book-content .keyterm p {
+      font-family: 'Calibri2', Calibri, Arial, 'Trebuchet MS', sans-serif;
+      margin: 10px 25px 0 20px; }
+  #book-content .learning_objectives {
+    background-color: #eae9dc; }
+    #book-content .learning_objectives > .title {
+      background-color: #d2d1c2; }
+  #book-content .key_takeaways {
+    background-color: #ecf9ea; }
+    #book-content .key_takeaways > .title {
+      color: #fff;
+      background-color: #39892f; }
+  #book-content .exercises, #book-content .exercises-math, #book-content .qandaset {
+    background-color: #e3eff7; }
+    #book-content .exercises .title, #book-content .exercises-math .title, #book-content .qandaset .title {
+      background-color: #08629a;
+      color: white; }
+  #book-content .equation p.title {
+    font-style: italic;
+    padding: 10px 10px 0 10px; }
+  #book-content .figure, #book-content .informalfigure {
+    border-bottom: 1px solid #dddddd;
+    margin-bottom: 30px;
+    /* Figures Sizes and Placement */ }
+    #book-content .figure p, #book-content .informalfigure p {
+      font-style: italic;
+      font-size: 0.8em; }
+    #book-content .figure .title, #book-content .informalfigure .title {
+      color: #BB9966;
+      padding: 10px 10px 0 10px; }
+      #book-content .figure .title .title-prefix, #book-content .informalfigure .title .title-prefix {
+        color: black;
+        padding: 0 5px 0 0; }
+    #book-content .figure.small, #book-content .figure.medium, #book-content .informalfigure.small, #book-content .informalfigure.medium {
+      clear: right;
+      float: right;
+      padding: 10px;
+      max-width: 150px; }
+    #book-content .figure.small img, #book-content .informalfigure.small img {
+      max-width: 150px; }
+    #book-content .figure.medium img, #book-content .informalfigure.medium img {
+      max-width: 150px; }
+    #book-content .figure.large img, #book-content .figure.full img, #book-content .figure.fullpage img, #book-content .informalfigure.large img, #book-content .informalfigure.full img, #book-content .informalfigure.fullpage img {
+      max-width: 497px;
+      max-height: 400px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto; }
+    #book-content .figure.fullpage img, #book-content .informalfigure.fullpage img {
+      max-height: none;
+      width: 100%; }
+  #book-content .exercises-math .figure.small, #book-content .exercises-math .informalfigure.small, #book-content .callout .figure.small, #book-content .callout .informalfigure.small {
+    float: none; }
+  #book-content .exercises-math .figure.medium, #book-content .exercises-math .informalfigure.medium, #book-content .callout .figure.medium, #book-content .callout .informalfigure.medium {
+    float: none; }
+  #book-content .exercises-math .figure.large img, #book-content .exercises-math .figure.full img, #book-content .exercises-math .informalfigure.large img, #book-content .exercises-math .informalfigure.full img, #book-content .callout .figure.large img, #book-content .callout .figure.full img, #book-content .callout .informalfigure.large img, #book-content .callout .informalfigure.full img {
+    width: 100%; }
+  #book-content .callout {
+    background-color: #f4f4f4;
+    border: solid 3px #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 10px; }
+  #book-content #howto {
+    margin-top: 10px; }
+    #book-content #howto #howto-header {
+      font-weight: bold; }
+  #book-content .video embed, #book-content .mediaobject embed, #book-content .audio embed {
+    height: 358px;
+    width: 477px; }
+  #book-content .video p, #book-content .mediaobject p, #book-content .audio p {
+    font-style: italic;
+    font-size: 0.85em; }
+  #book-content sup {
+    vertical-align: super;
+    line-height: 0; }
+  #book-content .footnote ol, #book-content .footnote ul, #book-content .footnote p, #book-content .footnote sup {
+    font-family: 'Calibri2', Calibri, Arial, 'Trebuchet MS', sans-serif; }
+  #book-content ol[numeration='loweralpha'] li {
+    list-style-type: lower-alpha; }
+  #book-content ol[numeration='arabic'] li {
+    list-style-type: decimal; }
+  #book-content .qandaset {
+    counter-reset: q-or-a; }
+    #book-content .qandaset ol.qandadiv {
+      margin: 0;
+      padding: 0; }
+    #book-content .qandaset .qandaentry {
+      display: list-item;
+      margin-left: 30px; }
+      #book-content .qandaset .qandaentry[audience='instructoronly'] {
+        visibility: hidden;
+        height: 0; }
+      #book-content .qandaset .qandaentry .question, #book-content .qandaset .qandaentry .answer {
+        counter-increment: q-or-a; }
+        #book-content .qandaset .qandaentry .question *, #book-content .qandaset .qandaentry .answer * {
+          margin: 0;
+          font-size: 1em; }
+        #book-content .qandaset .qandaentry .question ol, #book-content .qandaset .qandaentry .answer ol {
+          list-style-type: lower-alpha; }
+  #book-content .next-button {
+    float: right;
+    margin-bottom: 10px; }
+  #book-content .epigraph {
+    font-style: italic; }
+    #book-content .epigraph .attribution::before {
+      content: "- "; }
+    #book-content .epigraph .attribution {
+      margin-left: 10px; }
+  #book-content .creative_commons {
+    margin: 20px 0 10px; }
+
+.mini-page #book-main-right {
+  display: none; }
+.mini-page #book-main {
+  float: none;
+  margin: 0 auto 0 auto;
+  width: 100%; }
+  .mini-page #book-main #supplements, .mini-page #book-main #search-supplements-options, .mini-page #book-main #options-bookmark {
+    width: auto; }
+  .mini-page #book-main #book-content, .mini-page #book-main #supps-sa, .mini-page #book-main #search-supp-close {
+    margin-right: 40px; }
+
+#book-main-upper, #book-main {
+  margin-right: 9px; }
+
+#book-main-upper {
+  width: 590px;
+  height: 9px;
+  float: right;
+  background-image: url("/images/bookhub/book-edge-upper.png");
+  background-repeat: no-repeat;
+  background-position: top right;
+  margin-top: 10px; }
+
+#book-main-right {
+  background-image: url("/images/bookhub/book-edge-right.png");
+  background-repeat: no-repeat;
+  background-position: top right;
+  position: absolute;
+  width: 9px;
+  height: 363px;
+  right: 0px;
+  margin-top: 19px; }
+
+#book-main {
+  position: relative;
+  float: right;
+  overflow: hidden;
+  min-width: 590px;
+  width: 594px;
+  padding: 10px 0px 0 0;
+  border-right: 1px #dfdfdf solid;
+  -moz-box-shadow: 2px 2px 2px #efefef;
+  -webkit-box-shadow: 2px 2px 2px #efefef;
+  box-shadow: 2px 2px 2px #efefef;
+  background-image: url("/images/bookhub/book-edge-inner.png");
+  background-repeat: no-repeat;
+  background-position: top right; }
+  #book-main #helpful-hints {
+    position: absolute;
+    width: 240px;
+    z-index: 200;
+    right: 100px;
+    top: 50px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #BBB;
+    -moz-box-shadow: 0 0 2px #999999;
+    -webkit-box-shadow: 0 0 2px #999999;
+    box-shadow: 0 0 2px #999999; }
+    #book-main #helpful-hints .paperclip {
+      position: absolute;
+      left: 16px;
+      top: -8px; }
+    #book-main #helpful-hints .close {
+      position: absolute;
+      right: -18px;
+      top: -15px; }
+    #book-main #helpful-hints #top-bar {
+      height: 10px;
+      background-color: #328ec7;
+      -moz-border-radius: 2px 2px 0 0;
+      -webkit-border-radius: 2px 2px 0 0;
+      border-radius: 2px 2px 0 0; }
+    #book-main #helpful-hints #helpful-content {
+      background-color: #fdfddb;
+      -moz-border-radius: 0 0 2px 2px;
+      -webkit-border-radius: 0 0 2px 2px;
+      border-radius: 0 0 2px 2px;
+      padding: 20px 10px 10px 10px; }
+      #book-main #helpful-hints #helpful-content ul {
+        padding-left: 15px;
+        padding-top: 5px; }
+        #book-main #helpful-hints #helpful-content ul li {
+          margin-top: 3px;
+          line-height: 1.2em; }
+          #book-main #helpful-hints #helpful-content ul li:first-child {
+            margin-top: 0; }
+          #book-main #helpful-hints #helpful-content ul li p {
+            color: #555; }
+
+.right {
+  float: right; }
+
+.left {
+  float: left; }
+
+.fwk-tooltip.fwk-modal.ui-tooltip.fwk-tooltip-welcome h3 {
+  color: #08629a; }
+.fwk-tooltip.fwk-modal.ui-tooltip.fwk-tooltip-welcome .ui-tooltip-content {
+  padding-bottom: 0 !important;
+  border: 0; }
+.fwk-tooltip.fwk-modal.ui-tooltip.fwk-tooltip-welcome .ui-tooltip-title {
+  border-bottom: 2px #ddd solid !important; }

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Data Characteristics and Visualization</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s09-geospatial-data-management.html"><img src="shared/images/batch-left.png"></a> <a href="s09-geospatial-data-management.html">Previous Chapter</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s11-geospatial-analysis-i-vector-o.html">Next Chapter</a> <a href="s11-geospatial-analysis-i-vector-o.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="chapter" id="campbell_1.0-ch06" version="5.0" lang="en">
+    <h1 class="title editable block">
+<span class="title-prefix">Chapter 6</span> Data Characteristics and Visualization</h1>
+    <p class="para editable block" id="campbell_1.0-ch06_p01">In previous chapters, we learned how geographic information system (GIS) software packages use databases to store extensive attribute information for geospatial features within a map. The true usefulness of this information, however, is not realized until similarly powerful analytical tools are employed to access, process, and simplify the data. To accomplish this, GIS typically provides extensive tools for searching, querying, describing, summarizing, and classifying datasets. With these data exploration tools, even the most expansive datasets can be mined to provide users the ability to make meaningful insights into and statements about that information.</p>
+</div>
+<div class="section" id="campbell_1.0-ch06_s01" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">6.1</span> Descriptions and Summaries</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch06_s01_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch06_s01_l01">
+            <li>The objective of this section is to review the most frequently used measures of distribution, central tendency, and dispersion.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch06_s01_p01">No discussion of geospatial analysis would be complete without a brief overview of basic statistical concepts. The basic statistics outlined here represent a starting point for any attempt to describe, summarize, and analyze geospatial datasets. An example of a common geospatial statistical endeavor is the analysis of point data obtained by a series of rainfall gauges patterned throughout a particular region. Given these rain gauges, one could determine the typical amount and variability of rainfall at each station, as well as typical rainfall throughout the region as a whole. In addition, you could interpolate the amount of rainfall that falls between each station or the location where the most (or least) rainfall occurs. Furthermore, you could predict the expected amount of rainfall into the future at each station, between each station, or within the region as a whole.</p>
+    <p class="para editable block" id="campbell_1.0-ch06_s01_p02">The increase of computational power over the past few decades has given rise to vast datasets that cannot be summarized easily. <span class="margin_term"><a class="glossterm">Descriptive statistics</a><span class="glossdef">Presenting data in the form of tables and charts or summarizing data through the use of simple mathematical equations.</span></span> provide simple numeric descriptions of these large datasets. Descriptive statistics tend to be univariate analyses, meaning they examine one variable at a time. There are three families of descriptive statistics that we will discuss here: measures of distribution, measures of central tendency, and measures of dispersion. However, before we delve too deeply into various statistical techniques, we must first define a few terms.</p>
+    <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s01_l02">
+        <li>
+<em class="emphasis">Variable</em>: a symbol used to represent any given value or set of values</li>
+        <li>
+<em class="emphasis">Value</em>: an individual observation of a variable (in a geographic information system [GIS] this is also called a record)</li>
+        <li>
+<em class="emphasis">Population</em>: the universe of all possible values for a variable</li>
+        <li>
+<em class="emphasis">Sample</em>: a subset of the population</li>
+        <li>
+<em class="emphasis">n</em>: the number of observations for a variable</li>
+        <li>
+<em class="emphasis">Array</em>: a sequence of observed measures (in a GIS this is also called a field and is represented in an attribute table as a column)</li>
+        <li>
+<em class="emphasis">Sorted Array</em>: an ordered, quantitative array</li>
+    </ul>
+    <div class="section" id="campbell_1.0-ch06_s01_s01">
+        <h2 class="title editable block">Measures of Distribution</h2>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s01_p01">The <span class="margin_term"><a class="glossterm">measure of distribution</a><span class="glossdef">A statistic that uses a set of numbers and their frequency of occurrence collected from measurements taken over a statistical population.</span></span> of a variable is merely a summary of the frequency of values over the range of the dataset (hence, this is often called a frequency distribution). Typically, the values for the given variable will be grouped into a predetermined series of classes (also called intervals, bins, or categories), and the number of data values that fall into each class will be summarized. A graph showing the number of data values within each class range is called a <span class="margin_term"><a class="glossterm">histogram</a><span class="glossdef">A bar graph that represents the frequency of values of a quantity by vertical rectangles of varying heights and widths.</span></span>. For example, the percentage grades received by a class on an exam may result in the following array (<em class="emphasis">n</em> = 30):</p>
+        <span class="informalequation block"><span class="mathphrase">Array of Exam Scores: {87, 76, 89, 90, 64, 67, 59, 79, 88, 74, 72, 99, 81, 77, 75, 86, 94, 66, 75, 74, 83, 100, 92, 75, 73, 70, 60, 80, 85, 57}</span></span>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s01_p02">When placing this array into a frequency distribution, the following general guidelines should be observed. First, between five and fifteen different classes should be employed, although the exact number of classes depends on the number of observations. Second, each observation goes into one and only one class. Third, when possible, use classes that cover an equal range of values (Freund and Perles 2006).<span class="footnote" id="campbell_1.0-fn06_001">Freund, J., and B. Perles. 2006. <em class="emphasis">Modern Elementary Statistics</em>. Englewood Cliffs, NJ: Prentice Hall.</span> With these guidelines in mind, the exam score array shown earlier can be visualized with the following histogram (<a class="xref" href="#campbell_1.0-ch06_s01_s01_f01">Figure 6.1 "Histogram Showing the Frequency Distribution of Exam Scores"</a>).</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch06_s01_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 6.1</span> Histogram Showing the Frequency Distribution of Exam Scores</p>
+            <img src="section_10/c8856aafcf4a16552327a45c740c14dd.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s01_p03">As you can see from the histogram, certain descriptive observations can be readily made. Most students received a C on the exam (70–79). Two students failed the exam (50–59). Five students received an A (90–99). Note that this histogram does violate the third basic rule that each class cover an equal range because an F grade ranges from 0–59, whereas the other grades have ranges of equal size. Regardless, in this case we are most concerned with describing the distribution of grades received during the exam. Therefore, it makes perfect sense to create class ranges that best suit our individual needs.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch06_s01_s02">
+        <h2 class="title editable block">Measures of Central Tendency</h2>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s02_p01">We can further explore the exam score array by applying <span class="margin_term"><a class="glossterm">measures of central tendency</a><span class="glossdef">A statistic that measures the “middle” of a dataset.</span></span>. There are three primary measures of central tendency: the mean, mode, and median. The <span class="margin_term"><a class="glossterm">mean</a><span class="glossdef">The mathematical average of a set of numbers.</span></span>, more commonly referred to as the average, is the most often used measure of central tendency. To calculate the mean, simply add all the values in the array and divide that sum by the number of observations. To return to the exam score example from earlier, the sum of that array is 2,340, and there are 30 observations (<em class="emphasis">n</em> = 30). So, the mean is 2,340 / 30 = 78.</p>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s02_p02">The <span class="margin_term"><a class="glossterm">mode</a><span class="glossdef">An average found by determining the most frequent value in a group of values.</span></span> is the measure of central tendency that represents the most frequently occurring value in the array. In the case of the exam scores, the mode of the array is 75 as this was received by the most number of students (three, in total). Finally, the <span class="margin_term"><a class="glossterm">median</a><span class="glossdef">The value lying at the midpoint of a frequency distribution of observed values.</span></span> is the observation that, when the array is ordered from lowest to highest, falls exactly in the center of the sorted array. More specifically, the median is the value in the middle of the sorted array when there are an odd number of observations. Alternatively, when there is an even number of observations, the median is calculated by finding the mean of the two central values. If the array of exam scores were reordered into a sorted array, the scores would be listed thusly:</p>
+        <span class="informalequation block"><span class="mathphrase">Sorted Array of Exam Scores: {57, 59, 60, 64, 66, 67, 70, 72, 73, 74, 74, 75, 75, 75, 76, 77, 79, 80, 81, 83, 85, 86, 87, 88, 89, 90, 92, 93, 94, 99}</span></span>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s02_p03">Since <em class="emphasis">n</em> = 30 in this example, there are an even number of observations. Therefore, the mean of the two central values (15<sup class="superscript">th</sup> = 76 and 16<sup class="superscript">th</sup> = 77) is used to calculate the median as described earlier, resulting in (76 + 77) / 2 = 76.5. Taken together, the mean, mode, and median represent the most basic ways to examine trends in a dataset.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch06_s01_s03">
+        <h2 class="title editable block">Measures of Dispersion</h2>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s03_p01">The third type of descriptive statistics is <span class="margin_term"><a class="glossterm">measures of dispersion</a><span class="glossdef">The variability, or spread, in a variable or probability distribution.</span></span> (also referred to as measures of variability). These measures describe the spread of data around the mean. The simplest measure of dispersion is the <span class="margin_term"><a class="glossterm">range</a><span class="glossdef">The difference between the highest and lowest values in a dataset.</span></span>. The range equals the largest value minus in the dataset the smallest. In our case, the range is 99 − 57 = 42.</p>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s03_p02">The <span class="margin_term"><a class="glossterm">interquartile range</a><span class="glossdef">The difference between the first quartile (25th percentile) and the third quartile (75th percentile) of a set of ordered data.</span></span> represents a slightly more sophisticated measure of dispersion. This method divides the data into quartiles. To accomplish this, the median is used to divide the sorted array into two halves. These halves are again divided into halves by their own median. The first quartile (Q1) is the median of the lower half of the sorted array and is also referred to as the lower quartile. Q2 represents the median. Q3 is the median of the upper half of the sorted array and is referred to as the upper quartile. The difference between the upper and lower quartile is the interquartile range. In the exam score example, Q1 = 72.25 and Q3 = 86.75. Therefore, the interquartile range for this dataset is 86.75 − 72.25 = 14.50.</p>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s03_p03">A third measure of dispersion is the <span class="margin_term"><a class="glossterm">variance</a><span class="glossdef">A measure of the difference between a set of data points and their mean values.</span></span> (<em class="emphasis">s</em><sup class="superscript">2</sup>). To calculate the variance, subtract the raw value of each exam score from the mean of the exam scores. As you may guess, some of the differences will be positive, and some will be negative, resulting in the sum of differences equaling zero. As we are more interested in the magnitude of differences (or deviations) from the mean, one method to overcome this “zeroing” property is to square each deviation, thus removing the negative values from the output (<a class="xref" href="#campbell_1.0-ch06_s01_s03_f01">Figure 6.2</a>). This results in the following:</p>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch06_s01_s03_f01">
+            <p class="title"><span class="title-prefix">Figure 6.2</span> </p>
+            <img src="section_10/fb08dee61b34f3a6760c953160ef281e.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s03_p04">We then divide the sum of squares by either <em class="emphasis">n</em> − 1 (in the case of working with a sample) or <em class="emphasis">n</em> (in the case of working with a population). As the exam scores given here represent the entire population of the class, we will employ <a class="xref" href="#campbell_1.0-ch06_s01_s03_f02">Figure 6.3 "Variance"</a>, which results in a variance of <em class="emphasis">s</em><sup class="superscript">2</sup> = 116.4. If we wanted to use these exam scores to extrapolate information about the larger student body, we would be working with a sample of the population. In that case, we would divide the sum of squares by <em class="emphasis">n</em> − 1.</p>
+        <div class="figure large small-height editable block" id="campbell_1.0-ch06_s01_s03_f02">
+            <p class="title"><span class="title-prefix">Figure 6.3</span> Variance</p>
+            <img src="section_10/521fc07f833f62fed5f4759cf8fd7c25.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s03_p05"><span class="margin_term"><a class="glossterm">Standard deviation</a><span class="glossdef">A measure of the dispersion of a set of data from its mean.</span></span>, the final measure of dispersion discussed here, is the most commonly used measure of dispersion. To compensate for the squaring of each difference from the mean performed during the variance calculation, standard deviation takes the square root of the variance. As determined from <a class="xref" href="#campbell_1.0-ch06_s01_s03_f03">Figure 6.4 "Standard Deviation"</a>, our exam score example results in a standard deviation of <em class="emphasis">s</em> = SQRT(116.4) = 10.8.</p>
+        <div class="figure large small-height editable block" id="campbell_1.0-ch06_s01_s03_f03">
+            <p class="title"><span class="title-prefix">Figure 6.4</span> Standard Deviation</p>
+            <img src="section_10/ccf7e9b60c4bf86233664c238c3483ef.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch06_s01_s03_p06">Calculating the standard deviation allows us to make some notable inferences about the dispersion of our dataset. A small standard deviation suggests the values in the dataset are clustered around the mean, while a large standard deviation suggests the values are scattered widely around the mean. Additional inferences may be made about the standard deviation if the dataset conforms to a normal distribution. A normal distribution implies that the data, when placed into a frequency distribution (histogram), looks symmetrical or “bell-shaped.” When not “normal,” the frequency distribution of dataset is said to be positively or negatively “skewed” (<a class="xref" href="#campbell_1.0-ch06_s01_s03_f04">Figure 6.5 "Histograms of Normally Curved, Positively Skewed, and Negatively Skewed Datasets"</a>). Skewed data are those that maintain values that are not symmetrical around the mean. Regardless, normally distributed data maintains the property of having approximately 68 percent of the data values fall within ± 1 standard deviation of the mean, and 95 percent of the data value fall within ± 2 standard deviations of the mean. In our example, the mean is 78, and the standard deviation is 10.8. It can therefore be stated that 68 percent of the scores fall between 67.2 and 88.8 (i.e., 78 ± 10.8), while 95 percent of the scores fall between 56.4 and 99.6 (i.e., 78 ± [10.8 * 2]). For datasets that do not conform to the normal curve, it can be assumed that 75 percent of the data values fall within ± 2 standard deviations of the mean.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch06_s01_s03_f04">
+            <p class="title"><span class="title-prefix">Figure 6.5</span> Histograms of Normally Curved, Positively Skewed, and Negatively Skewed Datasets</p>
+            <img src="section_10/e8b3fa38d26678631d8c8c2c7822011b.jpg">
+        </div>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch06_s01_s03_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch06_s01_s03_l01">
+                <li>The measure of distribution for a given variable is a summary of the frequency of values over the range of the dataset and is commonly shown using a histogram.</li>
+                <li>Measures of central tendency attempt to provide insights into “typical” value for a dataset.</li>
+                <li>Measures of dispersion (or variability) describe the spread of data around the mean or median.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch06_s01_s03_n02">
+            <h3 class="title">Exercises</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch06_s01_s03_l02">
+                <li>Create a table containing at least thirty data values.</li>
+                <li>For the table you created, calculate the mean, mode, median, range, interquartile range, variance, and standard deviation.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="section" id="campbell_1.0-ch06_s02" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">6.2</span> Searches and Queries</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch06_s02_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch06_s02_l01">
+            <li>The objective of this section is to outline the basics of the SQL language and to understand the various query techniques available in a GIS.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch06_s02_p01">Access to robust search and query tools is essential to examine the general trends of a dataset. <span class="margin_term"><a class="glossterm">Queries</a><span class="glossdef">Searches or inquiries.</span></span> are essentially questions posed to a database. The selective display and retrieval of information based on these queries are essential components of any geographic information system (GIS). There are three basic methods for searching and querying attribute data: (1) selection, (2) query by attribute, and (3) query by geography.</p>
+    <div class="section" id="campbell_1.0-ch06_s02_s01">
+        <h2 class="title editable block">Selection</h2>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s01_p01"><span class="margin_term"><a class="glossterm">Selection</a><span class="glossdef">A defined subset of the larger set of data points or locales.</span></span> represents the easiest way to search and query spatial data in a GIS. Selecting features highlight those attributes of interest, both on-screen and in the attribute table, for subsequent display or analysis. To accomplish this, one selects points, lines, and polygons simply by using the cursor to “point-and-click” the feature of interest or by using the cursor to drag a box around those features. Alternatively, one can select features by using a graphic object, such as a circle, line, or polygon, to highlight all of those features that fall within the object. Advanced options for selecting subsets of data from the larger dataset include creating a new selection, selecting from the currently selected features, adding to the current selection, and removing from the current selection.</p>
+    </div>
+    <div class="section" id="campbell_1.0-ch06_s02_s02">
+        <h2 class="title editable block">Query by Attribute</h2>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s02_p01">Map features and their associated data can be retrieved via the query of attribute information within the data tables. For example, search and query tools allow a user to show all the census tracts that have a population density of 500 or greater, to show all counties that are less than or equal to 100 square kilometers, or to show all convenience stores within 1 mile of an interstate highway.</p>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s02_p02">Specifically, <span class="margin_term"><a class="glossterm">SQL (Structured Query Language)</a><span class="glossdef">A programming language designed to manage data in a relational database.</span></span> is a commonly used computer language developed to query attribute data within a relational database management system. Created by IBM in the 1970s, SQL allows for the retrieval of a subset of attribute information based on specific, user-defined criteria via the implementation of particular language elements. More recently, the use of SQL has been extended for use in a GIS (Shekhar and Chawla 2003).<span class="footnote" id="campbell_1.0-fn06_003">Shekhar, S., and S. Chawla. 2003. <em class="emphasis">Spatial Databases: A Tour</em>. Upper Saddle River, NJ: Prentice Hall.</span> One important note related to the use of SQL is that the exact expression used to query a dataset depends on the GIS file format being examined. For example, ANSI SQL is a particular version used to query ArcSDE geodatabases, while Jet SQL is used to access personal geodatabases. Similarly, shapefiles, coverages, and dBASE tables use a restricted version of SQL that doesn’t support all the features of ANSI SQL or Jet SQL.</p>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s02_p03">As discussed in <a class="xref" href="campbell_1.0-ch05#campbell_1.0-ch05">Chapter 5 "Geospatial Data Management"</a>, <a class="xref" href="campbell_1.0-ch05_s02#campbell_1.0-ch05_s02">Section 5.2 "Geospatial Database Management"</a>, all attribute tables in a relational database management system (RDBMS) used for an SQL query must contain primary and/or foreign keys for proper use. In addition to these keys, SQL implements clauses to structure database queries. A <span class="margin_term"><a class="glossterm">clause</a><span class="glossdef">A grammatical unit in SQL.</span></span> is a language element that includes the SELECT, FROM, WHERE, ORDER BY, and HAVING query statements.</p>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s02_s02_l01">
+            <li>SELECT denotes what attribute table fields you wish to view.</li>
+            <li>FROM denotes the attribute table in which the information resides.</li>
+            <li>WHERE denotes the user-defined criteria for the attribute information that must be met in order for it to be included in the output set.</li>
+            <li>ORDER BY denotes the sequence in which the output set will be displayed.</li>
+            <li>HAVING denotes the predicate used to filter output from the ORDER BY clause.</li>
+        </ul>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s02_p04">While the SELECT and FROM clauses are both mandatory statements in an SQL query, the WHERE is an optional clause used to limit the output set. The ORDER BY and HAVING are optional clauses used to present the information in an interpretable manner.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch06_s02_s02_f01">
+            <p class="title"><span class="title-prefix">Figure 6.6</span> Personal Addresses in “ExampleTable” Attribute Table</p>
+            <img src="section_10/e0fe0a05ac22294241978243657ad15f.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s02_p05">The following is a series of SQL expressions and results when applied to <a class="xref" href="#campbell_1.0-ch06_s02_s02_f01">Figure 6.6 "Personal Addresses in “ExampleTable” Attribute Table"</a>. The title of the attribute table is “ExampleTable.” Note that the asterisk (*) denotes a special case of SELECT whereby all columns for a given record are selected:</p>
+        <span class="informalequation block"><span class="mathphrase">SELECT * FROM ExampleTable WHERE City = “Upland”</span></span>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s02_p06">This statement returns the following:</p>
+        <div class="informalfigure large medium-height block">
+            <img src="section_10/84ea86f47f2ebf999e9ea90e87cb8b8c.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s02_p07">Consider the following statement:</p>
+        <span class="informalequation block"><span class="mathphrase">SELECT LastName FROM ExampleTable WHERE State = “CA” ORDER BY FirstName</span></span>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s02_p08">This statement results in the following table sorted in ascending order by the FirstName column (not included in the output table as directed by the SELECT clause):</p>
+        <div class="informalfigure large small-height block">
+            <img src="section_10/f295ebb0a4bdbb24e1e7b12f6f09fe58.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s02_p09">In addition to clauses, SQL allows for the inclusion of specific operators to further delimit the result of query. These operators can be relational, arithmetic, or Boolean and will typically appear inside of conditional statements in the WHERE clause. A <span class="margin_term"><a class="glossterm">relational operator</a><span class="glossdef">A construct that tests a relation between two entities.</span></span> employs the statements equal to (=), less than (&lt;), less than or equal to (&lt;=), greater than (&gt;), or greater than or equal to (&gt;=). <span class="margin_term"><a class="glossterm">Arithmetic operators</a><span class="glossdef">A construct that performs an arithmetic function.</span></span> are those mathematical functions that include addition (+), subtraction (−), multiplication (*), and division (/). <span class="margin_term"><a class="glossterm">Boolean operators</a><span class="glossdef">A construct that performs a logical comparison.</span></span> (also called Boolean connectors) include the statements AND, OR, XOR, and NOT. The AND connector is used to select records from the attribute table that satisfies both expressions. The OR connector selects records that satisfy either one or both expressions. The XOR connector selects records that satisfy one and only one of the expressions (the functional opposite of the AND connector). Lastly, the NOT connector is used to negate (or unselect) an expression that would otherwise be true. Put into the language of probability, the AND connector is used to represent an intersection, OR represents a union, and NOT represents a complement. <a class="xref" href="#campbell_1.0-ch06_s02_s02_f02">Figure 6.7 "Venn Diagram of SQL Operators"</a> illustrates the logic of these connectors, where circles A and B represent two sets of intersecting data. Keep in mind that SQL is a very exacting language and minor inconsistencies in the statement, such as additional spaces, can result in a failed query.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch06_s02_s02_f02">
+            <p class="title"><span class="title-prefix">Figure 6.7</span> Venn Diagram of SQL Operators</p>
+            <img src="section_10/f29eee3abd014546748ecf5a5a598b1b.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s02_p10">Used together, these operators combine to provide the GIS user with powerful and flexible search and query options. With this in mind, can you determine the output set of the following SQL query as it is applied to <a class="xref" href="campbell_1.0-ch06_s01#campbell_1.0-ch06_s01_s01_f01">Figure 6.1 "Histogram Showing the Frequency Distribution of Exam Scores"</a>?</p>
+        <span class="informalequation block"><span class="mathphrase">SELECT LastName, FirstName, StreetNumber FROM ExampleTable WHERE StreetNumber &gt;= 10000 AND StreetNumber &lt; 100 ORDER BY LastName</span></span>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s02_p11">The following are the results:</p>
+        <div class="informalfigure large medium-height block">
+            <img src="section_10/0b2fbb5a504bc4af7b28def08865c012.jpg">
+        </div>
+    </div>
+    <div class="section" id="campbell_1.0-ch06_s02_s03">
+        <h2 class="title editable block">Query by Geography</h2>
+        <p class="para editable block" id="campbell_1.0-ch06_s02_s03_p01">Query by geography, also known as a “spatial query,” allows one to highlight particular features by examining their position relative to other features. For example, a GIS provides robust tools that allow for the determination of the number of schools within 10 miles of a home. Several spatial query options are available, as outlined here. Throughout this discussion, the “target layer” refers to the feature dataset whose attributes are selected, while the “source layer” refers to the feature dataset on which the spatial query is applied. For example, if we were to use a state boundary polygon feature dataset to select highways from a line feature dataset (e.g., select all the highways that run through the state of Arkansas), the state layer is the source, while the highway layer is the target.</p>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s02_s03_l01">
+            <li>
+<strong class="emphasis bold">INTERSECT.</strong> This oft-used spatial query technique selects all features in the target layer that share a common locale with the source layer. The “intersect” query allows points, lines, or polygon layers to be used as both the source and target layers (<a class="xref" href="#campbell_1.0-ch06_s02_s03_f01">Figure 6.8</a>).</li>
+        </ul>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch06_s02_s03_f01">
+            <p class="title"><span class="title-prefix">Figure 6.8</span> </p>
+            <img src="section_10/7a0a60095f2f1d6fff13793fe5ee1d7e.jpg">
+            <p class="para">The highlighted blue and yellow features are selected because they intersect the red features.</p>
+        </div>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s02_s03_l04">
+            <li>
+<strong class="emphasis bold">ARE WITHIN A DISTANCE OF.</strong> This technique requires the user to specify some distance value, which is then used to buffer (<a class="xref" href="campbell_1.0-ch07#campbell_1.0-ch07">Chapter 7 "Geospatial Analysis I: Vector Operations"</a>, <a class="xref" href="campbell_1.0-ch07_s02#campbell_1.0-ch07_s02">Section 7.2 "Multiple Layer Analysis"</a>) the source layer. All features that intersect this buffer are highlighted in the target layer. The “are within a distance of” query allows points, lines, or polygon layers to be used for both the source and target layers (<a class="xref" href="#campbell_1.0-ch06_s02_s03_f02">Figure 6.9</a>).</li>
+        </ul>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch06_s02_s03_f02">
+            <p class="title"><span class="title-prefix">Figure 6.9</span> </p>
+            <img src="section_10/9b3e5ff24812a99e9258433b2aa95897.jpg">
+            <p class="para">The highlighted blue and yellow features are selected because they are within the selected distance of the red features; tan areas represent buffers around the various features.</p>
+        </div>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s02_s03_l05">
+            <li>
+<strong class="emphasis bold">COMPLETELY CONTAIN.</strong> This spatial query technique returns those features that are entirely within the source layer. Features with coincident boundaries are not selected by this query type. The “completely contain” query allows for points, lines, or polygons as the source layer, but only polygons can be used as a target layer (<a class="xref" href="#campbell_1.0-ch06_s02_s03_f03">Figure 6.10</a>).</li>
+        </ul>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch06_s02_s03_f03">
+            <p class="title"><span class="title-prefix">Figure 6.10</span> </p>
+            <img src="section_10/fda78d9b8a0a10435047510dbdffc1b0.jpg">
+            <p class="para">The highlighted blue and yellow features are selected because they completely contain the red features.</p>
+        </div>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s02_s03_l06">
+            <li>ARE COMPLETELY WITHIN. This query selects those features in the target layer whose entire spatial extent occurs within the geometry of the source layer. The “are completely within” query allows for points, lines, or polygons as the target layer, but only polygons can be used as a source layer (<a class="xref" href="#campbell_1.0-ch06_s02_s03_f04">Figure 6.11</a>).</li>
+        </ul>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch06_s02_s03_f04">
+            <p class="title"><span class="title-prefix">Figure 6.11</span> </p>
+            <img src="section_10/d17f218d182a354e38a64a0a90981abb.jpg">
+            <p class="para">The highlighted blue and yellow features are selected because they are completely within the red features.</p>
+        </div>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s02_s03_l07">
+            <li>
+<strong class="emphasis bold">HAVE THEIR CENTER IN.</strong> This technique selects target features whose center, or centroid, is located within the boundary of the source feature dataset. The “have their center in” query allows points, lines, or polygon layers to be used as both the source and target layers (<a class="xref" href="#campbell_1.0-ch06_s02_s03_f05">Figure 6.12</a>).</li>
+        </ul>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch06_s02_s03_f05">
+            <p class="title"><span class="title-prefix">Figure 6.12</span> </p>
+            <img src="section_10/febda1bfc18bd42532873ed546bb43ba.jpg">
+            <p class="para">The highlighted blue and yellow features are selected because they have their centers in the red features.</p>
+        </div>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s02_s03_l08">
+            <li>
+<strong class="emphasis bold">SHARE A LINE SEGMENT.</strong> This spatial query selects target features whose boundary geometries share a minimum of two adjacent vertices with the source layer. The “share a line segment” query allows for line or polygon layers to be used for either of the source and target layers (<a class="xref" href="#campbell_1.0-ch06_s02_s03_f06">Figure 6.13</a>).</li>
+        </ul>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch06_s02_s03_f06">
+            <p class="title"><span class="title-prefix">Figure 6.13</span> </p>
+            <img src="section_10/6c65cad889f14c080ec6bd140042d536.jpg">
+            <p class="para">The highlighted blue and yellow features are selected because they share a line segment with the red features.</p>
+        </div>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s02_s03_l09">
+            <li>
+<strong class="emphasis bold">TOUCH THE BOUNDARY OF.</strong> This methodology is similar to the INTERSECT spatial query; however, it selects line and polygon features that share a common boundary with target layer. The “touch the boundary of” query allows for line or polygon layers to be used as both the source and target layers (<a class="xref" href="#campbell_1.0-ch06_s02_s03_f07">Figure 6.14</a>).</li>
+        </ul>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch06_s02_s03_f07">
+            <p class="title"><span class="title-prefix">Figure 6.14</span> </p>
+            <img src="section_10/1eea122af6a0514477053c9fd1e4ae09.jpg">
+            <p class="para">The highlighted blue and yellow features are selected because they touch the boundary of the red features.</p>
+        </div>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s02_s03_l10">
+            <li>
+<strong class="emphasis bold">ARE IDENTICAL TO.</strong> This spatial query returns features that have the exact same geographic location. The “are identical to” query can be used on points, lines, or polygons, but the target layer type must be the same as the source layer type (<a class="xref" href="#campbell_1.0-ch06_s02_s03_f08">Figure 6.15</a>).</li>
+        </ul>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch06_s02_s03_f08">
+            <p class="title"><span class="title-prefix">Figure 6.15</span> </p>
+            <img src="section_10/5d759c185697124c78c237c38e36f30d.jpg">
+            <p class="para">The highlighted blue and yellow features are selected because they are identical to the red features.</p>
+        </div>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s02_s03_l11">
+            <li>
+<strong class="emphasis bold">ARE CROSSED BY THE OUTLINE OF.</strong> This selection criteria returns features that share a single vertex but not an entire line segment. The “are crossed by the outline of” query allows for line or polygon layers to be used as both source and target layers (<a class="xref" href="#campbell_1.0-ch06_s02_s03_f09">Figure 6.16</a>).</li>
+        </ul>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch06_s02_s03_f09">
+            <p class="title"><span class="title-prefix">Figure 6.16</span> </p>
+            <img src="section_10/bc4348930205b5d1b86977f9ba505860.jpg">
+            <p class="para">The highlighted blue and yellow features are selected because they are crossed by the outline of the red features.</p>
+        </div>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s02_s03_l12">
+            <li>
+<strong class="emphasis bold">CONTAIN.</strong> This method is similar to the COMPLETELY CONTAIN spatial query; however, features in the target layer will be selected even if the boundaries overlap. The “contain” query allows for point, line, or polygon features in the target layer when points are used as a source; when line and polygon target layers with a line source; and when only polygon target layers with a polygon source (<a class="xref" href="#campbell_1.0-ch06_s02_s03_f10">Figure 6.17</a>).</li>
+        </ul>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch06_s02_s03_f10">
+            <p class="title"><span class="title-prefix">Figure 6.17</span> </p>
+            <img src="section_10/b9fb88c22ae4490c609a22997f05f550.jpg">
+            <p class="para">The highlighted blue and yellow features are selected because they contain the red features.</p>
+        </div>
+        <ul class="itemizedlist editable block" id="campbell_1.0-ch06_s02_s03_l13">
+            <li>
+<strong class="emphasis bold">ARE CONTAINED BY.</strong> This method is similar to the ARE COMPLETELY WITHIN spatial query; however, features in the target layer will be selected even if the boundaries overlap. The “are contained by” query allows for point, line, or polygon features in the target layer when polygons are used as a source; when point and line target layers with a line source; and when only point target layers with a point source (<a class="xref" href="#campbell_1.0-ch06_s02_s03_f11">Figure 6.18</a>).</li>
+        </ul>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch06_s02_s03_f11">
+            <p class="title"><span class="title-prefix">Figure 6.18</span> </p>
+            <img src="section_10/ebbcab4d654e600bc258816adbb8863b.jpg">
+            <p class="para">The highlighted blue and yellow features are selected because they are contained by the red features.</p>
+        </div>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch06_s02_s03_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch06_s02_s03_l02">
+                <li>The three basic methods for searching and querying attribute data are selection, query by attribute, and query by geography.</li>
+                <li>SQL is a commonly used computer language developed to query by attribute data within a relational database management system.</li>
+                <li>Queries by geography allow a user to highlight desired features by examining their position relative to other features. The eleven different query-by-geography options listed here are available in most GIS software packages.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch06_s02_s03_n02">
+            <h3 class="title">Exercises</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch06_s02_s03_l03">
+                <li>Using <a class="xref" href="campbell_1.0-ch06_s01#campbell_1.0-ch06_s01_s01_f01">Figure 6.1 "Histogram Showing the Frequency Distribution of Exam Scores"</a>, develop the SQL statement that results in the output of all the street names of people living in Los Angeles, sorted by street number.</li>
+                <li>When querying by geography, what is the difference between a source layer and a target layer?</li>
+                <li>What is the difference between the CONTAIN, COMPLETELY CONTAIN, and ARE CONTAINED BY queries?</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="section" id="campbell_1.0-ch06_s03" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">6.3</span> Data Classification</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch06_s03_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch06_s03_l01">
+            <li>The objective of this section is to describe the methodologies available to parse data into various classes for visual representation in a map.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch06_s03_p01">The process of data classification combines raw data into predefined classes, or bins. These classes may be represented in a map by some unique symbols or, in the case of choropleth maps, by a unique color or hue (for more on color and hue, see <a class="xref" href="campbell_1.0-ch08#campbell_1.0-ch08">Chapter 8 "Geospatial Analysis II: Raster Data"</a>, <a class="xref" href="campbell_1.0-ch08_s01#campbell_1.0-ch08_s01">Section 8.1 "Basic Geoprocessing with Rasters"</a>). <span class="margin_term"><a class="glossterm">Choropleth maps</a><span class="glossdef">A mapping technique that uses graded differences in shading, color, or symbolology to define average values of some property or quantity.</span></span> are thematic maps shaded with graduated colors to represent some statistical variable of interest. Although seemingly straightforward, there are several different classification methodologies available to a cartographer. These methodologies break the attribute values down along various interval patterns. Monmonier (1991)<span class="footnote" id="campbell_1.0-fn06_002">Monmonier, M. 1991. <em class="emphasis">How to Lie with Maps</em>. Chicago: University of Chicago Press.</span> noted that different classification methodologies can have a major impact on the interpretability of a given map as the visual pattern presented is easily distorted by manipulating the specific interval breaks of the classification. In addition to the methodology employed, the number of classes chosen to represent the feature of interest will also significantly affect the ability of the viewer to interpret the mapped information. Including too many classes can make a map look overly complex and confusing. Too few classes can oversimplify the map and hide important data trends. Most effective classification attempts utilize approximately four to six distinct classes.</p>
+    <p class="para editable block" id="campbell_1.0-ch06_s03_p02">While problems potentially exist with any classification technique, a well-constructed choropleth increases the interpretability of any given map. The following discussion outlines the classification methods commonly available in geographic information system (GIS) software packages. In these examples, we will use the US Census Bureau’s population statistic for US counties in 1997. These data are freely available at the US Census website (<a class="link" target="_blank" href="http://www.census.gov">http://www.census.gov</a>).</p>
+    <p class="para editable block" id="campbell_1.0-ch06_s03_p03">The <span class="margin_term"><a class="glossterm">equal interval</a><span class="glossdef">A choropleth mapping technique that sets the value ranges in each category to an equal size.</span></span> (or equal step) classification method divides the range of attribute values into equally sized classes. The number of classes is determined by the user. The equal interval classification method is best used for continuous datasets such as precipitation or temperature. In the case of the 1997 Census Bureau data, county population values across the United States range from 40 (Yellowstone National Park County, MO) to 9,184,770 (Los Angeles County, CA) for a total range of 9,184,770 − 40 = 9,184,730. If we decide to classify this data into 5 equal interval classes, the range of each class would cover a population spread of 9,184,730 / 5 = 1,836,946 (<a class="xref" href="#campbell_1.0-ch06_s03_f01">Figure 6.19 "Equal Interval Classification for 1997 US County Population Data"</a>). The advantage of the equal interval classification method is that it creates a legend that is easy to interpret and present to a nontechnical audience. The primary disadvantage is that certain datasets will end up with most of the data values falling into only one or two classes, while few to no values will occupy the other classes. As you can see in <a class="xref" href="#campbell_1.0-ch06_s03_f01">Figure 6.19 "Equal Interval Classification for 1997 US County Population Data"</a>, almost all the counties are assigned to the first (yellow) bin.</p>
+    <div class="figure large large-height editable block" id="campbell_1.0-ch06_s03_f01">
+        <p class="title"><span class="title-prefix">Figure 6.19</span> Equal Interval Classification for 1997 US County Population Data</p>
+        <img src="section_10/c669418ef56bdfb2a286dbf3387e3517.jpg">
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch06_s03_p04">The <span class="margin_term"><a class="glossterm">quantile</a><span class="glossdef">A choropleth mapping technique that classifies data into a predefined number of categories with an equal number of units in each category.</span></span> classification method places equal numbers of observations into each class. This method is best for data that is evenly distributed across its range. <a class="xref" href="#campbell_1.0-ch06_s03_f02">Figure 6.20 "Quantiles"</a> shows the quantile classification method with five total classes. As there are 3,140 counties in the United States, each class in the quantile classification methodology will contain 3,140 / 5 = 628 different counties. The advantage to this method is that it often excels at emphasizing the relative position of the data values (i.e., which counties contain the top 20 percent of the US population). The primary disadvantage of the quantile classification methodology is that features placed within the same class can have wildly differing values, particularly if the data are not evenly distributed across its range. In addition, the opposite can also happen whereby values with small range differences can be placed into different classes, suggesting a wider difference in the dataset than actually exists.</p>
+    <div class="figure large large-height editable block" id="campbell_1.0-ch06_s03_f02">
+        <p class="title"><span class="title-prefix">Figure 6.20</span> Quantiles</p>
+        <img src="section_10/88d9d2d38addce5f58137b0f15066d2d.jpg">
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch06_s03_p05">The <span class="margin_term"><a class="glossterm">natural breaks (or Jenks)</a><span class="glossdef">A choropleth mapping technique that places class breaks in gaps between clusters of values.</span></span> classification method utilizes an algorithm to group values in classes that are separated by distinct break points. This method is best used with data that is unevenly distributed but not skewed toward either end of the distribution. <a class="xref" href="#campbell_1.0-ch06_s03_f03">Figure 6.21 "Natural Breaks"</a> shows the natural breaks classification for the 1997 US county population density data. One potential disadvantage is that this method can create classes that contain widely varying number ranges. Accordingly, class 1 is characterized by a range of just over 150,000, while class 5 is characterized by a range of over 6,000,000. In cases like this, it is often useful to either “tweak” the classes following the classification effort or to change the labels to some ordinal scale such as “small, medium, or large.” The latter example, in particular, can result in a map that is more comprehensible to the viewer. A second disadvantage is the fact that it can be difficult to compare two or more maps created with the natural breaks classification method because the class ranges are so very specific to each dataset. In these cases, datasets that may not be overly disparate may appear so in the output graphic.</p>
+    <div class="figure large large-height editable block" id="campbell_1.0-ch06_s03_f03">
+        <p class="title"><span class="title-prefix">Figure 6.21</span> Natural Breaks</p>
+        <img src="section_10/4f17a636f3d63f632710e0f6570840eb.jpg">
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch06_s03_p06">Finally, the standard deviation classification method forms each class by adding and subtracting the standard deviation from the mean of the dataset. The method is best suited to be used with data that conforms to a normal distribution. In the county population example, the mean is 85,108, and the standard deviation is 277,080. Therefore, as can be seen in the legend of <a class="xref" href="#campbell_1.0-ch06_s03_f05">Figure 6.22 "Standard Deviation"</a>, the central class contains values within a 0.5 standard deviation of the mean, while the upper and lower classes contain values that are 0.5 or more standard deviations above or below the mean, respectively.</p>
+    <div class="figure large large-height editable block" id="campbell_1.0-ch06_s03_f05">
+        <p class="title"><span class="title-prefix">Figure 6.22</span> Standard Deviation</p>
+        <img src="section_10/a5bfcd571c5fd7f006c647bdf306251e.jpg">
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch06_s03_p07">In conclusion, there are several viable data classification methodologies that can be applied to choropleth maps. Although other methods are available (e.g., equal area, optimal), those outlined here represent the most commonly used and widely available. Each of these methods presents the data in a different fashion and highlights different aspects of the trends in the dataset. Indeed, the classification methodology, as well as the number of classes utilized, can result in very widely varying interpretations of the dataset. It is incumbent upon you, the cartographer, to select the method that best suits the needs of the study and presents the data in as meaningful and transparent a way as possible.</p>
+    <div class="key_takeaways editable block" id="campbell_1.0-ch06_s03_n02">
+        <h3 class="title">Key Takeaways</h3>
+        <ul class="itemizedlist" id="campbell_1.0-ch06_s03_l02">
+            <li>Choropleth maps are thematic maps shaded with graduated colors to represent some statistical variable of interest.</li>
+            <li>Four methods for classifying data presented here include equal intervals, quartile, natural breaks, and standard deviation. These methods convey certain advantages and disadvantages when visualizing a variable of interest.</li>
+        </ul>
+    </div>
+    <div class="exercises editable block" id="campbell_1.0-ch06_s03_n03">
+        <h3 class="title">Exercises</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch06_s03_l03">
+            <li>Given the choropleth maps presented in this chapter, which do you feel best represents the dataset? Why?</li>
+            <li>Go online and describe two other data classification methods available to GIS users.</li>
+            <li>For the table of thirty data values created in <a class="xref" href="campbell_1.0-ch06_s01#campbell_1.0-ch06_s01">Section 6.1 "Descriptions and Summaries"</a>, Exercise 1, determine the data ranges for each class as if you were creating both equal interval and quantile classification schemes.</li>
+        </ol>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s09-geospatial-data-management.html"><img src="shared/images/batch-left.png"></a> <a href="s09-geospatial-data-management.html">Previous Chapter</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s11-geospatial-analysis-i-vector-o.html">Next Chapter</a> <a href="s11-geospatial-analysis-i-vector-o.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

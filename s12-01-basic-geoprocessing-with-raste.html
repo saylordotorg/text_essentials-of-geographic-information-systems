@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Basic Geoprocessing with Rasters</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s11-02-multiple-layer-analysis.html"><img src="shared/images/batch-left.png"></a> <a href="s11-02-multiple-layer-analysis.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s12-02-scale-of-analysis.html">Next Section</a> <a href="s12-02-scale-of-analysis.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch08_s01" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">8.1</span> Basic Geoprocessing with Rasters</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch08_s01_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch08_s01_l01">
+            <li>The objective of this section is to become familiar with basic single and multiple raster geoprocessing techniques.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch08_s01_p01">Like the geoprocessing tools available for use on vector datasets (<a class="xref" href="#campbell_1.0-ch08_s01">Section 8.1 "Basic Geoprocessing with Rasters"</a>), raster data can undergo similar spatial operations. Although the actual computation of these operations is significantly different from their vector counterparts, their conceptual underpinning is similar. The geoprocessing techniques covered here include both single layer (<a class="xref" href="#campbell_1.0-ch08_s01_s01">Section 8.1.1 "Single Layer Analysis"</a>) and multiple layer (<a class="xref" href="#campbell_1.0-ch08_s01_s02">Section 8.1.2 "Multiple Layer Analysis"</a>) operations.</p>
+    <div class="section" id="campbell_1.0-ch08_s01_s01">
+        <h2 class="title editable block">Single Layer Analysis</h2>
+        <p class="para editable block" id="campbell_1.0-ch08_s01_s01_p01">Reclassifying, or recoding, a dataset is commonly one of the first steps undertaken during raster analysis. Reclassification is basically the single layer process of assigning a new class or range value to all pixels in the dataset based on their original values (<a class="xref" href="#campbell_1.0-ch08_s01_s01_f01">Figure 8.1 "Raster Reclassification"</a>. For example, an elevation grid commonly contains a different value for nearly every cell within its extent. These values could be simplified by aggregating each pixel value in a few discrete classes (i.e., 0–100 = “1,” 101–200 = “2,” 201–300 = “3,” etc.). This simplification allows for fewer unique values and cheaper storage requirements. In addition, these reclassified layers are often used as inputs in secondary analyses, such as those discussed later in this section.</p>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch08_s01_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 8.1</span> Raster Reclassification</p>
+            <img src="section_12/633731ca27e67f01d674b6d1aaaf19bc.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch08_s01_s01_p02">As described in <a class="xref" href="campbell_1.0-ch07#campbell_1.0-ch07">Chapter 7 "Geospatial Analysis I: Vector Operations"</a>, buffering is the process of creating an output dataset that contains a zone (or zones) of a specified width around an input feature. In the case of raster datasets, these input features are given as a grid cell or a group of grid cells containing a uniform value (e.g., buffer all cells whose value = 1). Buffers are particularly suited for determining the area of influence around features of interest. Whereas buffering vector data results in a precise area of influence at a specified distance from the target feature, raster buffers tend to be approximations representing those cells that are within the specified distance range of the target (<a class="xref" href="#campbell_1.0-ch08_s01_s01_f02">Figure 8.2 "Raster Buffer around a Target Cell(s)"</a>). Most geographic information system (GIS) programs calculate raster buffers by creating a grid of distance values from the center of the target cell(s) to the center of the neighboring cells and then reclassifying those distances such that a “1” represents those cells composing the original target, a “2” represents those cells within the user-defined buffer area, and a “0” represents those cells outside of the target and buffer areas. These cells could also be further classified to represent multiple ring buffers by including values of “3,” “4,” “5,” and so forth, to represent concentric distances around the target cell(s).</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch08_s01_s01_f02">
+            <p class="title"><span class="title-prefix">Figure 8.2</span> Raster Buffer around a Target Cell(s)</p>
+            <img src="section_12/fa316a8fe9620e67b50a5eaafa9e69ea.jpg">
+        </div>
+    </div>
+    <div class="section" id="campbell_1.0-ch08_s01_s02">
+        <h2 class="title editable block">Multiple Layer Analysis</h2>
+        <p class="para editable block" id="campbell_1.0-ch08_s01_s02_p01">A raster dataset can also be clipped similar to a vector dataset (<a class="xref" href="#campbell_1.0-ch08_s01_s02_f01">Figure 8.3 "Clipping a Raster to a Vector Polygon Layer"</a>). Here, the input raster is overlain by a vector polygon clip layer. The raster clip process results in a single raster that is identical to the input raster but shares the extent of the polygon clip layer.</p>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch08_s01_s02_f01">
+            <p class="title"><span class="title-prefix">Figure 8.3</span> Clipping a Raster to a Vector Polygon Layer</p>
+            <img src="section_12/2a68ec6d5c214c2518a936e4abf14619.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch08_s01_s02_p02">Raster overlays are relatively simple compared to their vector counterparts and require much less computational power (Burroughs 1983).<span class="footnote" id="campbell_1.0-fn08_001">Burroughs, P. 1983. <em class="emphasis">Geographical Information Systems for Natural Resources Assessment</em>. New York: Oxford University Press.</span> Despite their simplicity, it is important to ensure that all overlain rasters are coregistered (i.e., spatially aligned), cover identical areas, and maintain equal resolution (i.e., cell size). If these assumptions are violated, the analysis will either fail or the resulting output layer will be flawed. With this in mind, there are several different methodologies for performing a raster overlay (Chrisman 2002).<span class="footnote" id="campbell_1.0-fn08_003">Chrisman, N. 2002. <em class="emphasis">Exploring Geographic Information Systems</em>. 2nd ed. New York: John Wiley and Sons.</span></p>
+        <p class="para editable block" id="campbell_1.0-ch08_s01_s02_p03">The <span class="margin_term"><a class="glossterm">mathematical raster overlay</a><span class="glossdef">Pixel or grid cell values in each map are combined using mathematical operators to produce a new value in the composite map.</span></span> is the most common overlay method. The numbers within the aligned cells of the input grids can undergo any user-specified mathematical transformation. Following the calculation, an output raster is produced that contains a new value for each cell (<a class="xref" href="#campbell_1.0-ch08_s01_s02_f02">Figure 8.4 "Mathematical Raster Overlay"</a>). As you can imagine, there are many uses for such functionality. In particular, raster overlay is often used in risk assessment studies where various layers are combined to produce an outcome map showing areas of high risk/reward.</p>
+        <div class="figure large large-height editable block" id="campbell_1.0-ch08_s01_s02_f02">
+            <p class="title"><span class="title-prefix">Figure 8.4</span> Mathematical Raster Overlay</p>
+            <img src="section_12/095c6533afae0ad16c99688a3d0d489e.jpg">
+            <p class="para">Two input raster layers are overlain to produce an output raster with summed cell values.</p>
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch08_s01_s02_p04">The <span class="margin_term"><a class="glossterm">Boolean raster overlay</a><span class="glossdef">Pixel or grid cell values in each map are combined using boolean operators to produce a new value in the composite map.</span></span> method represents a second powerful technique. As discussed in <a class="xref" href="campbell_1.0-ch06#campbell_1.0-ch06">Chapter 6 "Data Characteristics and Visualization"</a>, the Boolean connectors AND, OR, and XOR can be employed to combine the information of two overlying input raster datasets into a single output raster. Similarly, the <span class="margin_term"><a class="glossterm">relational raster overlay</a><span class="glossdef">Pixel or grid cell values in each map are combined using relational operators to produce a new value in the composite map.</span></span> method utilizes relational operators (&lt;, &lt;=, =, &lt;&gt;, &gt;, and =&gt;) to evaluate conditions of the input raster datasets. In both the Boolean and relational overlay methods, cells that meet the evaluation criteria are typically coded in the output raster layer with a 1, while those evaluated as false receive a value of 0.</p>
+        <p class="para editable block" id="campbell_1.0-ch08_s01_s02_p05">The simplicity of this methodology, however, can also lead to easily overlooked errors in interpretation if the overlay is not designed properly. Assume that a natural resource manager has two input raster datasets she plans to overlay; one showing the location of trees (“0” = no tree; “1” = tree) and one showing the location of urban areas (“0” = not urban; “1” = urban). If she hopes to find the location of trees in urban areas, a simple mathematical sum of these datasets will yield a “2” in all pixels containing a tree in an urban area. Similarly, if she hopes to find the location of all treeless (or “non-tree,” nonurban areas, she can examine the summed output raster for all “0” entries. Finally, if she hopes to locate urban, treeless areas, she will look for all cells containing a “1.” Unfortunately, the cell value “1” also is coded into each pixel for nonurban, tree cells. Indeed, the choice of input pixel values and overlay equation in this example will yield confounding results due to the poorly devised overlay scheme.</p>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch08_s01_s02_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch08_s01_s02_l01">
+                <li>Overlay processes place two or more thematic maps on top of one another to form a new map.</li>
+                <li>Overlay operations available for use with vector data include the point-in-polygon, line-in-polygon, or polygon-in-polygon models.</li>
+                <li>Union, intersection, symmetrical difference, and identity are common operations used to combine information from various overlain datasets.</li>
+                <li>Raster overlay operations can employ powerful mathematical, Boolean, or relational operators to create new output datasets.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch08_s01_s02_n02">
+            <h3 class="title">Exercises</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch08_s01_s02_l02">
+                <li>From your own field of study, describe three theoretical data layers that could be overlain to create a new output map that answers a complex spatial question such as, “Where is the best place to put a mall?”</li>
+                <li>Go online and find vector or raster datasets related to the question you just posed.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s11-02-multiple-layer-analysis.html"><img src="shared/images/batch-left.png"></a> <a href="s11-02-multiple-layer-analysis.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s12-02-scale-of-analysis.html">Next Section</a> <a href="s12-02-scale-of-analysis.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

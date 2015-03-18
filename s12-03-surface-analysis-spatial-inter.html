@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Surface Analysis: Spatial Interpolation</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s12-02-scale-of-analysis.html"><img src="shared/images/batch-left.png"></a> <a href="s12-02-scale-of-analysis.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s12-04-surface-analysis-terrain-mappi.html">Next Section</a> <a href="s12-04-surface-analysis-terrain-mappi.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch08_s03" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">8.3</span> Surface Analysis: Spatial Interpolation</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch08_s03_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch08_s03_l01">
+            <li>The objective of this section is to become familiar with concepts and terms related to GIS surfaces, how to create them, and how they are used to answer specific spatial questions.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch08_s03_p01">A <span class="margin_term"><a class="glossterm">surface</a><span class="glossdef">A vector or raster dataset that contains an attribute value for every locale throughout its extent.</span></span> is a vector or raster dataset that contains an attribute value for every locale throughout its extent. In a sense, all raster datasets are surfaces, but not all vector datasets are surfaces. Surfaces are commonly used in a geographic information system (GIS) to visualize phenomena such as elevation, temperature, slope, aspect, rainfall, and more. In a GIS, surface analyses are usually carried out on either raster datasets or TINs (Triangular Irregular Network; <a class="xref" href="campbell_1.0-ch05#campbell_1.0-ch05">Chapter 5 "Geospatial Data Management"</a>, <a class="xref" href="campbell_1.0-ch05_s03#campbell_1.0-ch05_s03_s01">Section 5.3.1 "Vector File Formats"</a>), but isolines or point arrays can also be used. Interpolation is used to estimate the value of a variable at an unsampled location from measurements made at nearby or neighboring locales. Spatial interpolation methods draw on the theoretical creed of Tobler’s first law of geography, which states that “everything is related to everything else, but near things are more related than distant things.” Indeed, this basic tenet of <span class="margin_term"><a class="glossterm">positive spatial autocorrelation</a><span class="glossdef">The result of similar values occurring  near by each other.</span></span> forms the backbone of many spatial analyses (<a class="xref" href="#campbell_1.0-ch08_s03_f01">Figure 8.9 "Positive and Negative Spatial Autocorrelation"</a>).</p>
+    <div class="figure large medium-height editable block" id="campbell_1.0-ch08_s03_f01">
+        <p class="title"><span class="title-prefix">Figure 8.9</span> Positive and Negative Spatial Autocorrelation</p>
+        <img src="section_12/285839ececec2893430139135ecc195d.jpg">
+    </div>
+    <div class="section" id="campbell_1.0-ch08_s03_s01">
+        <h2 class="title editable block">Creating Surfaces</h2>
+        <p class="para editable block" id="campbell_1.0-ch08_s03_s01_p01">The ability to create a surface is a valuable tool in a GIS. The creation of raster surfaces, however, often starts with the creation of a vector surface. One common method to create such a vector surface from point data is via the generation of Thiessen (or Voronoi) polygons. Thiessen polygons are mathematically generated areas that define the sphere of influence around each point in the dataset relative to all other points (<a class="xref" href="#campbell_1.0-ch08_s03_s01_f01">Figure 8.10 "A Vector Surface Created Using Thiessen Polygons"</a>). Specifically, polygon boundaries are calculated as the perpendicular bisectors of the lines between each pair of neighboring points. The derived Thiessen polygons can then be used as crude vector surfaces that provide attribute information across the entire area of interest. A common example of Thiessen polygons is the creation of a rainfall surface from an array of rain gauge point locations. Employing some basic reclassification techniques, these Thiessen polygons can be easily converted to equivalent raster representations.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch08_s03_s01_f01">
+            <p class="title"><span class="title-prefix">Figure 8.10</span> A Vector Surface Created Using Thiessen Polygons</p>
+            <img src="section_12/989baf2713da73eca8c861361a3501cd.jpg">
+        </div>
+        <p class="para editable block" id="campbell_1.0-ch08_s03_s01_p02">While the creation of Thiessen polygons results in a polygon layer whereby each polygon, or raster zone, maintains a single value, <span class="margin_term"><a class="glossterm">interpolation</a><span class="glossdef">A potentially complex statistical technique that estimates the value of all unknown points between the known points.</span></span> is a potentially complex statistical technique that estimates the value of all unknown points between the known points. The three basic methods used to create interpolated surfaces are spline, inverse distance weighting (IDW), and trend surface. The spline interpolation method forces a smoothed curve through the set of known input points to estimate the unknown, intervening values. IDW interpolation estimates the values of unknown locations using the distance to proximal, known values. The weight placed on the value of each proximal value is in inverse proportion to its spatial distance from the target locale. Therefore, the farther the proximal point, the less weight it carries in defining the target point’s value. Finally, trend surface interpolation is the most complex method as it fits a multivariate statistical regression model to the known points, assigning a value to each unknown location based on that model.</p>
+        <p class="para editable block" id="campbell_1.0-ch08_s03_s01_p03">Other highly complex interpolation methods exist such as kriging. <span class="margin_term"><a class="glossterm">Kriging</a><span class="glossdef">A complex geostatistical technique that employs semivariograms to interpolate the values of an input point layer and is more akin to a regression analysis.</span></span> is a complex geostatistical technique, similar to IDW, that employs semivariograms to interpolate the values of an input point layer and is more akin to a regression analysis (Krige 1951).<span class="footnote" id="campbell_1.0-fn08_004">Krige, D. 1951. <em class="emphasis">A Statistical Approach to Some Mine Valuations and Allied Problems at the Witwatersrand</em>. Master’s thesis. University of Witwatersrand.</span> The specifics of the kriging methodology will not be covered here as this is beyond the scope of this text. For more information on kriging, consult review texts such as Stein (1999).<span class="footnote" id="campbell_1.0-fn08_005">Stein, M. 1999. <em class="emphasis">Statistical Interpolation of Spatial Data: Some Theories for Kriging</em>. New York: Springer.</span></p>
+        <p class="para editable block" id="campbell_1.0-ch08_s03_s01_p04">Inversely, raster data can also be used to create vector surfaces. For instance, isoline maps are made up of continuous, nonoverlapping lines that connect points of equal value. Isolines have specific monikers depending on the type of information they model (e.g., elevation = contour lines, temperature = isotherms, barometric pressure = isobars, wind speed = isotachs) <a class="xref" href="#campbell_1.0-ch08_s03_s01_f02">Figure 8.11 "Contour Lines Derived from a DEM"</a> shows an isoline elevation map. As the elevation values of this digital elevation model (DEM) range from 450 to 950 feet, the contour lines are placed at 500, 600, 700, 800, and 900 feet elevations throughout the extent of the image. In this example, the contour interval, defined as the vertical distance between each contour line, is 100 feet. The contour interval is determined by the user during the creating of the surface.</p>
+        <div class="figure large medium-height editable block" id="campbell_1.0-ch08_s03_s01_f02">
+            <p class="title"><span class="title-prefix">Figure 8.11</span> Contour Lines Derived from a DEM</p>
+            <img src="section_12/9394e80abcb38028f30d04cbce13ef82.jpg">
+        </div>
+        <div class="key_takeaways editable block" id="campbell_1.0-ch08_s03_s01_n01">
+            <h3 class="title">Key Takeaways</h3>
+            <ul class="itemizedlist" id="campbell_1.0-ch08_s03_s01_l01">
+                <li>Spatial interpolation is used to estimate those unknown values found between known data points.</li>
+                <li>Spatial autocorrelation is positive when mapped features are clustered and is negative when mapped features are uniformly distributed.</li>
+                <li>Thiessen polygons are a valuable tool for converting point arrays into polygon surfaces.</li>
+            </ul>
+        </div>
+        <div class="exercises editable block" id="campbell_1.0-ch08_s03_s01_n02">
+            <h3 class="title">Exercises</h3>
+            <ol class="orderedlist" id="campbell_1.0-ch08_s03_s01_l02">
+                <li>Give an example of five phenomena in the real world that exhibit positive spatial autocorrelation.</li>
+                <li>Give an example of five phenomena in the real world that exhibit negative spatial autocorrelation.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s12-02-scale-of-analysis.html"><img src="shared/images/batch-left.png"></a> <a href="s12-02-scale-of-analysis.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s12-04-surface-analysis-terrain-mappi.html">Next Section</a> <a href="s12-04-surface-analysis-terrain-mappi.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>

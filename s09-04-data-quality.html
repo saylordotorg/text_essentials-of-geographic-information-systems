@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="shared/bookhub.css" rel="stylesheet" type="text/css">
+  <title>Data Quality</title>
+</head>
+<body>
+
+  
+  <div id=navbar-top class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s09-03-file-formats.html"><img src="shared/images/batch-left.png"></a> <a href="s09-03-file-formats.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s10-01-descriptions-and-summaries.html">Next Section</a> <a href="s10-01-descriptions-and-summaries.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  <div id="book-content">
+    <div class="section" id="campbell_1.0-ch05_s04" condition="start-of-chunk" version="5.0" lang="en">
+    <h2 class="title editable block">
+<span class="title-prefix">5.4</span> Data Quality</h2>
+    <div class="learning_objectives editable block" id="campbell_1.0-ch05_s04_n01">
+        <h3 class="title">Learning Objective</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch05_s04_l01">
+            <li>The objective of this section is to ascertain the different types of error inherent in geospatial datasets.</li>
+        </ol>
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch05_s04_p01">Not all geospatial data are created equally. Data quality refers to the ability of a given dataset to satisfy the objective for which it was created. With the voluminous amounts of geospatial data being created and served to the cartographic community, care must be taken by individual geographic information system (GIS) users to ensure that the data employed for their project is suitable for the task at hand.</p>
+    <p class="para editable block" id="campbell_1.0-ch05_s04_p02">Two primary attributes characterize data quality. <span class="margin_term"><a class="glossterm">Accuracy</a><span class="glossdef">How close a measurement is to its actual value; often expressed as a probability.</span></span> describes how close a measurement is to its actual value and is often expressed as a probability (e.g., 80 percent of all points are within +/− 5 meters of their true locations). <span class="margin_term"><a class="glossterm">Precision</a><span class="glossdef">The variance of a value when repeated measurements are taken.</span></span> refers to the variance of a value when repeated measurements are taken. A watch may be correct to 1/1000<sup class="superscript">th</sup> of a second (precise) but may be 30 minutes slow (not accurate). As you can see in <a class="xref" href="#campbell_1.0-ch05_s04_f01">Figure 5.12 "Accuracy and Precision"</a>, the blue darts are both precise and accurate, while the red darts are precise but inaccurate.</p>
+    <div class="figure large medium-height editable block" id="campbell_1.0-ch05_s04_f01">
+        <p class="title"><span class="title-prefix">Figure 5.12</span> Accuracy and Precision</p>
+        <img src="section_09/9e04f31e2fda79cd0d34ce34397feb98.jpg">
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch05_s04_p03">Several types of error can arise when accuracy and/or precision requirements are not met during data capture and creation. <span class="margin_term"><a class="glossterm">Positional accuracy</a><span class="glossdef">The probability of a feature being within +/− units of either its true location on earth (absolute positional accuracy) or its location in relation to other mapped features (relative positional accuracy).</span></span> is the probability of a feature being within +/− units of either its true location on earth (absolute positional accuracy) or its location in relation to other mapped features (relative positional accuracy). For example, it could be said that a particular mapping effort may result in 95 percent of trees being mapped to within +/− 5 feet for their true location (absolute), or 95 percent of trees are mapped to within +/− 5 feet of their location as observed on a digital ortho quarter quadrangle (relative).</p>
+    <p class="para editable block" id="campbell_1.0-ch05_s04_p04">Speaking about absolute positional error does beg the question, however, of what exactly is the true location of an object? As discussed in <a class="xref" href="campbell_1.0-ch02#campbell_1.0-ch02">Chapter 2 "Map Anatomy"</a>, differing conceptions of the earth’s shape has led to a plethora of projections, data points, and spheroids, each attempting to clarify positional errors for particular locations on the earth. To begin addressing this unanswerable question, the US National Map Accuracy Standard (or NMAS) suggests that to meet horizontal accuracy requirements, a paper map is expected to have no more than 10 percent of measurable points fall outside the accuracy values range shown in <a class="xref" href="#campbell_1.0-ch05_s04_f02">Figure 5.13 "Relation between Positional Error and Scale"</a>. Similarly, the vertical accuracy of no more than 10 percent of elevations on a contour map shall be in error of more than one-half the contour interval. Any map that does not meet these horizontal and vertical accuracy standards will be deemed unacceptable for publication.</p>
+    <div class="figure large medium-height editable block" id="campbell_1.0-ch05_s04_f02">
+        <p class="title"><span class="title-prefix">Figure 5.13</span> Relation between Positional Error and Scale</p>
+        <img src="section_09/cf59b54e71835320c585a005e006f647.jpg">
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch05_s04_p05">Positional errors arise via multiple sources. The process of digitizing paper maps commonly introduces such inaccuracies. Errors can arise while registering the map on the digitizing board. A paper map can shrink, stretch, or tear over time, changing the dimensions of the scene. Input errors created from hastily digitized points are common. Finally, converting between coordinate systems and transforming between data points may also introduce errors to the dataset.</p>
+    <p class="para editable block" id="campbell_1.0-ch05_s04_p06">The root-mean square (RMS) error is frequently used to evaluate the degree of inaccuracy in a digitized map. This statistic measures the deviation between the actual (true) and estimated (digitized) locations of the control points. <a class="xref" href="#campbell_1.0-ch05_s04_f03">Figure 5.14 "Potential Digitization Error"</a> illustrates the inaccuracies of lines representing soil types that result from input control point location errors. By applying an RMS error calculation to the dataset, one could determine the accuracy of the digitized map and thus determine its suitability for inclusion in a given study.</p>
+    <div class="figure large medium-height editable block" id="campbell_1.0-ch05_s04_f03">
+        <p class="title"><span class="title-prefix">Figure 5.14</span> Potential Digitization Error</p>
+        <img src="section_09/23c208c33bad5874ec62cba9f50b1591.jpg">
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch05_s04_p07">Positional errors can also arise when features to be mapped are inherently vague. Take the example of a wetland (<a class="xref" href="#campbell_1.0-ch05_s04_f04">Figure 5.15 "Defining a Wetland Boundary"</a>). What defines a wetland boundary? Wetlands are determined by a combination of hydrologic, vegetative, and edaphic factors. Although the US Army Corps of Engineers is currently responsible for defining the boundary of wetlands throughout the country, this task is not as simple as it may seem. In particular, regional differences in the characteristics of a wetland make delineating these features particularly troublesome. For example, the definition of a wetland boundary for the riverine wetlands in the eastern United States, where water is abundant, is often useless when delineating similar types of wetlands in the desert southwest United States. Indeed, the complexity and confusion associated with the conception of what a “wetland” is may result in difficulties defining the feature in the field, which subsequently leads to positional accuracy errors in the GIS database.</p>
+    <div class="figure large medium-height editable block" id="campbell_1.0-ch05_s04_f04">
+        <p class="title"><span class="title-prefix">Figure 5.15</span> Defining a Wetland Boundary</p>
+        <img src="section_09/ec887b5db1da5c39a622f288593fd942.jpg">
+    </div>
+    <p class="para editable block" id="campbell_1.0-ch05_s04_p08">In addition to positional accuracy, <span class="margin_term"><a class="glossterm">attribute accuracy</a><span class="glossdef">The difference between information as recorded in an attribute table and the real-world features they represent.</span></span> is a common source of error in a GIS. Attribute errors can occur when an incorrect value is recorded within the attribute field or when a field is missing a value. Misspelled words and other typographical errors are common as well. Similarly, a common inaccuracy occurs when developers enter “0” in an attribute field when the value is actually “null.” This is common in count data where “0” would represent zero findings, while a “null” would represent a locale where no data collection effort was undertaken. In the case of categorical values, inaccuracies occasionally occur when attributes are mislabeled. For example, a land-use/land-cover map may list a polygon as “agricultural” when it is, in fact, “residential.” This is particularly true if the dataset is out of date, which leads us to our next source of error.</p>
+    <p class="para editable block" id="campbell_1.0-ch05_s04_p09"><span class="margin_term"><a class="glossterm">Temporal accuracy</a><span class="glossdef">The potential error related to the age or timeliness of a dataset.</span></span> addresses the age or timeliness of a dataset. No dataset is ever completely current. In the time it takes to create the dataset, it has already become outdated. Regardless, there are several dates to be aware of while using a dataset. These dates should be found within the metadata. The publication date will tell you when the dataset was created and/or released. The field date relates the date and time the data was collected. If the dataset contains any future prediction, there should also be a forecast period and/or date. To address temporal accuracy, many datasets undergo a regular data update regimen. For example, the California Department of Fish and Game updates its sensitive species databases on a near monthly basis as new findings are continually being made. It is important to ensure that, as an end-user, you are constantly using the most up-to-date data for your GIS application.</p>
+    <p class="para editable block" id="campbell_1.0-ch05_s04_p10">The fourth type of accuracy in a GIS is <span class="margin_term"><a class="glossterm">logical consistency</a><span class="glossdef">A trait exhibited by data that is topologically correct.</span></span>. Logical consistency requires that the data are topologically correct. For example, does a stream segment of a line shapefile fall within the floodplain of the corresponding polygon shapefile? Do roadways connect at nodes? Do all the connections and flows point in the correct direction in a network? In regards to the last question, the author was recently using an unnamed smartphone application to navigate a busy city roadway and was twice told to turn the wrong direction down one-way streets. So beware, errors in logical consistency may lead to traffic violations, or worse!</p>
+    <p class="para editable block" id="campbell_1.0-ch05_s04_p11">The final type of accuracy is <span class="margin_term"><a class="glossterm">data completeness</a><span class="glossdef">The trait of a dataset comprehensively including all features required to ensure accurate mapping results.</span></span>. Comprehensive inclusion of all features within the GIS database is required to ensure accurate mapping results. Simply put, all the data must be present for a dataset to be accurate. Are all of the counties in the state represented? Are all of the stream segments included in the river network? Is every convenience store listed in the database? Are only certain types of convenience stores listed within the database? Indeed, incomplete data will inevitably lead to incomplete or insufficient analysis.</p>
+    <div class="key_takeaways editable block" id="campbell_1.0-ch05_s04_n02">
+        <h3 class="title">Key Takeaways</h3>
+        <ul class="itemizedlist" id="campbell_1.0-ch05_s04_l02">
+            <li>All geospatial data contains error.</li>
+            <li>Accuracy represents how close a measurement is to its actual value, while precision refers to the variance of a value when repeated measurements are taken.</li>
+            <li>The five types of error in a geospatial dataset are related to positional accuracy, attribute accuracy, temporal accuracy, logical consistency, and data completeness.</li>
+        </ul>
+    </div>
+    <div class="exercises editable block" id="campbell_1.0-ch05_s04_n03">
+        <h3 class="title">Exercises</h3>
+        <ol class="orderedlist" id="campbell_1.0-ch05_s04_l03">
+            <li>What are the five types of accuracy/precision errors associated geographic information? Provide an example of each type of error.</li>
+            <li>Per the description of the positional accuracy of wetland boundaries, discuss a map feature whose boundaries are inherently vague and difficult to map.</li>
+        </ol>
+    </div>
+</div>
+
+  </div>
+  
+  <div id=navbar-bottom class="navbar">
+    <div class="navbar-part left">
+      
+        <a href="s09-03-file-formats.html"><img src="shared/images/batch-left.png"></a> <a href="s09-03-file-formats.html">Previous Section</a>
+      
+    </div>
+    <div class="navbar-part middle">
+      <a href="index.html"><img src="shared/images/batch-up.png"></a> <a href="index.html">Table of Contents</a>
+    </div>
+    <div class="navbar-part right">
+      
+        <a href="s10-01-descriptions-and-summaries.html">Next Section</a> <a href="s10-01-descriptions-and-summaries.html"><img src="shared/images/batch-right.png"></a>
+      
+    </div>
+  </div>
+
+  </div>
+  <script type="text/javascript" src="shared/book.js"></script>
+  
+  
+</body>
+</html>
